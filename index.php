@@ -7,7 +7,7 @@
     <title>luveck</title>
 
     <link rel="stylesheet" href="css/main.css">
-    
+ 
     <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.min.css">
 
     <script async src="bower_components/modernizr/modernizr.js"></script>
@@ -16,15 +16,14 @@
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    
     <main>
       <aside>
-        <h1>Luveck</h1>
+        <h1 class="brand_logo">Luveck</h1>
 
         <nav>
           <ul>
             <li><a href="" title="Home">Home</a></li>
-            <li><a href="" title="Sobre Luveck">Sobre Luveck</a></li>
+            <li><a href="" title="Sobre Luveck" class="active">Sobre Luveck</a></li>
             <li><a href="" title="Productos">Productos</a></li>
             <li><a href="" title="Certificaciones">Certificaciones</a></li>
             <li><a href="" title="Investigación">Investigación</a></li>
