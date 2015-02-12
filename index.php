@@ -7,10 +7,9 @@
     <title>luveck</title>
 
     <link rel="stylesheet" href="css/main.css">
- 
-    <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
 
-    <script async src="bower_components/modernizr/modernizr.js"></script>
+    <script async src="js/modernizr.js"></script>
   </head>
   <body>
     <!--[if lt IE 10]>
@@ -40,12 +39,16 @@
       </aside>
       
       <section>
-        <article>item 1</article>
+        <article>
+          <img src="images/img-banner-1.jpg" height="685" width="933" alt="">
+          <img src="images/img-banner-2.jpg" height="685" width="933" alt="">
+          <img src="images/img-banner-3.jpg" height="685" width="933" alt="">
+        </article>
       </section>
       
     </main>
     <!-- scripts -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
