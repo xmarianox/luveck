@@ -38,14 +38,18 @@
 
       </aside>
       
-      <section>
-        <article>
-          <img src="images/img-banner-1.jpg" height="685" width="933" alt="">
-          <img src="images/img-banner-2.jpg" height="685" width="933" alt="">
-          <img src="images/img-banner-3.jpg" height="685" width="933" alt="">
-        </article>
-      </section>
-      
+      <div class="content">
+        <section>
+          
+          <article class="slide" id="slide-1"></article>
+          
+          <article class="slide" id="slide-2"></article>
+
+          <article class="slide" id="slide-3"></article>
+
+        </section>
+      </div>
+
     </main>
     <!-- scripts -->
     <script src="js/jquery.min.js"></script>

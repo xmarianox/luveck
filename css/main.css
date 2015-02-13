@@ -114,16 +114,68 @@ nav a.active {
 /*
 *	Contenidos
 */
-section {
+.content {
 	background-color:  #f2f2f2;
 	position: fixed;
 	right: 0;
 	top: 0;
 	bottom: 0;
 	width: 81%;
+	perspective: 1px;
+	transform-style: preserve-3d;
+	height: 100%;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+/* SLIDE banners */
+section {
+	width: 100%;
+	height: auto;
+	display: block;
+	overflow: hidden;
+}
+.slide {
+	width: 100%;
+	min-height: 100vh;
+	transform-style: inherit;
+	position: relative;
+}
+.slide:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left:0;
+	right:0;
+}
+.slide, .slide:before {
+  background: 50% 50% / cover;  
+}
+#slide-1:before {
+  background-image: url(../images/img-banner-1.jpg);
+  transform: translateZ(-1px) scale(2);
+  z-index:-1;
 }
 
+#slide-2 {
+  background-image: url(../images/img-banner-2.jpg);
+  background-attachment: fixed;
+}
 
+#slide-3:before {
+  background-image: url(../images/img-banner-3.jpg);
+  transform: translateZ(-1px) scale(2);
+  z-index:-1;
+}
+/*#slide-1 {
+	background: url(../images/img-banner-1.jpg) 50% 50% / cover fixed no-repeat;
+}
+#slide-2 {
+	background: url(../images/img-banner-2.jpg) 50% 50% / cover fixed no-repeat;
+}
+#slide-3 {
+	background: url(../images/img-banner-3.jpg) 50% 50% / cover fixed no-repeat;
+}*/
 
 
 
