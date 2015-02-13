@@ -126,6 +126,16 @@ nav a.active {
 	height: 100%;
 	overflow-y: scroll;
 	overflow-x: hidden;
+
+	-webkit-animation-duration: 1s;
+    		animation-duration: 1s;
+
+  	-webkit-animation-delay: 1s;
+  			animation-delay: 1s;
+
+  	-webkit-animation-iteration-count: initial;
+  			animation-iteration-count: initial;
+
 }
 /* SLIDE banners */
 section {
@@ -159,14 +169,12 @@ section {
 }
 
 #slide-2 {
-  background-image: url(../images/img-banner-2.jpg);
+  background-image: url(../images/img-banner-3.jpg);
   background-attachment: fixed;
 }
 
 #slide-3:before {
-  background-image: url(../images/img-banner-3.jpg);
+  background-image: url(../images/img-banner-2.jpg);
   transform: translateZ(-1px) scale(2);
   z-index:-1;
 }
-
-
