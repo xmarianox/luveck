@@ -133,6 +133,7 @@ section {
 	height: auto;
 	display: block;
 	overflow: hidden;
+	position: relative;
 }
 .slide {
 	width: 100%;
@@ -167,16 +168,5 @@ section {
   transform: translateZ(-1px) scale(2);
   z-index:-1;
 }
-/*#slide-1 {
-	background: url(../images/img-banner-1.jpg) 50% 50% / cover fixed no-repeat;
-}
-#slide-2 {
-	background: url(../images/img-banner-2.jpg) 50% 50% / cover fixed no-repeat;
-}
-#slide-3 {
-	background: url(../images/img-banner-3.jpg) 50% 50% / cover fixed no-repeat;
-}*/
-
-
 
 

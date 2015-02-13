@@ -40,13 +40,9 @@
       
       <div class="content">
         <section>
-          
           <article class="slide" id="slide-1"></article>
-          
           <article class="slide" id="slide-2"></article>
-
           <article class="slide" id="slide-3"></article>
-
         </section>
       </div>
 
