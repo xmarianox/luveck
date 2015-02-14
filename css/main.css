@@ -160,19 +160,18 @@ section {
 	right:0;
 }
 .slide, .slide:before {
-  background: 50% 50% / cover;  
+  background-position: 50% 50%;
+  background-size: cover;  
 }
 #slide-1:before {
   background-image: url(../images/img-banner-1.jpg);
   transform: translateZ(-1px) scale(2);
   z-index:-1;
 }
-
 #slide-2 {
   background-image: url(../images/img-banner-3.jpg);
   background-attachment: fixed;
 }
-
 #slide-3:before {
   background-image: url(../images/img-banner-2.jpg);
   transform: translateZ(-1px) scale(2);
