@@ -177,3 +177,34 @@ section {
   transform: translateZ(-1px) scale(2);
   z-index:-1;
 }
+/* SLIDE Menu */
+.slider-menu {
+	position: fixed;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 30%;
+	height: 100%;
+	z-index: 10;
+	border-left: 1px solid #a9a9a9;
+	padding: 30px 16px;
+}
+.slider-menu ul {
+	display: block;
+	margin: 50% auto;
+}
+.slider-menu ul li {
+	display: block;
+	margin-bottom: 40px;
+}
+.slider-menu a {
+	font-size: 14px;
+	text-decoration: none;
+	color: #888888;
+}
+.slider-menu h2 {
+	font-size: 14px;
+	text-transform: uppercase;
+	color: #343434;
+}
+
