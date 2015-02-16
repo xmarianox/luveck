@@ -45,9 +45,9 @@ main {
   overflow: hidden;
   margin: 0 auto;
 }
-/*
-*	Menu
-*/
+/************************************************
+* Menu
+************************************************/
 aside {
 	position: fixed;
 	left: 0;
@@ -67,7 +67,9 @@ aside {
 	width: 140px;
 	height: 46px;
 }
-/* Navigation */
+/************************************************
+* Navigation
+************************************************/
 nav {
 	display: block;
 	overflow: hidden;
@@ -93,7 +95,9 @@ nav a.active {
 	color:  #d8934c;
 	font-weight: 900;
 }
-/* Contacto */
+/************************************************
+* Redes
+************************************************/
 .contactos {
 	display: block;
 	margin-top: 30%;
@@ -111,9 +115,9 @@ nav a.active {
 	line-height: 15px;
 	font-size: 15px;
 }
-/*
-*	Contenidos
-*/
+/************************************************
+* Contenido
+************************************************/
 .content {
 	background-color:  #f2f2f2;
 	position: fixed;
@@ -137,7 +141,9 @@ nav a.active {
   			animation-iteration-count: initial;
 
 }
-/* SLIDE banners */
+/************************************************
+* Section : Home
+************************************************/
 section {
 	width: 100%;
 	height: auto;
@@ -206,5 +212,115 @@ section {
 	font-size: 14px;
 	text-transform: uppercase;
 	color: #343434;
+}
+/************************************************
+* Estilos genericos
+************************************************/
+section h1 {
+	color: #888888;
+	font-size: 40px;
+	line-height: 40px;
+	font-weight: 300;
+	margin-bottom: 60px;
+}
+/************************************************
+* Section : servicioClientes / Contacto
+************************************************/
+#servicioClientes article {
+	overflow: hidden;
+}
+#servicioClientes .col {
+	float: left;
+	display: block;
+	overflow: hidden;
+}
+.col-4 {
+	width: 45%;
+	padding: 70px 60px 50px;
+}
+.col-6 {
+	width: 55%;
+	height: 100%;
+	padding: 0;
+}
+/* texts */
+.sucursales {
+	margin: 0 auto 40px;
+}
+.sucursales h2 {
+	color:  #343434;
+	font-size: 20px;
+	font-weight: 900;
+	line-height: 28px;
+	text-transform: uppercase;
+}
+.sucursales h2 .fa {
+	color: #888888;
+}
+.sucursales.active h2 .fa {
+	color: #ffbb71;
+}
+.sucursales p {
+	color: #888888;
+}
+.sucursales p a {
+	text-decoration: none;
+	color: #888888;
+}
+.sucursales p a:hover {
+	color: #d8934c;
+}
+/* formulario */
+#form-contacto {
+	overflow: hidden;
+	margin: 0 auto;
+}
+#form-contacto h2 {
+	color:  #343434;
+	font-size: 20px;
+	font-weight: 900;
+	line-height: 28px;
+	text-transform: uppercase;
+}
+input, textarea {
+	width: 100%;
+	color: #343434;
+	font-size: 16px;
+	line-height: 28px;
+	font-weight: 300;
+	background: transparent;
+	border: none;
+	border-bottom: 1px solid #d8934c;
+}
+.btn {
+	border: none;
+	background: transparent;
+	color:  #343434;
+	font-size: 22px;
+	line-height: 28px;
+	font-weight: 300;
+	text-transform: uppercase;
+	display: inline-block;
+	cursor: pointer;
+}
+.btn:hover {
+	color: #d8934c;
+}
+#servicioClientes .btn {
+	float: right;
+}
+/* mapa */
+.content-mapa {
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+}
+#map-canvas {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	display: block;
+	position: absolute !important;
 }
 
