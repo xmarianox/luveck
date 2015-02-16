@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/animate.min.css">
 
     <script async src="js/modernizr.js"></script>
   </head>
@@ -49,6 +50,7 @@
     <script src="js/jquery.min.js"></script>
     <!-- google maps api -->
     <script src="http://maps.googleapis.com/maps/api/js?v=3"></script>
+    <!--  -->
     <script src="js/main.js"></script>
 </body>
 </html>

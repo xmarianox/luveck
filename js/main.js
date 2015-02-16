@@ -5,6 +5,7 @@ function calcutaleHeight(element) {
 	var finalHeight = windowHeight;
 	$(element).height(finalHeight);
 }
+
 // Tabs initial
 function tabInit() {
 	'use strict';
@@ -13,6 +14,7 @@ function tabInit() {
 	var elem = active.attr('href');
 	$(elem).css('display', 'block');
 }
+
 // Initialize Maps
 /*function initialize() {
 	'use strict';
@@ -36,6 +38,8 @@ function tabInit() {
         r.open(map, a)
     })
 }*/
+
+// Initialize Google Maps
 function initialize() {
 	'use strict';
 	var mapOptions = {
@@ -48,12 +52,12 @@ function initialize() {
 }
 
 // Load
-$(window).load(calcutaleHeight('.slide'), calcutaleHeight('.slider-menu'), tabInit(), initialize());
+$(window).load(calcutaleHeight('.slide'), calcutaleHeight('.slider-menu'), tabInit());
+
 // Ready
 $(document).ready(function() {
 	'use strict';
 
-	console.log("Hoy vine a flashar ser pobre!");
 	// Resize
 	$(window).resize(calcutaleHeight('.slide'), calcutaleHeight('.slider-menu'));
 
@@ -81,6 +85,9 @@ $(document).ready(function() {
 		var elementActive = $(this).attr('class');
 		var tab = $(this).attr('href');
 		//$(tab).addClass('animate fadeInRightBig')
+		if (tab == '#servicioClientes') {
+			initialize();
+		}
 		$(tab).css('display', 'block');
 		/*$(tab).css({
 			display: 'block',
@@ -89,8 +96,4 @@ $(document).ready(function() {
 			width: '81%'
 		}, 1000);*/
 	});
-
-	// Init Google Maps
-	//initialize();
-
 });
