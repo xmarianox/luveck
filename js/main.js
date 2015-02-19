@@ -15,30 +15,6 @@ function tabInit() {
 	$(elem).css('display', 'block');
 }
 
-// Initialize Maps
-/*function initialize() {
-	'use strict';
-    var o = {
-        url: "images/map-pin.png",
-        size: new google.maps.Size(32, 46)
-    }, e = {
-        zoom: 17,
-        center: new google.maps.LatLng(19.438238, - 99.188666),
-        disableDefaultUI: !0
-    };
-    map = new google.maps.Map(document.getElementById("map-canvas"), e);
-    var a = new google.maps.Marker({
-        map: map,
-        icon: o,
-        position: map.getCenter()
-    }), t = '<div id="content"><h2>Latitud Polanco</h2><ul><li>Av Ejército Nacional</li><li>Granada, Miguel Hidalgo</li><li>11520 Ciudad de México, Distrito Federal, México</li></ul></div>', r = new google.maps.InfoWindow({
-        content: t
-    });
-    google.maps.event.addListener(a, "click", function() {
-        r.open(map, a)
-    })
-}*/
-
 // Initialize Google Maps
 function initialize() {
 	'use strict';
@@ -52,14 +28,14 @@ function initialize() {
 }
 
 // Load
-$(window).load(calcutaleHeight('.slide'), calcutaleHeight('.slider-menu'), tabInit());
+$(window).load(calcutaleHeight('aside'), calcutaleHeight('.content'), tabInit());
 
 // Ready
 $(document).ready(function() {
 	'use strict';
 
 	// Resize
-	$(window).resize(calcutaleHeight('.slide'), calcutaleHeight('.slider-menu'));
+	$(window).resize(calcutaleHeight('.aside'), calcutaleHeight('.content'));
 
 	// anchor navigation
 	$('a[href*=#]:not([href=#])').click(function() {
@@ -89,11 +65,33 @@ $(document).ready(function() {
 			initialize();
 		}
 		$(tab).css('display', 'block');
-		/*$(tab).css({
-			display: 'block',
-			width: '-81%'
-		}).animate({
-			width: '81%'
-		}, 1000);*/
 	});
+
+
+	// Slider home
+	$('#sliderHome').tinycarousel({
+        axis: "y"
+    });
+
+    var sliderHome = $('#sliderHome').data('plugin_tinycarousel');
+
+    $('.goToSlide').click(function(event) {
+    	event.preventDefault();
+
+    	var slide = $(this).attr('href');
+
+    	switch(slide) {
+    		case "slide-1":
+    			sliderHome.move(0);
+    			break;
+    		case "slide-2":
+    			sliderHome.move(1);
+    			break;
+    		case "slide-3":
+    			sliderHome.move(2);
+    			break;
+    	}
+    	return null;
+    });
+
 });

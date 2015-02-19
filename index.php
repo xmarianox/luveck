@@ -6,9 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>luveck</title>
 
-    <link rel="stylesheet" href="css/main.css">
+    <!-- Dependencias -->
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/animate.min.css">
+    <!-- <link rel="stylesheet" href="css/tinycarousel.css"> -->
+    
+    <!-- Layout -->
+    <link rel="stylesheet" href="css/main.css">
 
     <script async src="js/modernizr.js"></script>
   </head>
@@ -38,7 +42,6 @@
       <div class="content" id="investigacion">
         <?php require 'views/com-tab-investigacion.php'; ?>
       </div><!-- investigacion -->
-
       <div class="content" id="servicioClientes">
         <?php require 'views/com-tab-contacto.php'; ?>
       </div><!-- #servicioClientes -->
@@ -46,9 +49,10 @@
     </main>
     <!-- scripts -->
     <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.tinycarousel.min.js"></script>
     <!-- google maps api -->
     <script src="http://maps.googleapis.com/maps/api/js?v=3"></script>
-    <!--  -->
+    <!-- main -->
     <script src="js/main.js"></script>
 </body>
 </html>

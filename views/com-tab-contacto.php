@@ -40,7 +40,7 @@
     </div><!-- col-4 -->
 
     <div class="col col-6">
-      <div class="content-mapa animated fadeIn">
+      <div class="content-mapa">
         <div id="map-canvas"></div>
       </div>
     </div><!-- col-6 -->
