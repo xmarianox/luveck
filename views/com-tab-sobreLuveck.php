@@ -23,26 +23,43 @@
 
             <li>
             	<div class="col col-49">
-					<h1>Nuestra gente</h1>
 
-					<p>Todos los Colaboradores involucrados en el desarrollo, 
-					fabricación, aseguramiento de calidad, despacho, promoción pre y post 
-					venta de nuestros Productos farmacéuticos están capacitados y certificados, 
-					y además muestran compromiso y dedicación al cumplir con sus responsabilidades.</p>
+					<div id="scrollbarNuestraGente">
+            
+			            <div class="scrollbar">
+			                <div class="track">
+			                    <div class="thumb">
+			                        <div class="end"></div>
+			                    </div>
+			                </div>
+			            </div><!-- scrollbar -->
 
-					<h2>Reclutamiento y Selección</h2>
-					<p>Para Luveck nuestro personal es una de las partes más importantes para el 
-					funcionamiento óptimo de la empresa. Los candidatos a obtener un puesto en la
-					compañía son evaluados mediante varias entrevistas con los encargados de los 
-					puestos clave de la empresa. También se utilizan exámenes de IQ, toma de decisiones 
-					y psicométricos para medir que el candidato sea lo más apto posible para el puesto al que aspira.</p>
+			            <div class="scrollbarViewport">
+			                 <div class="scrollbarOverview">
+								<h1>Nuestra gente</h1>
 
-					<h2>Talento humano</h2>
-					<p>Estamos convencidos que el manejo responsable del talento humano  es un 
-					elemento clave para que una empresa pueda desarrollar un crecimiento 
-					sostenible en el mercado.  Por esto mismo tomamos en cuenta todas las 
-					habilidades y talentos de nuestros empleados y los utilizamos para el cumplimiento 
-					de los objetivos que la empresa debe cumplir.</p>				
+								<p>Todos los Colaboradores involucrados en el desarrollo, 
+								fabricación, aseguramiento de calidad, despacho, promoción pre y post 
+								venta de nuestros Productos farmacéuticos están capacitados y certificados, 
+								y además muestran compromiso y dedicación al cumplir con sus responsabilidades.</p>
+
+								<h2>Reclutamiento y Selección</h2>
+								<p>Para Luveck nuestro personal es una de las partes más importantes para el 
+								funcionamiento óptimo de la empresa. Los candidatos a obtener un puesto en la
+								compañía son evaluados mediante varias entrevistas con los encargados de los 
+								puestos clave de la empresa. También se utilizan exámenes de IQ, toma de decisiones 
+								y psicométricos para medir que el candidato sea lo más apto posible para el puesto al que aspira.</p>
+
+								<h2>Talento humano</h2>
+								<p>Estamos convencidos que el manejo responsable del talento humano  es un 
+								elemento clave para que una empresa pueda desarrollar un crecimiento 
+								sostenible en el mercado.  Por esto mismo tomamos en cuenta todas las 
+								habilidades y talentos de nuestros empleados y los utilizamos para el cumplimiento 
+								de los objetivos que la empresa debe cumplir.</p>
+							</div><!-- overview -->
+						</div><!-- viewport -->
+					</div><!-- scrollbarNuestraGente -->
+
 				</div>
 				<div class="col col-51">
 					<img src="images/img-sobre-3.jpg" alt="">

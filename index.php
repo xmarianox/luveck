@@ -54,6 +54,7 @@
     <!-- scripts -->
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.tinycarousel.min.js"></script>
+    <script src="js/jquery.jquery.tinyscrollbar.min.js"></script>
     <!-- google maps api -->
     <script src="http://maps.googleapis.com/maps/api/js?v=3"></script>
     <!-- main -->

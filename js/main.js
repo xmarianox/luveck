@@ -122,4 +122,7 @@ $(document).ready(function() {
         bullets: true
     });
 
+    // Scrollbar
+    $("#scrollbarNuestraGente").tinyscrollbar();
+
 });
