@@ -1,6 +1,6 @@
 <section>
   <article>
-    <div class="col col-4">
+    <div class="col col-49">
       <h1 class="animated fadeInUp">Contactenos</h1>
 
       <div class="sucursales active animated fadeInLeft" data-rel="casa-central">
@@ -39,7 +39,7 @@
       </form>
     </div><!-- col-4 -->
 
-    <div class="col col-6">
+    <div class="col col-51">
       <div class="content-mapa">
         <div id="map-canvas"></div>
       </div>

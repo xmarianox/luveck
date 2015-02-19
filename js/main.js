@@ -15,27 +15,52 @@ function tabInit() {
 	$(elem).css('display', 'block');
 }
 
-// Initialize Google Maps
+// Google maps api.
 function initialize() {
-	'use strict';
+
+	var infowindow = new google.maps.InfoWindow();
+	var pointer = { url: 'images/map-pin.png', size: new google.maps.Size(39,56)};
+	var marker, i, contentString;
+
+	var locations = [
+		['Piso SERT', 41.3893712, 2.1764497, 1,'Pasaje Sert, 10, 1º-1º'],	
+		['Piso PALAU ', 41.3889191, 2.1774804, 2, 'Calle St Pere Més Alt, 55, 1º-2º'],
+		['Piso PASAJE ', 41.389092, 2.176867, 3, 'Passatge Sert, 6, 1º']	
+	]
+	
 	var mapOptions = {
-	  center: new google.maps.LatLng(-34.397, 150.644),
-	  zoom: 8,
-	  mapTypeId: google.maps.MapTypeId.ROADMAP
-	};
-	var map = new google.maps.Map(document.getElementById("map-canvas"),
-	    mapOptions);
+		zoom: 18,
+		center: new google.maps.LatLng(41.3893712, 2.1764497),
+		disableDefaultUI: true
+	}
+
+	var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+	for (i = 0; i < locations.length; i++) {
+		marker = new google.maps.Marker({
+			position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+			icon: pointer,
+			map: map
+		});
+
+		google.maps.event.addListener(marker, 'click', (function(marker, i) {
+			return function() {
+				infowindow.setContent('<div class="content-string"><h2>'+ locations[i][0] +'</h2><p>' + locations[i][4]+ '</p></div>');
+				infowindow.open(map, marker);
+			}
+		})(marker, i));
+	}
 }
 
 // Load
-$(window).load(calcutaleHeight('aside'), calcutaleHeight('.content'), tabInit());
+$(window).load(tabInit());
 
 // Ready
 $(document).ready(function() {
 	'use strict';
 
 	// Resize
-	$(window).resize(calcutaleHeight('.aside'), calcutaleHeight('.content'));
+	//$(window).resize(calcutaleHeight('.aside'), calcutaleHeight('section'));
 
 	// anchor navigation
 	$('a[href*=#]:not([href=#])').click(function() {
@@ -67,7 +92,6 @@ $(document).ready(function() {
 		$(tab).css('display', 'block');
 	});
 
-
 	// Slider home
 	$('#sliderHome').tinycarousel({
         axis: "y"
@@ -77,9 +101,7 @@ $(document).ready(function() {
 
     $('.goToSlide').click(function(event) {
     	event.preventDefault();
-
     	var slide = $(this).attr('href');
-
     	switch(slide) {
     		case "slide-1":
     			sliderHome.move(0);
@@ -92,6 +114,12 @@ $(document).ready(function() {
     			break;
     	}
     	return null;
+    });
+
+    // Slider sobre luveck
+    $('#sliderSobreLuveck').tinycarousel({
+        axis: "y",
+        bullets: true
     });
 
 });
