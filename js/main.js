@@ -60,7 +60,9 @@ $(document).ready(function() {
 	'use strict';
 
 	// Resize
-	//$(window).resize(calcutaleHeight('.aside'), calcutaleHeight('section'));
+	//$(window).resize(calcutaleHeight('.aside'), calcutaleHeight('#sliderSobreLuveck .col-49'));
+	calcutaleHeight('.nano');
+	$(window).resize(calcutaleHeight('.nano'));
 
 	// anchor navigation
 	$('a[href*=#]:not([href=#])').click(function() {
@@ -123,6 +125,6 @@ $(document).ready(function() {
     });
 
     // Scrollbar
-    $("#scrollbarNuestraGente").tinyscrollbar();
+    $(".nano").nanoScroller();
 
 });
