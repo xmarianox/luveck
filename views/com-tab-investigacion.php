@@ -1,6 +1,9 @@
 <section>
   <article>
-  	<h1>Investigacion</h1>
-  	<p>Falta el contenido</p>
+  	<div class="col col-49">
+  		<h1 class="animated fadeInUp">Investigacion</h1>
+  		<p>Falta el contenido</p>
+  	</div>
+  	<div class="col col-51"></div>
   </article>
 </section>

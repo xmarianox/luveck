@@ -9,7 +9,7 @@
     <!-- Dependencias -->
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/animate.min.css">
-    
+
     <!-- Layout -->
     <link rel="stylesheet" href="css/main.css">
 
@@ -55,6 +55,7 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.tinycarousel.min.js"></script>
     <script src="js/jquery.nanoscroller.min.js"></script>
+    <script src="js/jquery.scrollTo.min.js"></script>
     <!-- google maps api -->
     <script src="http://maps.googleapis.com/maps/api/js?v=3"></script>
     <!-- main -->

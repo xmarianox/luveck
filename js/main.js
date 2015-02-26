@@ -17,6 +17,7 @@ function tabInit() {
 
 // Google maps api.
 function initialize() {
+	'use strict';
 
 	var infowindow = new google.maps.InfoWindow();
 	var pointer = { url: 'images/map-pin.png', size: new google.maps.Size(39,56)};
@@ -60,9 +61,8 @@ $(document).ready(function() {
 	'use strict';
 
 	// Resize
-	//$(window).resize(calcutaleHeight('.aside'), calcutaleHeight('#sliderSobreLuveck .col-49'));
-	calcutaleHeight('.nano');
-	$(window).resize(calcutaleHeight('.nano'));
+	calcutaleHeight('.nano, .list-cert, .list-prod');
+	$(window).resize(calcutaleHeight('.nano, .list-cert, .list-prod'));
 
 	// anchor navigation
 	$('a[href*=#]:not([href=#])').click(function() {
@@ -76,8 +76,10 @@ $(document).ready(function() {
 	  }
 	});
 	
-	// Custom tabs
-	$('.tabs a').click(function(event) {
+	/*
+	*	Custom tabs
+	*/
+	$('.openTab').click(function(event) {
 		event.preventDefault();
 		$('.content').css('display', 'none');
 		//$('.content').removeClass('animate fadeInRightBig');
@@ -94,15 +96,43 @@ $(document).ready(function() {
 		$(tab).css('display', 'block');
 	});
 
-	// Slider home
+	$('.openDrop').click(function(event) {
+		event.preventDefault();
+		$('.dropdown').toggleClass('open');
+	});
+
+	$('.dropdown a').click(function(event) {
+		event.preventDefault();
+		$('.content-prod').removeClass('active');
+		$('.list-prod a').removeClass('currentProd');
+
+		var prod = $(this).attr('href');
+		$(prod).addClass('active');
+		var lista = $('.list-prod');
+
+		var currentItem = lista.find('a[href='+ prod +']');
+		currentItem.addClass('currentProd');
+		
+		lista.scrollTo(currentItem, 1000);
+	});
+
+	/*
+	*	Scripts HOME
+	*/
 	$('#sliderHome').tinycarousel({
-        axis: "y"
+        axis: "y",
+        animationTime: 800,
+        infinite: false,
     });
 
+    var slideMarkers = $('.goToSlide');
     var sliderHome = $('#sliderHome').data('plugin_tinycarousel');
-
+    var activeSlide = sliderHome.slideCurrent;
+    // Goto Slide
     $('.goToSlide').click(function(event) {
     	event.preventDefault();
+    	$('.goToSlide').removeClass('currentSlide');
+
     	var slide = $(this).attr('href');
     	switch(slide) {
     		case "slide-1":
@@ -115,16 +145,55 @@ $(document).ready(function() {
     			sliderHome.move(2);
     			break;
     	}
+
+    	$(this).addClass('currentSlide');
+
     	return null;
     });
 
-    // Slider sobre luveck
+    /*
+    *	Scripts Sobre luveck
+    */
     $('#sliderSobreLuveck').tinycarousel({
         axis: "y",
         bullets: true
     });
-
     // Scrollbar
     $(".nano").nanoScroller();
+    /*
+	*	Scripts Productos
+    */
+    $('.list-prod a').click(function(event) {
+    	event.preventDefault();
+    	$('.content-prod').removeClass('active');
+    	$('.list-prod a').removeClass('currentProd');
+    	var producto = $(this).attr('href');
+    	$(this).addClass('currentProd')
+    	$(producto).addClass('active');
+    });
+
+    $('.arrow-prod').click(function(event) {
+    	event.preventDefault();
+    	$('.list-prod').scrollTo('#selector_soprapen', 1000);
+    });
+
+    /*
+	*	Scripts Certificados
+    */
+    $('.list-cert a').click(function(event) {
+    	event.preventDefault();
+    	$('.content-cert').removeClass('active');
+    	$('.list-cert a').removeClass('currentCert');
+    	var certificacion = $(this).attr('href');
+    	$(this).addClass('currentCert')
+    	$(certificacion).addClass('active');
+    });
+
+    $('.arrow-cert').click(function(event) {
+    	event.preventDefault();
+    	$('.list-cert').scrollTo('#selector_iso', 1000);
+    });
+
+    
 
 });
