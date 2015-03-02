@@ -4,10 +4,18 @@
   <nav>
     <ul class="tabs">
       <li><a href="#home" title="Home" class="openTab active">Home</a></li>
-      <li><a href="#sobreLuveck" title="Sobre Luveck" class="openTab">Sobre Luveck</a></li>
       <li>
-        <a href="#productos" title="Productos" class="openTab openDrop">Productos</a>
-        <ul class="dropdown animated bounceInLeft">    
+        <a href="#sobreLuveck" title="Sobre Luveck" class="openTab openDrop" data-rel="#drop-sobre">Sobre Luveck</a>
+        <ul class="dropdown animated bounceInLeft" id="drop-sobre">    
+          <li><a href="#quienes-somos" title="Quienes somos">Quienes somos</a></li>
+          <li><a href="#nuestra-gente" title="Nuestra gente">Nuestra gente</a></li>
+          <li><a href="#mision" title="Misión, visión y política de calidad">Misión, visión...</a></li>
+          <li><a href="#valores" title="Valores">Valores</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#productos" title="Productos" class="openTab openDrop" data-rel="#drop-prod">Productos</a>
+        <ul class="dropdown animated bounceInLeft" id="drop-prod">    
           <li><a href="#doloveck">Doloveck</a></li>
           <li><a href="#soprapen">Soprapen</a></li>
           <li><a href="#amlodipen">Amlodipen D</a></li>

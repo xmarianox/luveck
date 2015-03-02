@@ -69,9 +69,9 @@
 							
 							<span class="borderCurrent"></span>
 
-                			<figcaption class="animated fadeIn">
+                			<!-- <figcaption class="animated fadeIn">
                 				<img src="images/img-doloveck-hover.png" height="229" width="472" alt="Doloveck">
-                			</figcaption>
+                			</figcaption> -->
                 		</figure>
                 	</a>
                 </li>
@@ -83,9 +83,9 @@
 							
 							<span class="borderCurrent"></span>
 
-	            			<figcaption class="animated fadeIn">
+	            			<!-- <figcaption class="animated fadeIn">
 	            				<img src="images/img-atenolen-hover.png" height="229" width="472" align="Atenolen" />
-	            			</figcaption>
+	            			</figcaption> -->
 	            		</figure>
                 	</a>
                 </li>
@@ -97,9 +97,9 @@
 							
 							<span class="borderCurrent"></span>
 
-	            			<figcaption class="animated fadeIn">
+	            			<!-- <figcaption class="animated fadeIn">
 	            				<img src="images/img-amlodipen-hover.png" height="229" width="472" alt="Amlodipen" />
-	            			</figcaption>
+	            			</figcaption> -->
 	            		</figure>
 	            	</a>
                 </li>
@@ -111,9 +111,9 @@
 							
 							<span class="borderCurrent"></span>
 
-	            			<figcaption class="animated fadeIn">
+	            			<!-- <figcaption class="animated fadeIn">
 	            				<img src="images/img-soprapen-hover.png" height="229" width="472" alt="Soprapen" />
-	            			</figcaption>
+	            			</figcaption> -->
 	            		</figure>
                 	</a>
                 </li>

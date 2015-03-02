@@ -61,20 +61,8 @@ $(document).ready(function() {
 	'use strict';
 
 	// Resize
-	calcutaleHeight('.nano, .list-cert, .list-prod');
-	$(window).resize(calcutaleHeight('.nano, .list-cert, .list-prod'));
-
-	// anchor navigation
-	$('a[href*=#]:not([href=#])').click(function() {
-	  if (location.pathname.replace(/^\//,'') === this.pathname.replace(/^\//,'') || location.hostname === this.hostname) {
-	      var target = $(this.hash);
-	      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-	      if (target.length) {
-	          $('html,body').animate({ scrollTop: target.offset().top }, 1000);
-	          return false;
-	      }
-	  }
-	});
+	calcutaleHeight('.nano, .list-cert, .list-prod, .list-info, .content-contacto');
+	$(window).resize(calcutaleHeight('.nano, .list-cert, .list-prod, list-info, .content-contacto'));
 	
 	/*
 	*	Custom tabs
@@ -83,7 +71,7 @@ $(document).ready(function() {
 		event.preventDefault();
 		$('.content').css('display', 'none');
 		//$('.content').removeClass('animate fadeInRightBig');
-		
+		$('.dropdown').removeClass('open');
 		$('.tabs a').removeClass('active');
 		$(this).toggleClass('active');
 
@@ -98,10 +86,11 @@ $(document).ready(function() {
 
 	$('.openDrop').click(function(event) {
 		event.preventDefault();
-		$('.dropdown').toggleClass('open');
+		var element = $(this).attr('data-rel');
+		$(element).toggleClass('open');
 	});
 
-	$('.dropdown a').click(function(event) {
+	$('#drop-prod a').click(function(event) {
 		event.preventDefault();
 		$('.content-prod').removeClass('active');
 		$('.list-prod a').removeClass('currentProd');
@@ -154,10 +143,29 @@ $(document).ready(function() {
     /*
     *	Scripts Sobre luveck
     */
-    $('#sliderSobreLuveck').tinycarousel({
-        axis: "y",
-        bullets: true
-    });
+    $('#drop-sobre a').click(function(event) {
+		event.preventDefault();
+		$('#drop-sobre a').removeClass('active');
+		$('.bullet').removeClass('active');
+		var element = $(this).attr('href');
+		$(this).addClass('active');
+		var lista = $('.list-info');
+		var bulletsList = $('.bullets');
+		var currentBullet = bulletsList.find('a[href='+ element +']');
+		currentBullet.addClass('active');
+		lista.scrollTo(element, 1000);
+	});
+
+	$('.bullets a').click(function(event) {
+		event.preventDefault();
+
+		$('.bullet').removeClass('active');
+		var element = $(this).attr('href');
+		$(this).addClass('active');
+		var lista = $('.list-info');
+		lista.scrollTo(element, 1000);		
+	});
+
     // Scrollbar
     $(".nano").nanoScroller();
     /*

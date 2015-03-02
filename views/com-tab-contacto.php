@@ -1,31 +1,38 @@
 <section>
   <article>
-    <div class="col col-49">
+    <div class="col col-49 content-contacto">
       <h1 class="animated fadeInUp">Contactenos</h1>
 
       <div class="sucursales active animated fadeInLeft" data-rel="casa-central">
-        <h2>CASA CENTRAL <i class="fa fa-map-marker animated fadeInDown"></i></h2>
-        <p>Lorem ipsum 2832, 9C - Tegucigalpa<br>
-        (504) 2557-0657 / 2731<br>
-        <a href="mailto:Info@luveck.com" title="Info@luveck.com" target="_blank">Info@luveck.com</a></p>
+        <h2>Luveck Medical Corporation <i class="fa fa-map-marker animated fadeInDown"></i></h2>
+        <p>95 NW 105th Ave. Miami, Florida 33172. USA<br>
+        Tel: (305) 594-3132<br>
+        Fax: (305) 594-9697<br>
       </div>
-      
+
       <div class="sucursales animated fadeInLeft" data-rel="sucursal-1">
-        <h2>SUCURSAL 1 <i class="fa fa-map-marker animated fadeInDown"></i></h2>
-        <p>Lorem ipsum 2832, 9C - San Pedro Sula<br>
-        (504) 2557-0657 / 2731<br>
-        <a href="mailto:infoSP@luveck.com" title="infoSP@luveck.com" target="_blank">infoSP@luveck.com</a></p>
+        <h2>Dromeinter Honduras <i class="fa fa-map-marker animated fadeInDown"></i></h2>
+        <p>Barrio sabanagrande, Tegucigalpa, Honduras.<br>
+        Tel: (305) 594-3132<br>
+        Fax: (305) 594-9697<br>
+      </div>
+
+      <div class="sucursales animated fadeInLeft" data-rel="sucursal-1">
+        <h2>Dromeinter Guatemala <i class="fa fa-map-marker animated fadeInDown"></i></h2>
+        <p>Calle "A" 22-01, Zona, 11 Residenciales San Jorge, Guatemala<br>
+        Tel: (502) -247-36956<br>
       </div>
 
       <form action="" id="form-contacto" class="animated fadeInLeft">
         <div class="form-control">
           <h2>CONSULTAS</h2>
         </div>
-        <div class="form-control">
+
+        <div class="form-control form-control-5 left">
           <input type="text" name="nombre-contacto" id="nombre-contacto" placeHolder="Nombre">
         </div>
 
-        <div class="form-control">
+        <div class="form-control form-control-5 right">
           <input type="email" name="email-contacto" id="email-contacto" placeHolder="Correo electronico">
         </div>
 
