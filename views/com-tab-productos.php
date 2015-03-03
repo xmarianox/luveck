@@ -42,6 +42,11 @@
 					<li><em>Disponible en:</em> Honduras y Guatemala.</li>
 				</ul>
 
+				<h2 class="animated fadeInUp">Presentaciones</h2>
+				<ul class="animated fadeInUp">
+					<li>- Amlodipen 5 mg - <span>Amlodipen D5</span> - Amlodipen LS - </li>
+				</ul>
+
 				<a href="javascript:;" class="btn_descargar animated fadeInUp" title="Descargar inserto médico"><span>Descargar inserto médico</span> <span class="shape"><i class="icon"></i></span></a>
 			</div>
 
@@ -65,13 +70,8 @@
                 <li>
                 	<a href="#doloveck" class="currentProd">
                 		<figure>
-                			<img src="images/img-doloveck.png" height="229" width="472" alt="Doloveck" />
-							
+                			<img src="images/productos/img-doloveck.png" height="229" width="472" alt="Doloveck" />
 							<span class="borderCurrent"></span>
-
-                			<!-- <figcaption class="animated fadeIn">
-                				<img src="images/img-doloveck-hover.png" height="229" width="472" alt="Doloveck">
-                			</figcaption> -->
                 		</figure>
                 	</a>
                 </li>
@@ -79,13 +79,8 @@
                 <li>
                 	<a href="#atenolen">
 	                	<figure>
-	            			<img src="images/img-atenolen.png" height="229" width="472" alt="Atenolen" />
-							
+	            			<img src="images/productos/img-atenolen.png" height="229" width="472" alt="Atenolen" />
 							<span class="borderCurrent"></span>
-
-	            			<!-- <figcaption class="animated fadeIn">
-	            				<img src="images/img-atenolen-hover.png" height="229" width="472" align="Atenolen" />
-	            			</figcaption> -->
 	            		</figure>
                 	</a>
                 </li>
@@ -93,13 +88,8 @@
                 <li>
                 	<a href="#amlodipen">
                 		<figure>
-	            			<img src="images/img-amlodipen.png" height="229" width="472" alt="Amlodipen" />
-							
+	            			<img src="images/productos/img-amlodipen.png" height="229" width="472" alt="Amlodipen" />
 							<span class="borderCurrent"></span>
-
-	            			<!-- <figcaption class="animated fadeIn">
-	            				<img src="images/img-amlodipen-hover.png" height="229" width="472" alt="Amlodipen" />
-	            			</figcaption> -->
 	            		</figure>
 	            	</a>
                 </li>
@@ -107,13 +97,8 @@
                 <li>
                 	<a href="#soprapen" id="selector_soprapen">
 						<figure>
-	            			<img src="images/img-soprapen.png" height="229" width="472" alt="Soprapen" />
-							
+	            			<img src="images/productos/img-soprapen.png" height="229" width="472" alt="Soprapen" />
 							<span class="borderCurrent"></span>
-
-	            			<!-- <figcaption class="animated fadeIn">
-	            				<img src="images/img-soprapen-hover.png" height="229" width="472" alt="Soprapen" />
-	            			</figcaption> -->
 	            		</figure>
                 	</a>
                 </li>

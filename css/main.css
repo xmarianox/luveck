@@ -38,6 +38,7 @@ body {
 	font-size: 13px;
 	line-height: 18px;
 	text-align: left;
+	overflow: hidden;
 }
 /************************************************
 * Scrollbar
@@ -105,8 +106,9 @@ body {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: #000;
+	background-color: #FFF;
 	z-index: 9999;
+	overflow: hidden;
 }
 #status {
 	width: 200px;
@@ -114,10 +116,15 @@ body {
 	position: absolute;
 	left: 50%;
 	top: 50%;
-	background-image: url(../images/bx_loader.gif);
-	background-repeat: no-repeat;
-	background-position: center;
 	margin: -100px 0 0 -100px;
+}
+#status .logo {
+	display: block;
+	margin: 0 auto 15px;
+}
+#status .loader {
+	display: block;
+	margin: 0 auto;
 }
 /************************************************
 * Main
@@ -430,13 +437,21 @@ section h1 {
 	line-height: 28px;
 	margin-bottom: 15px;
 }
+.content-prod ul {
+	margin-bottom: 20px;
+}
 .content-prod li {
-	font-size: 13px;
-	font-weight: 400;
+	font-size: 16px;
+	font-weight: 500;
 	line-height: 28px;
+	text-align: justify;
 }
 .content-prod li em {
 	font-weight: 800;
+}
+.content-prod li span {
+	font-weight: 800;
+	color: #d8934c;
 }
 .btn_descargar {
 	background-color: #d8934c;
@@ -520,7 +535,7 @@ section h1 {
 	margin-bottom: 15px;
 }
 #certificaciones p {
-	font-size: 13px;
+	font-size: 16px;
 	font-weight: 500;
 	line-height: 28px;
 	margin-bottom: 30px;
@@ -577,7 +592,6 @@ section h1 {
 .list-cert a.currentCert .borderCurrent {
 	display: block;
 }
-
 .arrow {
 	display: block;
 	position: absolute;
@@ -702,4 +716,3 @@ input, textarea {
 	display: block;
 	position: absolute !important;
 }
-

@@ -28,12 +28,12 @@
                 <li>
                 	<a href="#oms" class="currentCert">
                 		<figure>
-                			<img src="images/img-oms.jpg" height="228" width="472" alt="OMS" />
+                			<img src="images/certificaciones/img-oms.jpg" height="228" width="472" alt="OMS" />
 							
 							<span class="borderCurrent"></span>
 
                 			<figcaption class="animated fadeIn">
-                				<img src="images/img-oms-hover.png" height="228" width="472" alt="OMS" />
+                				<img src="images/certificaciones/img-oms-hover.png" height="228" width="472" alt="OMS" />
                 			</figcaption>
                 		</figure>
                 	</a>
@@ -41,12 +41,12 @@
                 <li>
                 	<a href="#fda">
 	                	<figure>
-	            			<img src="images/img-fda.jpg" height="229" width="472" alt="FDA" />
+	            			<img src="images/certificaciones/img-fda.jpg" height="229" width="472" alt="FDA" />
 							
 							<span class="borderCurrent"></span>
 
 	            			<figcaption class="animated fadeIn">
-	            				<img src="images/img-fda-hover.png" height="229" width="472" alt="FDA" />
+	            				<img src="images/certificaciones/img-fda-hover.png" height="229" width="472" alt="FDA" />
 	            			</figcaption>
 	            		</figure>
                 	</a>
@@ -54,12 +54,12 @@
                 <li>
                 	<a href="#bpm">
                 		<figure>
-	            			<img src="images/img-bpm.jpg" height="228" width="472" alt="BPM" />
+	            			<img src="images/certificaciones/img-bpm.jpg" height="228" width="472" alt="BPM" />
 							
 							<span class="borderCurrent"></span>
 
 	            			<figcaption class="animated fadeIn">
-	            				<img src="images/img-bpm-hover.png" height="228" width="472" alt="BPM" />
+	            				<img src="images/certificaciones/img-bpm-hover.png" height="228" width="472" alt="BPM" />
 	            			</figcaption>
 	            		</figure>
 	            	</a>
@@ -67,12 +67,12 @@
                 <li>
                 	<a href="#iso" id="selector_iso">
 						<figure>
-	            			<img src="images/img-iso.jpg" height="229" width="472" alt="ISO9001" />
+	            			<img src="images/certificaciones/img-iso.jpg" height="229" width="472" alt="ISO9001" />
 							
 							<span class="borderCurrent"></span>
 
 	            			<figcaption class="animated fadeIn">
-	            				<img src="images/img-iso-hover.png" height="229" width="472" alt="ISO9001" />
+	            				<img src="images/certificaciones/img-iso-hover.png" height="229" width="472" alt="ISO9001" />
 	            			</figcaption>
 	            		</figure>
                 	</a>

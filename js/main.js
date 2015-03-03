@@ -53,8 +53,15 @@ function initialize() {
 	}
 }
 
+function loader() {
+	$('#preloader .logo').addClass('animated fadeOut');
+	$("#status").addClass('animated fadeOut');
+	$("#preloader").delay(900).fadeOut("slow");
+	$("body").delay(900).css({overflow:"visible"})
+}
+
 // Load
-$(window).load(tabInit());
+$(window).load(loader(), tabInit());
 
 // Ready
 $(document).ready(function() {
@@ -63,7 +70,7 @@ $(document).ready(function() {
 	// Resize
 	calcutaleHeight('.nano, .list-cert, .list-prod, .list-info, .content-contacto');
 	$(window).resize(calcutaleHeight('.nano, .list-cert, .list-prod, list-info, .content-contacto'));
-	
+
 	/*
 	*	Custom tabs
 	*/
