@@ -64,11 +64,7 @@
     </div>
 
     <main>
-      <header>
-        <span class="logo">Luveck</span>
-
-        
-      </header>
+      <?php require 'header.php'; ?>
     
 
 

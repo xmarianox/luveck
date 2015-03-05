@@ -13,5 +13,5 @@ function loader() {
 $(window).load(loader());
 
 $(document).ready(function() {
-	console.log("start");
+
 });
