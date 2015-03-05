@@ -24,14 +24,14 @@ function initialize() {
 	var marker, i, contentString;
 
 	var locations = [
-		['Piso SERT', 41.3893712, 2.1764497, 1,'Pasaje Sert, 10, 1º-1º'],	
-		['Piso PALAU ', 41.3889191, 2.1774804, 2, 'Calle St Pere Més Alt, 55, 1º-2º'],
-		['Piso PASAJE ', 41.389092, 2.176867, 3, 'Passatge Sert, 6, 1º']	
+		['Luveck Medical Corporation', 25.8713186, -80.1997791, 1,'95 NW 105th Ave. Miami, Florida 33172. USA'],	
+		['Dromeinter Honduras', 13.80868, -87.2613573, 2, 'Barrio sabanagrande, Tegucigalpa, Honduras.'],
+		['Dromeinter Guatemala', 14.6028638, -90.5549395, 3, 'Calle "A" 22-01, Zona, 11 Residenciales San Jorge, Guatemala']	
 	]
 	
 	var mapOptions = {
-		zoom: 18,
-		center: new google.maps.LatLng(41.3893712, 2.1764497),
+		zoom: 4,
+		center: new google.maps.LatLng(25.8713186, -80.1997791),
 		disableDefaultUI: true
 	}
 
@@ -51,6 +51,30 @@ function initialize() {
 			}
 		})(marker, i));
 	}
+
+	$('.sucursales').click(function(event) {
+    	event.preventDefault();
+    	$('.sucursales').removeClass('active');
+    	// elemento.
+    	$(this).addClass('active');
+    	var sucursal = $(this).attr('data-rel');
+    	//
+    	var location;
+    	//
+    	switch(sucursal) {
+    		case 'usa':
+    			location = new google.maps.LatLng(25.8713186,-80.1997791);
+    			break;
+    		case 'honduras':
+    			location = new google.maps.LatLng(13.80868,-87.2613573);
+    			break;
+    		case 'guatemala':
+    			location = new google.maps.LatLng(14.6028638,-90.5549395);
+    			break
+    	}
+    	map.setCenter(location);
+    	map.setZoom(16);
+    });
 }
 
 function loader() {
@@ -61,15 +85,18 @@ function loader() {
 }
 
 // Load
-$(window).load(loader(), tabInit());
+$(window).load(
+	loader(), 
+	tabInit(),
+	calcutaleHeight('.nano, .list-cert, .list-prod, .list-info')
+);
 
 // Ready
 $(document).ready(function() {
 	'use strict';
 
 	// Resize
-	calcutaleHeight('.nano, .list-cert, .list-prod, .list-info, .content-contacto');
-	$(window).resize(calcutaleHeight('.nano, .list-cert, .list-prod, list-info, .content-contacto'));
+	$(window).resize(calcutaleHeight('.nano, .list-cert, .list-prod, list-info'));
 
 	/*
 	*	Custom tabs
@@ -209,6 +236,22 @@ $(document).ready(function() {
     	$('.list-cert').scrollTo('#selector_iso', 1000);
     });
 
-    
+    /*
+    *	Mapa
+    */
+/*    $('.sucursales').click(function(event) {
+    	event.preventDefault();
+    	$('.sucursales').removeClass('active');
+    	// elemento.
+    	$(this).addClass('active');
+    	var sucursal = $(this).attr('data-rel');
+    	console.log(sucursal);
+
+    	console.log(maps);
+    	//miami 25.8713186,-80.1997791
+    	//honduras 13.80868,-87.2613573
+    	//guatemala 14.6028638,-90.5549395
+    });*/
+
 
 });

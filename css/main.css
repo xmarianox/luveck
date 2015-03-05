@@ -617,17 +617,11 @@ section h1 {
 /************************************************
 * Section : servicioClientes / Contacto
 ************************************************/
-#servicioClientes article {
-	overflow: hidden;
-}
-#servicioClientes .col-49 {
-	padding: 70px 60px 50px;
-	overflow-x: hidden;
-	overflow-y: scroll;
-}
 /* texts */
 .sucursales {
 	margin: 0 auto 40px;
+	cursor: pointer;
+	overflow: hidden;
 }
 .sucursales h2 {
 	color:  #343434;
