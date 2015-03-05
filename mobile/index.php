@@ -65,9 +65,11 @@
 
     <main>
       <?php require 'header.php'; ?>
-    
-
-
+      
+      <div id="page-content">
+        
+      </div>
+      
     </main>
     <!-- scripts -->
     <script src="../js/jquery.min.js"></script>
