@@ -3,25 +3,25 @@
     <div class="col col-49">
       <div class="nano">
           <div class="nano-content">
-            <h1 class="animated fadeInUp">Contactenos</h1>
+            <h1 class="animated fadeInUp">Contáctenos</h1>
 
             <div class="sucursales active animated fadeInLeft" data-rel="usa">
               <h2>Luveck Medical Corporation <i class="fa fa-map-marker animated fadeInDown"></i></h2>
-              <p>95 NW 105th Ave. Miami, Florida 33172. USA<br>
+              <p>Oficina principal: 95 NW 105th Ave. Miami, Florida 33172. USA<br>
               Tel: (305) 594-3132<br>
               Fax: (305) 594-9697<br>
             </div>
 
             <div class="sucursales animated fadeInLeft" data-rel="honduras">
               <h2>Dromeinter Honduras <i class="fa fa-map-marker animated fadeInDown"></i></h2>
-              <p>Barrio sabanagrande, Tegucigalpa, Honduras.<br>
+              <p>Oficina distribuidora: Barrio sabanagrande, Tegucigalpa, Honduras.<br>
               Tel: (305) 594-3132<br>
               Fax: (305) 594-9697<br>
             </div>
 
             <div class="sucursales animated fadeInLeft" data-rel="guatemala">
               <h2>Dromeinter Guatemala <i class="fa fa-map-marker animated fadeInDown"></i></h2>
-              <p>Calle "A" 22-01, Zona, 11 Residenciales San Jorge, Guatemala<br>
+              <p>Oficina distribuidora: Calle "A" 22-01, Zona, 11 Residenciales San Jorge, Guatemala<br>
               Tel: (502) -247-36956<br>
             </div>
 

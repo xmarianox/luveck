@@ -10,7 +10,7 @@
   <ul>
     <li><a href="#home" title="Home" class="openTab active">Home</a></li>
     <li class="divider">Sobre Luveck</li>
-    <li><a href="#quienes-somos" title="Quienes somos" class="active">Quienes somos</a></li>
+    <li><a href="#quienes-somos" title="Quiénes somos" class="active">Quiénes somos</a></li>
     <li><a href="#nuestra-gente" title="Nuestra gente">Nuestra gente</a></li>
     <li><a href="#mision" title="Misión, visión y política de calidad">Misión, visión...</a></li>
     <li><a href="#valores" title="Valores">Valores</a></li>

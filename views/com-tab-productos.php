@@ -8,8 +8,7 @@
 				<ul class="animated fadeInUp">
 					<li><em>Principio Activo:</em> Dexketoprofeno trometamol 25 mg</li>
 					<li><em>Categoría terapéutica:</em> Analgésico y Anti inflamatorio.</li>
-					<li><em>Indicaciones:</em> Dolor músculo, esquelético, espalda y rodillas. </li>
-					<li><em>Post- operatorio:</em> Dolor dental y dolor menstrual. *Para mayor información descargue el inserto médico. Presentación: Caja con 30 tabletas recubiertas</li>
+					<li><em>Indicaciones:</em> Dolor músculo, esquelético, espalda y rodillas. Post-operatorio, dolor dental y dolor menstrual. *Para mayor información descargue el inserto médico. Presentación: Caja con 30 tabletas recubiertas</li>
 					<li><em>Dosis:</em> Consulte a su médico</li>
 					<li><em>Disponible en:</em> Honduras y Guatemala.</li>
 				</ul>
@@ -21,7 +20,7 @@
 				<h2 class="animated fadeInUp">Atenolen</h2>
 				<ul class="animated fadeInUp">
 					<li><em>Principio Activo:</em> S(-) Atenolol 50 mg</li>
-					<li><em>Categoría terapéutica:</em> Antipertensivo</li>
+					<li><em>Categoría terapéutica:</em> Antihipertensivo</li>
 					<li><em>Indicaciones:</em> Angina de pecho, hipertensión arterial. *Para mayor información descargue el inserto médico.</li>
 					<li><em>Presentación:</em> Caja con 30 tabletas recubiertas</li>
 					<li><em>Dosis:</em> Consulte a su médico</li>
@@ -32,7 +31,7 @@
 			</div>
 			
 			<div id="amlodipen" class="content-prod">
-				<h2 class="animated fadeInUp">Amlodipen</h2>
+				<h2 class="animated fadeInUp">Amlodipen D</h2>
 				<ul class="animated fadeInUp">
 					<li><em>Principio Activo:</em> S(-) Amlodipina + Hidroclorotiazida 2.5/12.5 mg</li>
 					<li><em>Categoría terapéutica:</em> Antipertensivo</li>
@@ -55,7 +54,7 @@
 				<ul class="animated fadeInUp">
 					<li><em>Principio Activo:</em> S(-) Pantoprazol Sódico 20 mg</li>
 					<li><em>Categoría terapéutica:</em> Anti úlceras.</li>
-					<li><em>Indicaciones:</em> Enfermedad de reflujo gasto esofágico, úlceras pépticas y dispepsia  *Para mayor información descargue el inserto médico.</li>
+					<li><em>Indicaciones:</em> Enfermedad de reflujo gastroesofágico, úlceras pépticas y dispepsia  *Para mayor información descargue el inserto médico.</li>
 					<li><em>Presentación:</em> Caja con 20 tabletas recubiertas</li>
 					<li><em>Dosis:</em> Consulte a su médico</li>
 					<li><em>Disponible en:</em> Honduras y Guatemala.</li>

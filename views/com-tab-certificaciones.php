@@ -1,7 +1,7 @@
 <section>
 	<article>
 		<div class="col col-49">
-			<h1 class="animated fadeInUp">Certificados</h1>
+			<h1 class="animated fadeInUp">Certificaciones</h1>
 
 			<div id="oms" class="content-cert active">
 				<h2 class="animated fadeInLeft">OMS</h2>
@@ -32,9 +32,9 @@
 							
 							<span class="borderCurrent"></span>
 
-                			<figcaption class="animated fadeIn">
+                			<!-- <figcaption class="animated fadeIn">
                 				<img src="images/certificaciones/img-oms-hover.png" height="228" width="472" alt="OMS" />
-                			</figcaption>
+                			</figcaption> -->
                 		</figure>
                 	</a>
                 </li>
@@ -45,9 +45,9 @@
 							
 							<span class="borderCurrent"></span>
 
-	            			<figcaption class="animated fadeIn">
+	            			<!-- <figcaption class="animated fadeIn">
 	            				<img src="images/certificaciones/img-fda-hover.png" height="229" width="472" alt="FDA" />
-	            			</figcaption>
+	            			</figcaption> -->
 	            		</figure>
                 	</a>
                 </li>
@@ -58,9 +58,9 @@
 							
 							<span class="borderCurrent"></span>
 
-	            			<figcaption class="animated fadeIn">
+	            			<!-- <figcaption class="animated fadeIn">
 	            				<img src="images/certificaciones/img-bpm-hover.png" height="228" width="472" alt="BPM" />
-	            			</figcaption>
+	            			</figcaption> -->
 	            		</figure>
 	            	</a>
                 </li>
@@ -71,9 +71,9 @@
 							
 							<span class="borderCurrent"></span>
 
-	            			<figcaption class="animated fadeIn">
+	            			<!-- <figcaption class="animated fadeIn">
 	            				<img src="images/certificaciones/img-iso-hover.png" height="229" width="472" alt="ISO9001" />
-	            			</figcaption>
+	            			</figcaption> -->
 	            		</figure>
                 	</a>
                 </li>

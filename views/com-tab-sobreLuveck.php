@@ -4,7 +4,7 @@
         <li id="quienes-somos">
         	<div class="col col-49">
         		<div class="no-nano">
-					<h1>Quienes somos</h1>
+					<h1>Quiénes somos</h1>
 
 				    <p>Somos una empresa farmacéutica que se encuentra constituida en los Estados Unidos, nuestra finalidad es la fabricación, promoción, representación y marketing de medicamentos de uso humano. En búsqueda de la excelencia farmacéutica se han desarrollado estándares de calidad mundial que permiten asegurar la efectividad terapéutica de todos los productos. Nuestra motivación principal es brindar una mejor calidad de vida.</p>
 				 </div> 
@@ -45,7 +45,7 @@
 						<h2>Misión</h2>
 						<p>Poner al alcance de la población productos farmacéuticos diferenciadores con estándares de calidad internacional que satisfagan las necesidades terapéuticas de las personas, en un marco profesional de integridad y ética.</p>
 
-						<h2>Vision</h2>
+						<h2>Visión</h2>
 						<p>Ser una organización farmacéutica distinguida por la tecnología, calidad y efectividad de sus productos, orientados a brindar bienestar a la población.</p>
 
 						<h2>Política de Calidad</h2>

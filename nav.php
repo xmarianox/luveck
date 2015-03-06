@@ -7,7 +7,7 @@
       <li>
         <a href="#sobreLuveck" title="Sobre Luveck" class="openTab openDrop" data-rel="#drop-sobre">Sobre Luveck</a>
         <ul class="dropdown animated bounceInLeft" id="drop-sobre">    
-          <li><a href="#quienes-somos" title="Quienes somos" class="active">Quienes somos</a></li>
+          <li><a href="#quienes-somos" title="Quienes somos" class="active">Quiénes somos</a></li>
           <li><a href="#nuestra-gente" title="Nuestra gente">Nuestra gente</a></li>
           <li><a href="#mision" title="Misión, visión y política de calidad">Misión, visión...</a></li>
           <li><a href="#valores" title="Valores">Valores</a></li>
