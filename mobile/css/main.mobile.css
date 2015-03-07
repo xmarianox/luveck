@@ -170,6 +170,7 @@ header .menu a {
 	padding:20px;
 	-webkit-overflow-scrolling:touch;
 	border-left: solid 1px #ddd;
+	z-index: 100;
 }
 
 #drawer-toggle:checked ~ #drawer-toggle-label {
@@ -216,6 +217,29 @@ header .menu a {
 }
 #drawer-toggle:checked ~ #page-content {
 	margin-right:70%;
+}
+/************************************************
+*	Contenidos
+************************************************/
+article h1 {
+	font-size: 40px;
+	line-height: 40px;
+	font-weight: 300;
+	margin-bottom: 60px;
+}
+
+article h2 {
+	font-size: 25px;
+	font-weight: 300;
+	line-height: 28px;
+	margin-bottom: 15px;	
+}
+article p {
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 28px;
+	margin-bottom: 30px;
+	text-align: justify;
 }
 
 /************************************************

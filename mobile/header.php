@@ -8,7 +8,7 @@
 
 <nav id="drawer">
   <ul>
-    <li><a href="#home" title="Home" class="openTab active">Home</a></li>
+    <li><a href="index.php" title="Home" class="openTab active">Home</a></li>
     <li class="divider">Sobre Luveck</li>
     <li><a href="#quienes-somos" title="Quiénes somos" class="active">Quiénes somos</a></li>
     <li><a href="#nuestra-gente" title="Nuestra gente">Nuestra gente</a></li>
