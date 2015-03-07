@@ -14,4 +14,12 @@ $(window).load(loader());
 
 $(document).ready(function() {
 
+	// Slider Home
+	$('.bxslider').bxSlider({
+		mode: 'horizontal',
+  		captions: true,
+  		controls: false
+	});
+
+
 });
