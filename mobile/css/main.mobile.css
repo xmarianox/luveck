@@ -171,16 +171,7 @@ header .menu a {
 	-webkit-overflow-scrolling:touch;
 	border-left: solid 1px #ddd;
 }
-#page-content {
-	margin-left:0px;
-	margin-top:68px;
-	width:100%;
-	height:calc(100% - 68px);
-	overflow-x:hidden;
-	overflow-y:scroll;
-	-webkit-overflow-scrolling:touch;
-	padding:20px;
-}
+
 #drawer-toggle:checked ~ #drawer-toggle-label {
 	height:100%;
 	width:calc(100% - 70%);
@@ -191,9 +182,6 @@ header .menu a {
 }
 #drawer-toggle:checked ~ #drawer-toggle-label, #drawer-toggle:checked ~ header {
 	left:0;
-}
-#drawer-toggle:checked ~ #page-content {
-	margin-right:70%;
 }
 #drawer ul {
 	width: 100%;
@@ -214,4 +202,50 @@ header .menu a {
 	line-height: 34px;
 	text-decoration: none;
 	display: block;
+}
+/* contenido */
+#page-content {
+	margin-left:0px;
+	margin-top:68px;
+	width:100%;
+	height:calc(100% - 68px);
+	overflow-x:hidden;
+	overflow-y:scroll;
+	-webkit-overflow-scrolling:touch;
+	/*padding:20px;*/
+}
+#drawer-toggle:checked ~ #page-content {
+	margin-right:70%;
+}
+
+/************************************************
+* Footer
+************************************************/
+footer {
+	width: 100%;
+	height: auto;
+	background: #FFF;
+	overflow: hidden;
+	padding: 15px 20px;
+}
+footer p {
+	display: block;
+	float: left;
+	width: 50%;
+}
+footer ul {
+	display: block;
+	float: left;
+	width: 50%;
+	overflow: hidden;
+}
+footer ul li {
+	float: left;
+	width: calc(100% / 3);
+  	text-align: center;
+}
+footer a {
+	font-size: 25px;
+	color: #888888;
+	text-decoration: none;
 }

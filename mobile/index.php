@@ -70,7 +70,11 @@
       
       <div id="page-content">
         
+
+        
       </div>
+
+      <?php require 'footer.php'; ?>
 
     </main>
     <!-- scripts -->

@@ -20,7 +20,7 @@ function initialize() {
 	'use strict';
 
 	var infowindow = new google.maps.InfoWindow();
-	var pointer = { url: 'images/map-pin.png', size: new google.maps.Size(39,56)};
+	var pointer = { url: '/luveck.com/images/map-pin.png', size: new google.maps.Size(39,56)};
 	var marker, i, contentString;
 
 	var locations = [
