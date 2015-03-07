@@ -71,27 +71,27 @@
       
       <section id="page-content">
         
-        <article>
+        <article class="content" id="home">
           <?php require 'view/view-home.php'; ?>
         </article><!-- Home -->
 
-        <article>
+        <article class="content" id="sobreLuveck">
           <?php require 'view/view-sobreLuveck.php'; ?>
         </article><!-- Sobre Luveck -->
 
-        <article>
+        <article class="content" id="productos">
           <?php require 'view/view-productos.php'; ?>
         </article><!-- Productos -->
 
-        <article>
+        <article class="content" id="certificaciones">
           <?php require 'view/view-certificaciones.php'; ?>
         </article><!-- Certificaciones -->
         
-        <article>
+        <article class="content" id="investigacion">
           <?php require 'view/view-investigacion.php'; ?>
         </article><!-- Investigacion -->
         
-        <article>
+        <article class="content" id="servicioClientes">
           <?php require 'view/view-contacto.php'; ?>
         </article><!-- Contacto -->
 

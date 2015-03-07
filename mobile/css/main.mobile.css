@@ -225,19 +225,19 @@ article h1 {
 	font-size: 40px;
 	line-height: 40px;
 	font-weight: 300;
-	margin-bottom: 60px;
+	margin-bottom: 30px;
 }
 
 article h2 {
-	font-size: 25px;
+	font-size: 22px;
 	font-weight: 300;
-	line-height: 28px;
+	line-height: 26px;
 	margin-bottom: 15px;	
 }
 article p {
 	font-size: 16px;
 	font-weight: 500;
-	line-height: 28px;
+	line-height: 22px;
 	margin-bottom: 30px;
 	text-align: justify;
 }
@@ -257,6 +257,113 @@ article img {
 .bx-controls .bx-pager-item {
 	margin: 0 5px;
 }
+.bx-caption p {
+	color: #FFF;
+	margin-bottom: 0;
+	font-size: 20px;
+	line-height: 22px;
+}
+
+/* certificaciones */
+.content-certificaciones {
+	padding: 20px;
+}
+
+/* Investigacion */
+.content-investigacion {
+	padding: 20px;
+}
+
+/* contacto */
+.mapbox {
+	width: 100%;
+	height: 350px;
+	overflow: hidden;
+	position: relative;
+}
+.map-content {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+}
+#map-canvas {
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+.content-contacto {
+	padding: 20px;
+}
+/* texts */
+.sucursales {
+	margin: 0 auto 20px;
+	cursor: pointer;
+	overflow: hidden;
+}
+.sucursales h2 {
+	color:  #343434;
+	font-size: 20px;
+	line-height: 28px;
+	text-transform: uppercase;
+}
+.sucursales h2 .fa {
+	color: #888888;
+}
+.sucursales.active h2 .fa {
+	color: #ffbb71;
+}
+.sucursales p {
+	color: #888888;
+}
+.sucursales p a {
+	text-decoration: none;
+	color: #888888;
+}
+.sucursales p a:hover {
+	color: #d8934c;
+}
+/* formulario */
+#form-contacto {
+	overflow: hidden;
+	margin: 0 auto;
+}
+#form-contacto h2 {
+	color:  #343434;
+	font-size: 20px;
+	line-height: 28px;
+	text-transform: uppercase;
+}
+input, textarea {
+	font-family: 'Roboto';
+	width: 100%;
+	color: #343434;
+	font-size: 16px;
+	line-height: 28px;
+	font-weight: 300;
+	background: transparent;
+	border: none;
+	border-bottom: 1px solid #d8934c;
+}
+.btn {
+	border: none;
+	background: transparent;
+	color:  #343434;
+	font-size: 22px;
+	line-height: 28px;
+	font-weight: 300;
+	text-transform: uppercase;
+	display: inline-block;
+	cursor: pointer;
+}
+.btn:hover {
+	color: #d8934c;
+}
+#servicioClientes .btn {
+	float: right;
+}
+
 /************************************************
 * Footer
 ************************************************/
