@@ -432,7 +432,6 @@ section h1 {
 }
 #productos h2 {
 	font-size: 25px;
-	/*font-weight: 900;*/
 	line-height: 28px;
 	margin-bottom: 15px;
 }
@@ -445,11 +444,15 @@ section h1 {
 	line-height: 28px;
 	text-align: justify;
 }
-/*.content-prod li em {
-	font-weight: 800;
-}*/
-.content-prod li span {
-	/*font-weight: 800;*/
+.presentaciones li {
+	display: inline-block;
+	margin-right: 5px;
+}
+.content-prod li a {
+	text-decoration: none;
+	color: #626262;
+}
+.content-prod li a.active {
 	color: #d8934c;
 }
 .btn_descargar {

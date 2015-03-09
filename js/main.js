@@ -139,6 +139,21 @@ $(document).ready(function() {
 		lista.scrollTo(currentItem, 1000);
 	});
 
+	$('.presentaciones a').click(function(event) {
+		event.preventDefault();
+		$('.content-prod').removeClass('active');
+		$('.list-prod a').removeClass('currentProd');
+
+		var prod = $(this).attr('href');
+		$(prod).addClass('active');
+		var lista = $('.list-prod');
+
+		var currentItem = lista.find('a[href='+ prod +']');
+		currentItem.addClass('currentProd');
+		
+		lista.scrollTo(currentItem, 1000);
+	});
+
 	/*
 	*	Scripts HOME
 	*/
@@ -235,23 +250,5 @@ $(document).ready(function() {
     	event.preventDefault();
     	$('.list-cert').scrollTo('#selector_iso', 1000);
     });
-
-    /*
-    *	Mapa
-    */
-/*    $('.sucursales').click(function(event) {
-    	event.preventDefault();
-    	$('.sucursales').removeClass('active');
-    	// elemento.
-    	$(this).addClass('active');
-    	var sucursal = $(this).attr('data-rel');
-    	console.log(sucursal);
-
-    	console.log(maps);
-    	//miami 25.8713186,-80.1997791
-    	//honduras 13.80868,-87.2613573
-    	//guatemala 14.6028638,-90.5549395
-    });*/
-
 
 });
