@@ -1,9 +1,11 @@
-<div>
+<img src="images/img-quienes-somos.png" alt="Quiénes somos">
+<div class="content-sobre animated fadeInUp">
   <h1>Quiénes somos</h1>
   <p>Somos una empresa farmacéutica que se encuentra constituida en los Estados Unidos, nuestra finalidad es la fabricación, promoción, representación y marketing de medicamentos de uso humano. En búsqueda de la excelencia farmacéutica se han desarrollado estándares de calidad mundial que permiten asegurar la efectividad terapéutica de todos los productos. Nuestra motivación principal es brindar una mejor calidad de vida.</p>
 </div><!-- Quiénes somos -->
 
-<div>
+<img src="images/img-nuestra-gente.png" alt="Nuestra gente">
+<div class="content-sobre animated fadeInUp">
   <h1>Nuestra gente</h1>
 
   <p>Todos los colaboradores involucrados en el desarrollo, fabricación, aseguramiento de calidad, despacho y promoción pre y post venta de nuestros productos farmacéuticos están capacitados y certificados, además, muestran compromiso y dedicación al cumplir con sus responsabilidades.</p>
@@ -15,9 +17,8 @@
   <p>Estamos convencidos de que el manejo responsable del talento humano es un elemento clave para que una empresa pueda desarrollar  un crecimiento sostenible en el mercado. Por esto mismo tomamos en cuenta todas las habilidades y talentos de nuestros empleados y los utilizamos para el cumplimiento de los objetivos que la empresa debe alcanzar.</p>
 </div><!-- Nuestra gente -->
 
-<div>
-  <img src="images/img-mision-vision.jpg" alt="Misión, visión y política de calidad">
-  
+<img src="images/img-mision-vision.png" alt="Misión, visión y política de calidad">
+<div class="content-sobre animated fadeInUp">
   <h1>Misión, visión y política de calidad</h1>
 
   <h2>Misión</h2>
@@ -39,7 +40,8 @@
   </ul>
 </div><!-- Misión, visión y política de calidad -->
 
-<div>
+<img src="images/img-valores.png" alt="Valores">
+<div class="content-sobre animated fadeInUp">
   <h1>Valores</h1>
 
   <h2>Respeto a la vida y al medio ambiente</h2>

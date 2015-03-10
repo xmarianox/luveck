@@ -110,4 +110,11 @@ $(document).ready(function() {
   		controls: false
 	});
 
+	$('.presentaciones a').click(function(event) {
+		event.preventDefault();
+
+		var target = $(this).attr('href');
+		var lista = $('#productos');
+		lista.scrollTo(target, 1000);
+	});
 });

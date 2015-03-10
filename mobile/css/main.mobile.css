@@ -265,6 +265,98 @@ article img {
 	font-size: 20px;
 	line-height: 22px;
 }
+/************************************************
+*	SOBRE LUVECK
+************************************************/
+.content-sobre {
+	padding: 20px;
+}
+#sobreLuveck h2 {
+	font-size: 25px;
+	line-height: 28px;
+	margin-bottom: 15px;
+}
+#sobreLuveck p {
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 28px;
+	margin-bottom: 30px;
+	text-align: justify;
+}
+.list-items li {
+	background: url(../images/bullet.png) 1px 8px no-repeat;
+	padding-left: 15px;
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 28px;
+	text-align: justify;
+	margin-bottom: 20px;
+}
+/************************************************
+*	PRODUCTOS
+************************************************/
+.data-prod {
+	padding: 20px;
+}
+.data-prod h1 {
+	margin-bottom: 0;
+}
+.content-prod h2 {
+	font-size: 25px;
+	line-height: 28px;
+	margin-bottom: 15px;
+}
+.content-prod ul {
+	margin-bottom: 20px;
+}
+.content-prod li {
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 28px;
+	text-align: justify;
+}
+.presentaciones li {
+	display: inline-block;
+	margin-right: 5px;
+}
+.content-prod li a {
+	text-decoration: none;
+	color: #626262;
+}
+.content-prod li a.active {
+	color: #d8934c;
+}
+.btn_descargar {
+	background-color: #d8934c;
+	display: inline-block;
+	vertical-align: middle;
+	text-decoration: none;
+	font-size: 12px;
+	line-height: 100%;
+	color: #FFF;
+	height: 31px;
+	margin-top: 25px;
+	overflow: hidden;
+}
+.btn_descargar span {
+	display: inline-block;
+	vertical-align: middle;
+	padding: 10px 3px 9px 9px;
+}
+.btn_descargar span.shape {
+	display: inline-block;
+	vertical-align: middle;
+	background-color: #ff8100;
+	padding: 5px 9px 6px
+}
+.icon {
+	background: url(../images/icon-sheet.png) 0 0 no-repeat;
+	vertical-align: middle;
+	display: inline-block;
+	text-indent: -9999px;
+	width: 15px;
+	height: 20px;
+}
 
 /************************************************
 *	CERTIFICACIONES
