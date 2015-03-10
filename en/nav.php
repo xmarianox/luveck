@@ -16,10 +16,10 @@
       <li>
         <a href="#productos" title="Products" class="openTab openDrop" data-rel="#drop-prod">Products</a>
         <ul class="dropdown animated bounceInLeft" id="drop-prod">
-          <li><a href="#doloveck" title="Doloveck" class="active">Doloveck</a></li>
-          <li><a href="#atenolen" title="Atenolen">Atenolen</a></li>
-          <li><a href="#amlodipen" title="Amlodipen D">Amlodipen D</a></li>
-          <li><a href="#soprapen" title="Soprapen">Soprapen</a></li>
+          <li><a href="#amlodipen25mg" title="Amlodipen" class="active">Amlodipen</a></li>
+          <li><a href="#atenolen25mg" title="Atenolen">Atenolen</a></li>
+          <li><a href="#doloveck25mg" title="Doloveck" >Doloveck</a></li>
+          <li><a href="#soprapen20mg" title="Soprapen">Soprapen</a></li>
         </ul>
       </li>
       <li><a href="#certificaciones" title="Certificates" class="openTab">Certificates</a></li>
