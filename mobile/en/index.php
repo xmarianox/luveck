@@ -48,7 +48,7 @@
   <link rel="stylesheet" href="../css/jquery.bxslider.css">
 
   <!-- Layout -->
-  <link rel="stylesheet" href="../css/main.mobile.css">
+  <link rel="stylesheet" href="../css/main.mobile.min.css">
 
   <script async src="../../js/modernizr.js"></script>
 </head>
@@ -106,6 +106,6 @@
     <!-- google maps api -->
     <script src="http://maps.googleapis.com/maps/api/js?v=3"></script>
     <!-- main -->
-    <script src="../js/main.mobile.js"></script>
+    <script src="../js/main.mobile.min.js"></script>
 </body>
 </html>
