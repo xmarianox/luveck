@@ -1,11 +1,12 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js" <?php language_attributes(); ?>>
   <head>
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <title>Luveck</title>
-    
+
+    <title><?php wp_title('|', TRUE, 'right'); ?></title>
+
     <!-- Favicon -->
     <link rel="shortcut icon" href="images/favicon.png">
     <!-- Apple Icons -->
@@ -40,16 +41,6 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="">
     <meta name="twitter:creator" content="http://funka.la">
-    <!-- Styles -->
-
-    <!-- Dependencias -->
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/animate.min.css">
-
-    <!-- Layout -->
-    <link rel="stylesheet" href="css/main.min.css">
-
-    <script async src="js/modernizr.js"></script>
 
     <script>
     (function() {
@@ -57,7 +48,7 @@
 
         var MOBILE_SITE = 'mobile/', // site to redirect to
             NO_REDIRECT = 'noredirect'; // cookie to prevent redirect
-        
+
         // I only want to redirect iPhones, Android phones and a handful of 7" devices
         if (isMobile.apple.phone || isMobile.android.phone || isMobile.seven_inch) {
             // Only redirect if the user didn't previously choose
@@ -69,12 +60,15 @@
         }
     })();
     </script>
+
+    <?php wp_head(); ?>
   </head>
-  <body>
+
+  <body <?php body_class(); ?>>
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    
+
     <div id="preloader">
       <div id="status">
         <img src="images/logo.png" height="52" width="151" alt="Luveck" class="logo">
@@ -83,8 +77,24 @@
     </div>
 
     <main>
-      <?php require 'nav.php'; ?>
-      
+      <aside>
+        <h1 class="brand_logo">Luveck</h1>
+
+        <?php
+        wp_nav_menu(array(
+          'theme_location' => 'main',
+          'container'      => 'nav',
+          'menu_class'     => 'tabs'
+        ));
+        ?>
+
+        <ul class="contactos">
+          <li><a href="" title="Mail"><i class="fa fa-envelope"></i></a></li>
+          <li><a href="" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+        </ul><!-- .contactos -->
+      </aside>
+
       <div class="content" id="home">
         <?php require 'views/com-tab-home.php'; ?>
       </div><!-- home -->
@@ -107,16 +117,8 @@
       <div class="content" id="servicioClientes">
         <?php require 'views/com-tab-contacto.php'; ?>
       </div><!-- #servicioClientes -->
-
     </main>
-    <!-- scripts -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery.tinycarousel.min.js"></script>
-    <script src="js/jquery.scrollTo.min.js"></script>
-    <script src="js/jquery.nanoscroller.min.js"></script>
-    <!-- google maps api -->
-    <script src="http://maps.googleapis.com/maps/api/js?v=3"></script>
-    <!-- main -->
-    <script src="js/main.min.js"></script>
-</body>
+
+    <?php wp_footer(); ?>
+  </body>
 </html>
