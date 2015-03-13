@@ -1,3 +1,4 @@
+(function($){
 // Dinamic Height
 function calcutaleHeight(element) {
 	'use strict';
@@ -24,11 +25,11 @@ function initialize() {
 	var marker, i, contentString;
 
 	var locations = [
-		['Luveck Medical Corporation', 25.8713186, -80.1997791, 1,'95 NW 105th Ave. Miami, Florida 33172. USA'],	
+		['Luveck Medical Corporation', 25.8713186, -80.1997791, 1,'95 NW 105th Ave. Miami, Florida 33172. USA'],
 		['Dromeinter Honduras', 13.80868, -87.2613573, 2, 'Barrio sabanagrande, Tegucigalpa, Honduras.'],
-		['Dromeinter Guatemala', 14.6028638, -90.5549395, 3, 'Calle "A" 22-01, Zona, 11 Residenciales San Jorge, Guatemala']	
+		['Dromeinter Guatemala', 14.6028638, -90.5549395, 3, 'Calle "A" 22-01, Zona, 11 Residenciales San Jorge, Guatemala']
 	]
-	
+
 	var mapOptions = {
 		zoom: 4,
 		center: new google.maps.LatLng(25.8713186, -80.1997791),
@@ -86,7 +87,7 @@ function loader() {
 
 // Load
 $(window).load(
-	loader(), 
+	loader(),
 	tabInit(),
 	calcutaleHeight('.nano, .list-cert, .list-prod, .list-info')
 );
@@ -135,7 +136,7 @@ $(document).ready(function() {
 
 		var currentItem = lista.find('a[href='+ prod +']');
 		currentItem.addClass('currentProd');
-		
+
 		lista.scrollTo(currentItem, 1000);
 	});
 
@@ -150,7 +151,7 @@ $(document).ready(function() {
 
 		var currentItem = lista.find('a[href='+ prod +']');
 		currentItem.addClass('currentProd');
-		
+
 		lista.scrollTo(currentItem, 1000);
 	});
 
@@ -212,7 +213,7 @@ $(document).ready(function() {
 		var element = $(this).attr('href');
 		$(this).addClass('active');
 		var lista = $('.list-info');
-		lista.scrollTo(element, 1000);		
+		lista.scrollTo(element, 1000);
 	});
 
     // Scrollbar
@@ -252,3 +253,4 @@ $(document).ready(function() {
     });
 
 });
+})(jQuery);
