@@ -10,8 +10,17 @@ function calcutaleHeight(element) {
 // Tabs initial
 function tabInit() {
 	'use strict';
+
 	$('.content').css('display', 'none');
-	var active = $('.tabs').find('a.active');
+	var active = $('.tabs > .current-menu-item > a');
+
+	if (!active.size()) {
+		$('.tabs > .menu-item:first-child')
+			.addClass('current-menu-item');
+
+		active = $('.tabs > .current-menu-item > a');
+	}
+
 	var elem = active.attr('href');
 	$(elem).css('display', 'block');
 }
@@ -102,8 +111,13 @@ $(document).ready(function() {
 	/*
 	*	Custom tabs
 	*/
-	$('.openTab').click(function(event) {
+	$('.tabs .menu-item a').click(function(event) {
 		event.preventDefault();
+
+		if ($(this).parents('.sub-menu').size()) {
+			return;
+		}
+
 		$('.content').css('display', 'none');
 		//$('.content').removeClass('animate fadeInRightBig');
 		$('.dropdown').removeClass('open');
@@ -191,8 +205,10 @@ $(document).ready(function() {
     });
 
     /*
-    *	Scripts Sobre luveck
-    */
+     * Scripts Sobre luveck
+     *
+     *  TODO: replace this code with the "Abstract sub menu navigation"
+     */
     $('#drop-sobre a').click(function(event) {
 		event.preventDefault();
 		$('#drop-sobre a').removeClass('active');
@@ -204,6 +220,19 @@ $(document).ready(function() {
 		var currentBullet = bulletsList.find('a[href='+ element +']');
 		currentBullet.addClass('active');
 		lista.scrollTo(element, 1000);
+	});
+
+	/*
+	 * Abstract sub menu navigation
+	 */
+	$('.menu-item-has-children a').on('click', function(ev){
+		ev.preventDefault();
+
+		var trigger  = $(this),
+			target   = $(trigger.attr('href')),
+			contents = $('.content:not(:hidden)').find('.list-info');
+
+		contents.scrollTo(target, 1000);
 	});
 
 	$('.bullets a').click(function(event) {

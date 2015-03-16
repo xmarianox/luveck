@@ -95,28 +95,41 @@
         </ul><!-- .contactos -->
       </aside>
 
-      <div class="content" id="home">
-        <?php require 'views/com-tab-home.php'; ?>
-      </div><!-- home -->
+<?php
+$locations  = get_nav_menu_locations();
+$menu_meta  = wp_get_nav_menu_object($locations['main']);
+$menu_items = wp_get_nav_menu_items($menu_meta->term_id, array(
+  'update_post_term_cache' => FALSE
+));
 
-      <div class="content" id="sobreLuveck">
-        <?php require 'views/com-tab-sobreLuveck.php'; ?>
-      </div><!-- sobreLuveck -->
+$menu = array();
 
-      <div class="content" id="productos">
-        <?php require 'views/com-tab-productos.php'; ?>
-      </div><!-- productos -->
+foreach ($menu_items as $item) {
+  if ($item->menu_item_parent == 0) {
+    $menu[$item->ID] = $item;
 
-      <div class="content" id="certificaciones">
-        <?php require 'views/com-tab-certificaciones.php'; ?>
-      </div><!-- certificaciones -->
+    continue;
+  }
 
-      <div class="content" id="investigacion">
-        <?php require 'views/com-tab-investigacion.php'; ?>
-      </div><!-- investigacion -->
-      <div class="content" id="servicioClientes">
-        <?php require 'views/com-tab-contacto.php'; ?>
-      </div><!-- #servicioClientes -->
+  if (!isset($menu[$item->menu_item_parent]->subitems)) {
+    $menu[$item->menu_item_parent]->subitems = [];
+  }
+
+  $menu[$item->menu_item_parent]->subitems[] = $item;
+}
+?>
+
+<?php
+foreach ($menu as $item) :
+  $post = get_post($item->object_id);
+  setup_postdata($post);
+
+  $template = get_page_template();
+?>
+<div class="content" id="content-<?php echo $item->object_id; ?>">
+  <?php if (is_file($template)) include $template; ?>
+</div>
+<?php endforeach; ?>
     </main>
 
     <?php wp_footer(); ?>

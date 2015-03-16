@@ -1,11 +1,57 @@
 <?php
 
+add_action('after_setup_theme', function(){
+  // Products
+  $labels = array(
+    'name'          => __('Productos', 'luveck'),
+    'singular_name' => __('Producto', 'luveck'),
+    'add_new'       => _x('Añadir producto', 'product', 'luveck'),
+    'add_new_item'  => __('Añadir producto', 'luveck')
+  );
+
+  register_post_type('product', array(
+    'label'       => __('Productos', 'luveck'),
+    'labels'      => $labels,
+    'public'      => TRUE,
+    'has_archive' => TRUE,
+    'supports'    => array('title', 'editor', 'thumbnail'),
+    'rewrite'     => array(
+      'slug'       => 'productos',
+      'with_front' => FALSE,
+      'feeds'      => FALSE,
+      'pages'      => FALSE
+    )
+  ));
+
+  // Certifications
+  $labels = array(
+    'name'          => __('Certificaciones', 'luveck'),
+    'singular_name' => __('Certificación', 'luveck'),
+    'add_new'       => _x('Añadir certificación', 'certification', 'luveck'),
+    'add_new_item'  => __('Añadir certificación', 'luveck')
+  );
+
+  register_post_type('certification', array(
+    'label'       => __('Certificaciones', 'luveck'),
+    'labels'      => $labels,
+    'public'      => TRUE,
+    'has_archive' => TRUE,
+    'supports'    => array('title', 'editor', 'thumbnail'),
+    'rewrite'     => array(
+      'slug'       => 'certificationes',
+      'with_front' => FALSE,
+      'feeds'      => FALSE,
+      'pages'      => FALSE
+    )
+  ));
+});
+
 /**
  * Adding required WP features and needed image sizes
  */
 add_action('after_setup_theme', function(){
   // Let WordPress manage the document title.
-  add_theme_support( 'title-tag' );
+  add_theme_support('title-tag');
 
   // Enable support for Post Thumbnails on posts and pages.
   add_theme_support('post-thumbnails');
@@ -14,13 +60,15 @@ add_action('after_setup_theme', function(){
   add_theme_support('menus');
 
   register_nav_menus(array(
-      'main' => __('Main menu', 'luveck')
+    'main' => __('Main menu', 'luveck')
   ));
 
   // Switch default core markup for search form, comment form, and comments
   // to output valid HTML5.
-  add_theme_support('html5', array('comment-list', 'comment-form', 'search-form',
-    'gallery', 'caption', 'widgets'));
+  add_theme_support('html5', array(
+    'comment-list', 'comment-form', 'search-form',
+    'gallery', 'caption', 'widgets'
+  ));
 });
 
 /**
@@ -65,3 +113,22 @@ add_action('wp_enqueue_scripts', function(){
 
   wp_enqueue_script('luveck-mainjs', get_template_directory_uri() . $file, $deps, $version, TRUE);
 });
+
+/**
+ * Change the menu items href to hashes
+ */
+add_filter('nav_menu_link_attributes', function($atts, $item, $args, $depth){
+  $href = '#content-' . $item->object_id;
+
+  if ($depth) {
+    $href .= '-' . $depth;
+  }
+
+  $atts['href'] = $href;
+
+  return $atts;
+}, 10, 4);
+
+function get_content_image($post_id, $size = 'large') {
+  return array_shift(wp_get_attachment_image_src(get_post_thumbnail_id($post_id), $size));
+}
