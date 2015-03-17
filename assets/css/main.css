@@ -675,6 +675,15 @@ section h1 {
 	line-height: 28px;
 	text-transform: uppercase;
 }
+
+.form-message {
+	background:#d8934c;
+	color:#fff;
+	display:none;
+	margin:1em 0;
+	padding:8px 10px;
+}
+
 .form-control-5 {
 	float: left;
 	width: 50%;

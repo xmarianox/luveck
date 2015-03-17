@@ -53,6 +53,20 @@ add_action('after_setup_theme', function(){
       'pages'      => FALSE
     )
   ));
+
+  // Contact
+  $labels = array(
+    'name'          => __('Contacto', 'luveck'),
+    'singular_name' => __('Contacto', 'luveck'),
+  );
+
+  register_post_type('contact', array(
+    'label'    => __('Contacto', 'luveck'),
+    'labels'   => $labels,
+    'public'   => FALSE,
+    'show_ui'  => TRUE,
+    'supports' => array('title', 'editor', 'thumbnail')
+  ));
 });
 
 /**
@@ -250,6 +264,57 @@ add_action('after_setup_theme', function(){
     'menu_order' => 0,
   ));
 });
+
+function luveck_send_contact() {
+  header('Content-Type: application/json');
+
+  $data     = $_POST;
+  $response = array(
+    'status'  => NULL,
+    'message' => NULL
+  );
+
+  if (
+    (!isset($data['nombre-contacto'])  OR empty($data['nombre-contacto'])) OR
+    (!isset($data['email-contacto'])   OR empty($data['email-contacto'])) OR
+    (!isset($data['mensaje-contacto']) OR is_email($data['mensaje-contacto']))
+  ) {
+    $response['status']  = 'error';
+    $response['message'] = __('Por favor, segúrese de completar todos los datos.', 'luveck');
+
+    echo json_encode($response);
+    exit;
+  }
+
+  $title   = sprintf('Mensaje de %s', $data['email-contacto']);
+  $content = htmlspecialchars($data['nombre-contacto']);
+
+  $post_id = wp_insert_post(array(
+    'post_title'   => $title,
+    'post_content' => $content,
+    'post_status'  => 'publish',
+    'post_type'    => 'contact',
+    'ping_status'  => 'closed'
+  ));
+
+  if ($post_id  == 0 OR is_wp_error($post_id)) {
+    $response['status']  = 'error';
+    $response['message'] = __('Ha ocurrido un error. Por favor, intenta nuevamente.', 'luveck');
+  }
+  else {
+    add_post_meta($post_id, 'contact_from_name', $data['nombre-contacto']);
+    add_post_meta($post_id, 'contact_from_email', $data['email-contacto']);
+
+    $response['status']  = 'success';
+    $response['message'] = __('El mensaje se ha enviado correctamente. Nos pondremos en contacto a la brevedad.', 'luveck');
+  }
+
+  echo json_encode($response);
+  exit;
+}
+
+add_action('wp_ajax_luveck_send_contact', 'luveck_send_contact');
+add_action('wp_ajax_nopriv_luveck_send_contact', 'luveck_send_contact');
 
 /**
  * Returns the image url for the given post ID

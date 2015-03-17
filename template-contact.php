@@ -32,10 +32,12 @@ $branches = get_field('luveck_branches', get_the_ID());
           </div>
 <?php endforeach; ?>
 
-          <form action="" id="form-contacto" class="animated fadeInLeft">
+          <form action="<?php echo admin_url('admin-ajax.php'); ?>?action=luveck_send_contact" id="form-contacto" class="animated fadeInLeft">
             <div class="form-control">
               <h2>CONSULTAS</h2>
             </div>
+
+            <div class="form-message"></div>
 
             <div class="form-control form-control-5 left">
               <input type="text" name="nombre-contacto" id="nombre-contacto"
@@ -71,5 +73,5 @@ $branches = get_field('luveck_branches', get_the_ID());
 </section>
 
 <script>
-  var LVCK_BRANCHES = <?php echo json_encode($branches); ?>;
+  var LUVECK_BRANCHES = <?php echo json_encode($branches); ?>;
 </script>

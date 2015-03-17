@@ -49,8 +49,8 @@ function initialize() {
 	var latlngbounds = new google.maps.LatLngBounds(),
 		location;
 
-	for (i in LVCK_BRANCHES) {
-		branch = LVCK_BRANCHES[i];
+	for (i in LUVECK_BRANCHES) {
+		branch = LUVECK_BRANCHES[i];
 		location = new google.maps.LatLng(branch.location.lat, branch.location.lng);
 
 		marker = new google.maps.Marker({
@@ -289,5 +289,30 @@ $(document).ready(function() {
     	$('.list-cert').scrollTo('#selector_iso', 1000);
     });
 
+	/*
+	 * Contact form handler
+	 */
+	var $messages = $('.form-message');
+
+	$('body').on('submit', '#form-contacto', function(ev){
+		ev.preventDefault();
+
+		var $form   = $(this),
+			$inputs = $form.find(':input'),
+			data    = $form.serialize();
+
+		$inputs.prop('disabled', true);
+		$messages.fadeOut().html();
+
+		$.post($form.attr('action'), data, function(response){
+			$messages.html(response.message).fadeIn();
+
+			$inputs.prop('disabled', false);
+
+			if (response.status == 'success') {
+				$form.get(0).reset();
+			}
+		});
+	});
 });
 })(jQuery);
