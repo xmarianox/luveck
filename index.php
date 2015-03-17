@@ -71,8 +71,8 @@
 
     <div id="preloader">
       <div id="status">
-        <img src="images/logo.png" height="52" width="151" alt="Luveck" class="logo">
-        <img src="images/bx_loader.gif" height="32" width="32" alt="" class="loader">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" height="52" width="151" alt="Luveck" class="logo">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/bx_loader.gif" height="32" width="32" alt="" class="loader">
       </div>
     </div>
 
