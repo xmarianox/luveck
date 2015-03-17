@@ -1,8 +1,14 @@
 <?php
 
+// We don't need the ACF UI
+define('ACF_LITE', TRUE);
+
 require_once __DIR__ . '/includes/advanced-custom-fields/acf.php';
 require_once __DIR__ . '/includes/acf-repeater/acf-repeater.php';
 
+/**
+ * Register needed post types
+ */
 add_action('after_setup_theme', function(){
   // Products
   $labels = array(
@@ -53,6 +59,9 @@ add_action('after_setup_theme', function(){
  * Adding required WP features and needed image sizes
  */
 add_action('after_setup_theme', function(){
+  // Make the theme available for translation.
+  load_theme_textdomain('laveck', get_template_directory() . '/languages');
+
   // Let WordPress manage the document title.
   add_theme_support('title-tag');
 
