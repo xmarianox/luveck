@@ -1,5 +1,8 @@
 <?php
 
+require_once __DIR__ . '/includes/advanced-custom-fields/acf.php';
+require_once __DIR__ . '/includes/acf-repeater/acf-repeater.php';
+
 add_action('after_setup_theme', function(){
   // Products
   $labels = array(
@@ -90,6 +93,8 @@ add_action('wp_enqueue_scripts', function(){
 
   wp_enqueue_style('luveck-main', get_template_directory_uri() . $file, $deps, $version);
 
+  wp_enqueue_script('google-maps', 'https://maps.googleapis.com/maps/api/js?v=3', array(), '3', FALSE);
+
   // Modernizer
   $uri = '/assets/js/modernizr.js';
   wp_enqueue_script('luveck-modernizr', get_template_directory_uri() . $uri, array(), '2.8.3', FALSE);
@@ -108,7 +113,7 @@ add_action('wp_enqueue_scripts', function(){
 
   // Main JS
   $file    = '/assets/js/main.js';
-  $deps    = array('jquery', 'luveck-tinycarousel', 'luveck-scrollto', 'luveck-nanoscroller');
+  $deps    = array('google-maps', 'jquery', 'luveck-tinycarousel', 'luveck-scrollto', 'luveck-nanoscroller');
   $version = filemtime(get_template_directory() . $file);
 
   wp_enqueue_script('luveck-mainjs', get_template_directory_uri() . $file, $deps, $version, TRUE);
@@ -129,6 +134,121 @@ add_filter('nav_menu_link_attributes', function($atts, $item, $args, $depth){
   return $atts;
 }, 10, 4);
 
+/**
+ * Registering custom fields
+ */
+add_action('after_setup_theme', function(){
+  register_field_group(array(
+    'id'         => 'acf_branches',
+    'title'      => __('Sucursales', 'luveck'),
+    'fields'     => array(
+      array(
+        'key'          => 'field_5507e9cecea1e',
+        'label'        => __('Sucursal', 'luveck'),
+        'name'         => 'luveck_branches',
+        'type'         => 'repeater',
+        'sub_fields'   => array(
+          array(
+            'key'           => 'field_5507ea424428a',
+            'label'         => __('Nombre', 'luveck'),
+            'name'          => 'name',
+            'type'          => 'text',
+            'required'      => TRUE,
+            'column_width'  => '',
+            'default_value' => '',
+            'placeholder'   => '',
+            'prepend'       => '',
+            'append'        => '',
+            'formatting'    => 'none',
+            'maxlength'     => '',
+          ),
+          array(
+            'key'           => 'field_5507e9e5cea1f',
+            'label'         => __('Dirección', 'luveck'),
+            'name'          => 'address',
+            'type'          => 'text',
+            'required'      => TRUE,
+            'column_width'  => '',
+            'default_value' => '',
+            'placeholder'   => '',
+            'prepend'       => '',
+            'append'        => '',
+            'formatting'    => 'none',
+            'maxlength'     => '',
+          ),
+          array(
+            'key'           => 'field_5507ea10cea20',
+            'label'         => __('Teléfono', 'luveck'),
+            'name'          => 'phone',
+            'type'          => 'text',
+            'column_width'  => '',
+            'default_value' => '',
+            'placeholder'   => '',
+            'prepend'       => '',
+            'append'        => '',
+            'formatting'    => 'none',
+            'maxlength'     => '',
+          ),
+          array(
+            'key'           => 'field_5507ea21cea22',
+            'label'         => __('Fax', 'luveck'),
+            'name'          => 'fax',
+            'type'          => 'text',
+            'column_width'  => '',
+            'default_value' => '',
+            'placeholder'   => '',
+            'prepend'       => '',
+            'append'        => '',
+            'formatting'    => 'none',
+            'maxlength'     => '',
+          ),
+          array(
+            'key'          => 'field_5507ea97e7b28',
+            'label'        => __('Ubicación', 'luveck'),
+            'name'         => 'location',
+            'type'         => 'google_map',
+            'column_width' => '',
+            'center_lat'   => '',
+            'center_lng'   => '',
+            'zoom'         => '',
+            'height'       => '',
+          ),
+        ),
+        'row_min'      => 1,
+        'row_limit'    => '',
+        'layout'       => 'row',
+        'button_label' => __('Agregar sucursal', 'luveck'),
+      ),
+    ),
+    'location'   => array(
+      array(
+        array(
+          'param'    => 'page_template',
+          'operator' => '==',
+          'value'    => 'template-contact.php',
+          'order_no' => 0,
+          'group_no' => 0,
+        ),
+      ),
+    ),
+    'options'    => array(
+      'position'       => 'normal',
+      'layout'         => 'default',
+      'hide_on_screen' => array(),
+    ),
+    'menu_order' => 0,
+  ));
+});
+
+/**
+ * Returns the image url for the given post ID
+ *
+ * @param int $post_id
+ * @param string $size
+ * @return string
+ */
 function get_content_image($post_id, $size = 'large') {
   return array_shift(wp_get_attachment_image_src(get_post_thumbnail_id($post_id), $size));
 }
+
+
