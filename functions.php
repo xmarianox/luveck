@@ -78,6 +78,10 @@ add_action('after_setup_theme', function(){
  * Enqueue scripts and styles.
  */
 add_action('wp_enqueue_scripts', function(){
+  // Google deps
+  wp_enqueue_style('google-roboto', 'https://fonts.googleapis.com/css?family=Roboto:400,500,300,700', array(), NULL);
+  wp_enqueue_script('google-maps', 'https://maps.googleapis.com/maps/api/js?v=3', array(), '3', FALSE);
+
   // FontAwesome
   $uri = get_template_directory_uri() . '/assets/css/font-awesome.min.css';
   wp_enqueue_style('luveck-fontawesome', $uri, array(), '4.3.0');
@@ -92,8 +96,6 @@ add_action('wp_enqueue_scripts', function(){
   $version = filemtime(get_template_directory() . $file);
 
   wp_enqueue_style('luveck-main', get_template_directory_uri() . $file, $deps, $version);
-
-  wp_enqueue_script('google-maps', 'https://maps.googleapis.com/maps/api/js?v=3', array(), '3', FALSE);
 
   // Modernizer
   $uri = '/assets/js/modernizr.js';

@@ -8,12 +8,12 @@
     <title><?php wp_title('|', TRUE, 'right'); ?></title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="images/favicon.png">
+    <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/assets/images/favicon.png">
     <!-- Apple Icons -->
-    <link rel="apple-touch-icon" sizes="57x57" href="images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon-retina-180x180.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="<?php echo get_template_directory_uri(); ?>/assets/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="<?php echo get_template_directory_uri(); ?>/assets/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="<?php echo get_template_directory_uri(); ?>/assets/images/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?php echo get_template_directory_uri(); ?>/assets/images/apple-touch-icon-retina-180x180.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="Luveck">
@@ -22,9 +22,9 @@
     <meta http-equiv="x-rim-auto-match" content="none">
     <!-- Chrome app -->
     <meta name="mobile-web-app-capable" content="yes">
-    <link rel="icon" sizes="196x196" href="images/chrome-touch-icon-196x196.png">
+    <link rel="icon" sizes="196x196" href="<?php echo get_template_directory_uri(); ?>/assets/images/chrome-touch-icon-196x196.png">
     <!-- MS apps -->
-    <meta name="msapplication-TileImage" content="images/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileImage" content="<?php echo get_template_directory_uri(); ?>/assets/images/ms-touch-icon-144x144-precomposed.png">
     <meta name="msapplication-TileColor" content="#FFF">
     <!-- Google Tags -->
     <meta name="description" content="">
