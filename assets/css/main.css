@@ -536,28 +536,28 @@ section h1 {
 /************************************************
 * Section : Certificaciones
 ************************************************/
-#certificaciones .col-49 {
+.section-certifications .col-49 {
 	padding: 70px 50px 50px;
 }
-#certificaciones h2 {
+.section-certifications h2 {
 	font-size: 25px;
 	/*font-weight: 900;*/
 	line-height: 28px;
 	margin-bottom: 15px;
 }
-#certificaciones p {
+.section-certifications p {
 	font-size: 16px;
 	font-weight: 500;
 	line-height: 28px;
 	margin-bottom: 30px;
 }
-#certificaciones .col-51 {
+.section-certifications .col-51 {
 	position: relative;
 }
-#certificaciones .content-cert {
+.section-certifications .content-cert {
 	display: none;
 }
-#certificaciones .content-cert.active {
+.section-certifications .content-cert.active {
 	display: block;
 }
 .list-cert {
@@ -567,14 +567,23 @@ section h1 {
 	overflow-y: scroll;
 	position: relative;
 }
-.list-cert li figure{
+.list-cert li {
+	height:33.33333%;
+}
+.list-cert li figure {
 	display: block;
+	height: 100%;
 	position: relative;
+	overflow: hidden;
 }
 .list-cert figure img {
 	display: block;
 	width: 100%;
 	height: auto;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 /*.list-cert figure figcaption {
 	width: 100%;
@@ -622,7 +631,7 @@ section h1 {
 /************************************************
 * Section : Investigacion
 ************************************************/
-#investigacion .col-49 {
+.section-investigation .col-49 {
 	padding: 70px 50px 50px;
 }
 /************************************************
