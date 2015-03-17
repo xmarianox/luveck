@@ -22,3 +22,8 @@ indent_size = 2
 [*.js]
 indent_style = tab
 indent_size = 4
+
+# CSS files
+[*.css]
+indent_style = tab
+indent_size = 2

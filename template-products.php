@@ -8,7 +8,7 @@ $products = new WP_Query(array(
   'nopaging'  => TRUE
 ));
 ?>
-<section>
+<section class="section-products">
   <article>
     <div class="col col-49">
       <h1 class="animated fadeInUp">Productos</h1>
