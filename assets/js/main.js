@@ -144,7 +144,7 @@ $(document).ready(function() {
 			$parent.addClass('open');
 		}
 
-		if (tab == '#content-15') {
+		if (tab == '#content-15' || tab == '#content-28') {
 			initialize();
 		}
 		$(tab).css('display', 'block');
