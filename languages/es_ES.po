@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Luveck 1.0.0\n"
-"POT-Creation-Date: 2015-03-17 21:14-0300\n"
-"PO-Revision-Date: 2015-03-17 21:16-0300\n"
+"POT-Creation-Date: 2015-03-18 00:18-0300\n"
+"PO-Revision-Date: 2015-03-18 00:18-0300\n"
 "Last-Translator: Sebastián Cruz <cruzjesussebastian@gmail.com>\n"
 "Language-Team: Funka.la <hola@funka.la>\n"
 "Language: es\n"
@@ -18,11 +18,11 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: assets\n"
 "X-Poedit-SearchPathExcluded-1: includes\n"
 
-#: functions.php:15 functions.php:23
+#: functions.php:15 functions.php:17 functions.php:23
 msgid "Products"
 msgstr "Productos"
 
-#: functions.php:16 functions.php:17
+#: functions.php:16
 msgid "Product"
 msgstr "Producto"
 
@@ -30,68 +30,69 @@ msgstr "Producto"
 msgid "Add product"
 msgstr "Agregar producto"
 
-#: functions.php:38 functions.php:45
-msgid "Certifications"
+#: functions.php:38 functions.php:40 functions.php:46
+#, fuzzy
+msgid "Certificates"
 msgstr "Certificaciones"
 
 #: functions.php:39
 msgid "Certification"
 msgstr "Certificación"
 
-#: functions.php:40 functions.php:41
+#: functions.php:41 functions.php:42
 msgid "Add certification"
 msgstr "Agregar certificación"
 
-#: functions.php:60 functions.php:61 functions.php:65
+#: functions.php:61 functions.php:62 functions.php:66
 msgid "Contact"
 msgstr "Contacto"
 
-#: functions.php:90
+#: functions.php:91
 msgid "Main menu"
 msgstr "Menú principal"
 
-#: functions.php:169
+#: functions.php:170
 msgid "Branches"
 msgstr "Sucursales"
 
-#: functions.php:173
+#: functions.php:174
 msgid "Branch"
 msgstr "Sucursal"
 
-#: functions.php:179
+#: functions.php:180
 msgid "Name"
 msgstr "Nombre"
 
-#: functions.php:193
+#: functions.php:194
 msgid "Address"
 msgstr "Dirección"
 
-#: functions.php:207
+#: functions.php:208
 msgid "Phone"
 msgstr "Teléfono"
 
-#: functions.php:220
+#: functions.php:221
 msgid "Fax"
 msgstr "Fax"
 
-#: functions.php:233
+#: functions.php:234
 msgid "Location"
 msgstr "Ubicación"
 
-#: functions.php:246
+#: functions.php:247
 msgid "Add item"
 msgstr "Agregar item"
 
-#: functions.php:284
+#: functions.php:285
 msgid "Please be sure to complete all fields."
 msgstr "Por favor, asegúrese de completar todos los campos."
 
-#: functions.php:303
+#: functions.php:304
 msgid "An error has occurred. Please try again."
 msgstr ""
 "Ha ocurrido un error al enviar el mensaje. Por favor intente nuevamente."
 
-#: functions.php:310
+#: functions.php:311
 msgid "The message was sent successfully. We will contact you shortly."
 msgstr ""
 "El mensaje ha sido enviado correctamente. Nos pondremos en contacto a la "

@@ -35,15 +35,15 @@ add_action('after_setup_theme', function(){
 
   // Certifications
   $labels = array(
-    'name'           => _x('Certifications', 'post type general name', 'luveck'),
+    'name'           => _x('Certificates', 'post type general name', 'luveck'),
     'singular_name'  => _x('Certification', 'post type singular name','luveck'),
-    'name_admin_bar' => _x('Certifications', 'add new on admin bar','luveck'),
+    'name_admin_bar' => _x('Certificates', 'add new on admin bar','luveck'),
     'add_new'        => _x('Add certification', 'product', 'luveck'),
     'add_new_item'   => __('Add certification', 'luveck')
   );
 
   register_post_type('certification', array(
-    'label'       => __('Certifications', 'luveck'),
+    'label'       => __('Certificates', 'luveck'),
     'labels'      => $labels,
     'public'      => TRUE,
     'has_archive' => TRUE,
