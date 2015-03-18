@@ -62,6 +62,10 @@
     </script>
 
     <?php wp_head(); ?>
+
+    <script>
+      var LUVECK_MAP_MARKER = '<?php echo get_template_directory_uri(); ?>/assets/images/map-pin.png';
+    </script>
   </head>
 
   <body <?php body_class(); ?>>

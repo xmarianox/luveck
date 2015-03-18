@@ -30,7 +30,7 @@ function initialize() {
 	'use strict';
 
 	var infowindow = new google.maps.InfoWindow();
-	var pointer = { url: '/wp-content/themes/luveck/assets/images/map-pin.png', size: new google.maps.Size(39,56)};
+	var pointer = { url: LUVECK_MAP_MARKER, size: new google.maps.Size(39,56)};
 	var marker, i, contentString, branch;
 
 	var locations = [
