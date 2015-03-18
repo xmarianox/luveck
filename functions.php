@@ -12,14 +12,15 @@ require_once __DIR__ . '/includes/acf-repeater/acf-repeater.php';
 add_action('after_setup_theme', function(){
   // Products
   $labels = array(
-    'name'          => __('Productos', 'luveck'),
-    'singular_name' => __('Producto', 'luveck'),
-    'add_new'       => _x('Añadir producto', 'product', 'luveck'),
-    'add_new_item'  => __('Añadir producto', 'luveck')
+    'name'           => _x('Products', 'post type general name', 'luveck'),
+    'singular_name'  => _x('Product', 'post type singular name','luveck'),
+    'name_admin_bar' => _x('Products', 'add new on admin bar','luveck'),
+    'add_new'        => _x('Add product', 'product', 'luveck'),
+    'add_new_item'   => __('Add product', 'luveck')
   );
 
   register_post_type('product', array(
-    'label'       => __('Productos', 'luveck'),
+    'label'       => __('Products', 'luveck'),
     'labels'      => $labels,
     'public'      => TRUE,
     'has_archive' => TRUE,
@@ -34,14 +35,15 @@ add_action('after_setup_theme', function(){
 
   // Certifications
   $labels = array(
-    'name'          => __('Certificaciones', 'luveck'),
-    'singular_name' => __('Certificación', 'luveck'),
-    'add_new'       => _x('Añadir certificación', 'certification', 'luveck'),
-    'add_new_item'  => __('Añadir certificación', 'luveck')
+    'name'           => _x('Certifications', 'post type general name', 'luveck'),
+    'singular_name'  => _x('Certification', 'post type singular name','luveck'),
+    'name_admin_bar' => _x('Certifications', 'add new on admin bar','luveck'),
+    'add_new'        => _x('Add certification', 'product', 'luveck'),
+    'add_new_item'   => __('Add certification', 'luveck')
   );
 
   register_post_type('certification', array(
-    'label'       => __('Certificaciones', 'luveck'),
+    'label'       => __('Certifications', 'luveck'),
     'labels'      => $labels,
     'public'      => TRUE,
     'has_archive' => TRUE,
@@ -56,12 +58,12 @@ add_action('after_setup_theme', function(){
 
   // Contact
   $labels = array(
-    'name'          => __('Contacto', 'luveck'),
-    'singular_name' => __('Contacto', 'luveck'),
+    'name'          => _x('Contact', 'post type general name', 'luveck'),
+    'singular_name' => _x('Contact', 'post type singular name','luveck')
   );
 
   register_post_type('contact', array(
-    'label'    => __('Contacto', 'luveck'),
+    'label'    => __('Contact', 'luveck'),
     'labels'   => $labels,
     'public'   => FALSE,
     'show_ui'  => TRUE,
@@ -74,7 +76,7 @@ add_action('after_setup_theme', function(){
  */
 add_action('after_setup_theme', function(){
   // Make the theme available for translation.
-  load_theme_textdomain('laveck', get_template_directory() . '/languages');
+  load_theme_textdomain('luveck', get_template_directory() . '/languages');
 
   // Let WordPress manage the document title.
   add_theme_support('title-tag');
@@ -165,17 +167,17 @@ add_filter('nav_menu_link_attributes', function($atts, $item, $args, $depth){
 add_action('after_setup_theme', function(){
   register_field_group(array(
     'id'         => 'acf_branches',
-    'title'      => __('Sucursales', 'luveck'),
+    'title'      => __('Branches', 'luveck'),
     'fields'     => array(
       array(
         'key'          => 'field_5507e9cecea1e',
-        'label'        => __('Sucursal', 'luveck'),
+        'label'        => __('Branch', 'luveck'),
         'name'         => 'luveck_branches',
         'type'         => 'repeater',
         'sub_fields'   => array(
           array(
             'key'           => 'field_5507ea424428a',
-            'label'         => __('Nombre', 'luveck'),
+            'label'         => __('Name', 'luveck'),
             'name'          => 'name',
             'type'          => 'text',
             'required'      => TRUE,
@@ -189,7 +191,7 @@ add_action('after_setup_theme', function(){
           ),
           array(
             'key'           => 'field_5507e9e5cea1f',
-            'label'         => __('Dirección', 'luveck'),
+            'label'         => __('Address', 'luveck'),
             'name'          => 'address',
             'type'          => 'text',
             'required'      => TRUE,
@@ -203,7 +205,7 @@ add_action('after_setup_theme', function(){
           ),
           array(
             'key'           => 'field_5507ea10cea20',
-            'label'         => __('Teléfono', 'luveck'),
+            'label'         => __('Phone', 'luveck'),
             'name'          => 'phone',
             'type'          => 'text',
             'column_width'  => '',
@@ -229,7 +231,7 @@ add_action('after_setup_theme', function(){
           ),
           array(
             'key'          => 'field_5507ea97e7b28',
-            'label'        => __('Ubicación', 'luveck'),
+            'label'        => __('Location', 'luveck'),
             'name'         => 'location',
             'type'         => 'google_map',
             'column_width' => '',
@@ -242,7 +244,7 @@ add_action('after_setup_theme', function(){
         'row_min'      => 1,
         'row_limit'    => '',
         'layout'       => 'row',
-        'button_label' => __('Agregar sucursal', 'luveck'),
+        'button_label' => __('Add item', 'luveck'),
       ),
     ),
     'location'   => array(
@@ -280,7 +282,7 @@ function luveck_send_contact() {
     (!isset($data['mensaje-contacto']) OR is_email($data['mensaje-contacto']))
   ) {
     $response['status']  = 'error';
-    $response['message'] = __('Por favor, segúrese de completar todos los datos.', 'luveck');
+    $response['message'] = __('Please be sure to complete all fields.', 'luveck');
 
     echo json_encode($response);
     exit;
@@ -299,14 +301,14 @@ function luveck_send_contact() {
 
   if ($post_id  == 0 OR is_wp_error($post_id)) {
     $response['status']  = 'error';
-    $response['message'] = __('Ha ocurrido un error. Por favor, intenta nuevamente.', 'luveck');
+    $response['message'] = __('An error has occurred. Please try again.', 'luveck');
   }
   else {
     add_post_meta($post_id, 'contact_from_name', $data['nombre-contacto']);
     add_post_meta($post_id, 'contact_from_email', $data['email-contacto']);
 
     $response['status']  = 'success';
-    $response['message'] = __('El mensaje se ha enviado correctamente. Nos pondremos en contacto a la brevedad.', 'luveck');
+    $response['message'] = __('The message was sent successfully. We will contact you shortly.', 'luveck');
   }
 
   echo json_encode($response);
