@@ -122,19 +122,28 @@ $(document).ready(function() {
 	$('.tabs .menu-item a').click(function(event) {
 		event.preventDefault();
 
-		if ($(this).parents('.sub-menu').size()) {
+		var $trigger = $(this),
+			$parent  = $trigger.closest('.menu-item');
+
+		if ($trigger.parents('.sub-menu').size()) {
 			return;
 		}
 
 		$('.content').css('display', 'none');
 		//$('.content').removeClass('animate fadeInRightBig');
-		$('.dropdown').removeClass('open');
+		$('.menu-item-has-children').removeClass('open');
 		$('.tabs a').removeClass('active');
-		$(this).toggleClass('active');
+
+		$trigger.toggleClass('active');
 
 		var elementActive = $(this).attr('class');
 		var tab = $(this).attr('href');
 		//$(tab).addClass('animate fadeInRightBig')
+
+		if ($parent.hasClass('menu-item-has-children')) {
+			$parent.addClass('open');
+		}
+
 		if (tab == '#content-15') {
 			initialize();
 		}
