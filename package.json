@@ -1,0 +1,27 @@
+{
+  "name": "luveck",
+  "version": "1.0.0",
+  "description": "",
+  "main": "assets/js/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xsincrueldadx/luveck.git"
+  },
+  "author": "Funka.la <hola@funka.la>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xsincrueldadx/luveck/issues"
+  },
+  "homepage": "https://github.com/xsincrueldadx/luveck",
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-autoprefixer": "^2.1.0",
+    "gulp-filesize": "0.0.6",
+    "gulp-rename": "^1.2.0",
+    "gulp-uglify": "^1.1.0",
+    "gulp-util": "^3.0.4"
+  }
+}

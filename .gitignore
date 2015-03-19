@@ -43,3 +43,6 @@ luveck.sublime-workspace
 ### Bower
 bower_components/
 bower.json
+
+### Node stuff
+node_modules

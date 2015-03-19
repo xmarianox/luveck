@@ -1,18 +1,19 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js" <?php language_attributes(); ?>>
   <head>
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <title>Luveck</title>
-    
+
+    <title><?php wp_title('|', TRUE, 'right'); ?></title>
+
     <!-- Favicon -->
-    <link rel="shortcut icon" href="images/favicon.png">
+    <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/assets/images/favicon.png">
     <!-- Apple Icons -->
-    <link rel="apple-touch-icon" sizes="57x57" href="images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon-retina-180x180.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="<?php echo get_template_directory_uri(); ?>/assets/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="<?php echo get_template_directory_uri(); ?>/assets/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="<?php echo get_template_directory_uri(); ?>/assets/images/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?php echo get_template_directory_uri(); ?>/assets/images/apple-touch-icon-retina-180x180.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="Luveck">
@@ -21,9 +22,9 @@
     <meta http-equiv="x-rim-auto-match" content="none">
     <!-- Chrome app -->
     <meta name="mobile-web-app-capable" content="yes">
-    <link rel="icon" sizes="196x196" href="images/chrome-touch-icon-196x196.png">
+    <link rel="icon" sizes="196x196" href="<?php echo get_template_directory_uri(); ?>/assets/images/chrome-touch-icon-196x196.png">
     <!-- MS apps -->
-    <meta name="msapplication-TileImage" content="images/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileImage" content="<?php echo get_template_directory_uri(); ?>/assets/images/ms-touch-icon-144x144-precomposed.png">
     <meta name="msapplication-TileColor" content="#FFF">
     <!-- Google Tags -->
     <meta name="description" content="">
@@ -40,16 +41,6 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="">
     <meta name="twitter:creator" content="http://funka.la">
-    <!-- Styles -->
-
-    <!-- Dependencias -->
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/animate.min.css">
-
-    <!-- Layout -->
-    <link rel="stylesheet" href="css/main.min.css">
-
-    <script async src="js/modernizr.js"></script>
 
     <script>
     (function() {
@@ -57,7 +48,7 @@
 
         var MOBILE_SITE = 'mobile/', // site to redirect to
             NO_REDIRECT = 'noredirect'; // cookie to prevent redirect
-        
+
         // I only want to redirect iPhones, Android phones and a handful of 7" devices
         if (isMobile.apple.phone || isMobile.android.phone || isMobile.seven_inch) {
             // Only redirect if the user didn't previously choose
@@ -69,54 +60,82 @@
         }
     })();
     </script>
+
+    <?php wp_head(); ?>
+
+    <script>
+      var LUVECK_MAP_MARKER = '<?php echo get_template_directory_uri(); ?>/assets/images/map-pin.png';
+    </script>
   </head>
-  <body>
+
+  <body <?php body_class(); ?>>
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    
+
     <div id="preloader">
       <div id="status">
-        <img src="images/logo.png" height="52" width="151" alt="Luveck" class="logo">
-        <img src="images/bx_loader.gif" height="32" width="32" alt="" class="loader">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" height="52" width="151" alt="Luveck" class="logo">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/bx_loader.gif" height="32" width="32" alt="" class="loader">
       </div>
     </div>
 
     <main>
-      <?php require 'nav.php'; ?>
-      
-      <div class="content" id="home">
-        <?php require 'views/com-tab-home.php'; ?>
-      </div><!-- home -->
+      <aside>
+        <h1 class="brand_logo">Luveck</h1>
 
-      <div class="content" id="sobreLuveck">
-        <?php require 'views/com-tab-sobreLuveck.php'; ?>
-      </div><!-- sobreLuveck -->
+        <?php
+        wp_nav_menu(array(
+          'theme_location' => 'main',
+          'container'      => 'nav',
+          'menu_class'     => 'tabs'
+        ));
+        ?>
 
-      <div class="content" id="productos">
-        <?php require 'views/com-tab-productos.php'; ?>
-      </div><!-- productos -->
+        <ul class="contactos">
+          <li><a href="" title="Mail"><i class="fa fa-envelope"></i></a></li>
+          <li><a href="" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+        </ul><!-- .contactos -->
+      </aside>
 
-      <div class="content" id="certificaciones">
-        <?php require 'views/com-tab-certificaciones.php'; ?>
-      </div><!-- certificaciones -->
+<?php
+$locations  = get_nav_menu_locations();
+$menu_meta  = wp_get_nav_menu_object($locations['main']);
+$menu_items = wp_get_nav_menu_items($menu_meta->term_id, array(
+  'update_post_term_cache' => FALSE
+));
 
-      <div class="content" id="investigacion">
-        <?php require 'views/com-tab-investigacion.php'; ?>
-      </div><!-- investigacion -->
-      <div class="content" id="servicioClientes">
-        <?php require 'views/com-tab-contacto.php'; ?>
-      </div><!-- #servicioClientes -->
+$menu = array();
 
+foreach ($menu_items as $item) {
+  if ($item->menu_item_parent == 0) {
+    $menu[$item->ID] = $item;
+
+    continue;
+  }
+
+  if (!isset($menu[$item->menu_item_parent]->subitems)) {
+    $menu[$item->menu_item_parent]->subitems = [];
+  }
+
+  $menu[$item->menu_item_parent]->subitems[] = $item;
+}
+?>
+
+<?php
+foreach ($menu as $item) :
+  $post = get_post($item->object_id);
+  setup_postdata($post);
+
+  $template = get_page_template();
+?>
+<div class="content" id="content-<?php echo $item->object_id; ?>">
+  <?php if (is_file($template)) include $template; ?>
+</div>
+<?php endforeach; ?>
     </main>
-    <!-- scripts -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery.tinycarousel.min.js"></script>
-    <script src="js/jquery.scrollTo.min.js"></script>
-    <script src="js/jquery.nanoscroller.min.js"></script>
-    <!-- google maps api -->
-    <script src="http://maps.googleapis.com/maps/api/js?v=3"></script>
-    <!-- main -->
-    <script src="js/main.min.js"></script>
-</body>
+
+    <?php wp_footer(); ?>
+  </body>
 </html>
