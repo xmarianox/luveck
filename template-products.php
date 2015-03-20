@@ -24,7 +24,7 @@ while ($products->have_posts()) :
 
         <div class="animated fadeInUp"><?php the_content(); ?></div>
 
-        <div class="animated fadeInUp">
+        <div class="presentaciones animated fadeInUp">
           <h2>Presentaciones</h2>
 
           <ul>

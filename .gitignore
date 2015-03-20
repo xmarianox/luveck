@@ -39,6 +39,7 @@ Thumbs.db
 ### Configuracion del proyecto
 luveck.sublime-project
 luveck.sublime-workspace
+data.md
 
 ### Bower
 bower_components/
