@@ -191,35 +191,40 @@ $(document).ready(function() {
 	*/
 	$('#sliderHome').tinycarousel({
         axis: "y",
-        animationTime: 800,
-        infinite: false,
+        animationTime: 1000,
+        infinite: true,
+        interval: true
     });
 
-    var slideMarkers = $('.goToSlide');
-    var sliderHome = $('#sliderHome').data('plugin_tinycarousel');
-    var activeSlide = sliderHome.slideCurrent;
-    // Goto Slide
-    $('.goToSlide').click(function(event) {
-    	event.preventDefault();
-    	$('.goToSlide').removeClass('currentSlide');
+	/*
+	*	El Cliente pidio quitar esta funcionalidad.
+	*    
+		var slideMarkers = $('.goToSlide');
+	    var sliderHome = $('#sliderHome').data('plugin_tinycarousel');
+	    var activeSlide = sliderHome.slideCurrent;
+	    // Goto Slide
+	    $('.goToSlide').click(function(event) {
+	    	event.preventDefault();
+	    	$('.goToSlide').removeClass('currentSlide');
 
-    	var slide = $(this).attr('href');
-    	switch(slide) {
-    		case "slide-1":
-    			sliderHome.move(0);
-    			break;
-    		case "slide-2":
-    			sliderHome.move(1);
-    			break;
-    		case "slide-3":
-    			sliderHome.move(2);
-    			break;
-    	}
+	    	var slide = $(this).attr('href');
+	    	switch(slide) {
+	    		case "slide-1":
+	    			sliderHome.move(0);
+	    			break;
+	    		case "slide-2":
+	    			sliderHome.move(1);
+	    			break;
+	    		case "slide-3":
+	    			sliderHome.move(2);
+	    			break;
+	    	}
 
-    	$(this).addClass('currentSlide');
+	    	$(this).addClass('currentSlide');
 
-    	return null;
-    });
+	    	return null;
+	    });
+	*/
 
     /*
      * Scripts Sobre luveck

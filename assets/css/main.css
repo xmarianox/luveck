@@ -726,7 +726,7 @@ input, textarea {
 .btn:hover {
 	color: #d8934c;
 }
-#servicioClientes .btn {
+#form-contacto .btn {
 	float: right;
 }
 /* mapa */
