@@ -3,9 +3,6 @@
 // We don't need the ACF UI
 define('ACF_LITE', TRUE);
 
-require_once __DIR__ . '/includes/advanced-custom-fields/acf.php';
-require_once __DIR__ . '/includes/acf-repeater/acf-repeater.php';
-
 /**
  * Register needed post types
  */
@@ -13,8 +10,8 @@ add_action('after_setup_theme', function(){
   // Products
   $labels = array(
     'name'           => _x('Products', 'post type general name', 'luveck'),
-    'singular_name'  => _x('Product', 'post type singular name','luveck'),
-    'name_admin_bar' => _x('Products', 'add new on admin bar','luveck'),
+    'singular_name'  => _x('Product', 'post type singular name', 'luveck'),
+    'name_admin_bar' => _x('Products', 'add new on admin bar', 'luveck'),
     'add_new'        => _x('Add product', 'product', 'luveck'),
     'add_new_item'   => __('Add product', 'luveck')
   );
@@ -36,8 +33,8 @@ add_action('after_setup_theme', function(){
   // Certifications
   $labels = array(
     'name'           => _x('Certificates', 'post type general name', 'luveck'),
-    'singular_name'  => _x('Certification', 'post type singular name','luveck'),
-    'name_admin_bar' => _x('Certificates', 'add new on admin bar','luveck'),
+    'singular_name'  => _x('Certification', 'post type singular name', 'luveck'),
+    'name_admin_bar' => _x('Certificates', 'add new on admin bar', 'luveck'),
     'add_new'        => _x('Add certification', 'product', 'luveck'),
     'add_new_item'   => __('Add certification', 'luveck')
   );
@@ -59,7 +56,7 @@ add_action('after_setup_theme', function(){
   // Contact
   $labels = array(
     'name'          => _x('Contact', 'post type general name', 'luveck'),
-    'singular_name' => _x('Contact', 'post type singular name','luveck')
+    'singular_name' => _x('Contact', 'post type singular name', 'luveck')
   );
 
   register_post_type('contact', array(
@@ -149,7 +146,7 @@ add_action('wp_enqueue_scripts', function(){
 /**
  * Change the menu items href to hashes
  */
-add_filter('nav_menu_link_attributes', function($atts, $item, $args, $depth){
+add_filter('nav_menu_link_attributes', function ($atts, $item, $args, $depth) {
   $href = '#content-' . $item->object_id;
 
   if ($depth) {
@@ -165,6 +162,51 @@ add_filter('nav_menu_link_attributes', function($atts, $item, $args, $depth){
  * Registering custom fields
  */
 add_action('after_setup_theme', function(){
+  register_field_group(array(
+    'id'         => 'acf_product_information',
+    'title'      => __('Product information', 'luveck'),
+    'fields'     => array(
+      array(
+        'key'           => 'field_5512479feeb5e',
+        'label'         => __('Presentations', 'luveck'),
+        'name'          => 'luveck_product_presentations',
+        'type'          => 'qtranslate_textarea',
+        'default_value' => '',
+        'placeholder'   => '',
+        'maxlength'     => '',
+        'rows'          => '',
+        'formatting'    => 'br',
+        'prepend'       => __('Insert one product by line.', 'luveck'),
+        'append'        => ''
+      ),
+      array(
+        'key'         => 'field_551247e901d46',
+        'label'       => __('Medical leaflet', 'luveck'),
+        'name'        => 'luveck_product_leaflet',
+        'type'        => 'qtranslate_file',
+        'save_format' => 'object',
+        'library'     => 'uploadedTo',
+      ),
+    ),
+    'location'   => array(
+      array(
+        array(
+          'param'    => 'post_type',
+          'operator' => '==',
+          'value'    => 'product',
+          'order_no' => 0,
+          'group_no' => 0,
+        ),
+      ),
+    ),
+    'options'    => array(
+      'position'       => 'normal',
+      'layout'         => 'default',
+      'hide_on_screen' => array(),
+    ),
+    'menu_order' => 0,
+  ));
+
   register_field_group(array(
     'id'         => 'acf_branches',
     'title'      => __('Branches', 'luveck'),
@@ -267,7 +309,8 @@ add_action('after_setup_theme', function(){
   ));
 });
 
-function luveck_send_contact() {
+function luveck_send_contact()
+{
   header('Content-Type: application/json');
 
   $data     = $_POST;
@@ -277,8 +320,8 @@ function luveck_send_contact() {
   );
 
   if (
-    (!isset($data['nombre-contacto'])  OR empty($data['nombre-contacto'])) OR
-    (!isset($data['email-contacto'])   OR empty($data['email-contacto'])) OR
+    (!isset($data['nombre-contacto']) OR empty($data['nombre-contacto'])) OR
+    (!isset($data['email-contacto']) OR empty($data['email-contacto'])) OR
     (!isset($data['mensaje-contacto']) OR is_email($data['mensaje-contacto']))
   ) {
     $response['status']  = 'error';
@@ -299,11 +342,10 @@ function luveck_send_contact() {
     'ping_status'  => 'closed'
   ));
 
-  if ($post_id  == 0 OR is_wp_error($post_id)) {
+  if ($post_id == 0 OR is_wp_error($post_id)) {
     $response['status']  = 'error';
     $response['message'] = __('An error has occurred. Please try again.', 'luveck');
-  }
-  else {
+  } else {
     add_post_meta($post_id, 'contact_from_name', $data['nombre-contacto']);
     add_post_meta($post_id, 'contact_from_email', $data['email-contacto']);
 
@@ -325,8 +367,7 @@ add_action('wp_ajax_nopriv_luveck_send_contact', 'luveck_send_contact');
  * @param string $size
  * @return string
  */
-function get_content_image($post_id, $size = 'large') {
+function get_content_image($post_id, $size = 'large')
+{
   return array_shift(wp_get_attachment_image_src(get_post_thumbnail_id($post_id), $size));
 }
-
-
