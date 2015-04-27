@@ -3,76 +3,117 @@
  * Template name: Products
  */
 
-$products = new WP_Query(array(
-  'post_type' => 'product',
-  'nopaging'  => TRUE
-));
+$page_image = get_content_image(get_the_ID(), 'large');
+$page_link  = 'content-' . get_the_ID();
+$categories = get_terms('product_category');
 ?>
-<section class="section-products">
-  <article>
-    <div class="col col-49">
-      <h1 class="animated fadeInUp"><?php the_title(); ?></h1>
+<section id="<?php echo $page_link; ?>" class="item fadeIn has-navigation item-products">
+  <div id="product-categories" class="item has-featured-image item-product-categories">
+    <div class="item-image">
+      <img src="<?php echo $page_image; ?>">
+    </div>
 
-<?php
-$i = 0;
+    <div class="item-content">
+      <div class="scroller">
+        <div class="nano">
+          <div class="nano-content">
+            <div class="scroller-content">
+              <header class="item-header">
+                <h1><?php the_title(); ?></h1>
+              </header>
 
-while ($products->have_posts()) :
-  $products->the_post();
-
-  $presentations = array_filter(explode("\n", (string) get_field('luveck_product_presentations')));
-  $leaflet       = get_field('luveck_product_leaflet');
-?>
-      <div id="product-<?php the_ID(); ?>" class="content-prod <?php echo (++$i === 1) ? 'active' : NULL; ?>">
-        <h2 class="animated fadeInUp"><?php the_title(); ?></h2>
-
-        <div class="animated fadeInUp"><?php the_content(); ?></div>
-
-  <?php if (!empty($presentations)) : ?>
-        <div class="presentaciones animated fadeInUp">
-          <h2><?php _e('Presentations') ?></h2>
-
-          <ul>
-    <?php foreach ($presentations as $presentation) : ?>
-            <li><?php echo $presentation; ?></li>
-    <?php endforeach; ?>
-          </ul>
+              <ul class="menu menu-product-categories">
+              <?php foreach ($categories as $category) : ?>
+                <li><a href="#products-<?php echo $category->slug; ?>"><?php echo $category->name; ?></a></li>
+              <?php endforeach; ?>
+              </ul>
+            </div>
+          </div>
         </div>
-  <?php endif; ?>
-
-  <?php if ($leaflet) : ?>
-        <a href="<?php echo $leaflet['url']; ?>" class="btn_descargar animated fadeInUp" title="<?php esc_attr_e('Download doctor insert', 'luveck'); ?>">
-          <span><?php _e('Download doctor insert', 'luveck') ?></span>
-          <span class="shape"><i class="icon"></i></span>
-        </a>
-  <?php endif; ?>
       </div>
-<?php
-endwhile;
-$products->rewind_posts();
-?>
     </div>
-    <!-- col -->
+  </div>
 
-    <div class="col col-51">
-      <ul class="list-prod">
-<?php
-$i = 0;
+  <?php
+  foreach ($categories as $category) :
+    $products = new WP_Query(array(
+      'post_type' => 'product',
+      'tax_query' => array(
+        array(
+          'taxonomy' => 'product_category',
+          'field'    => 'term_id',
+          'terms'    => [$category->term_id]
+        )
+      )
+    ));
+  ?>
+  <div id="products-<?php echo $category->slug; ?>" class="item item-product-category">
+    <?php
+    while ($products->have_posts()) :
+      $products->the_post();
 
-while ($products->have_posts()) :
-$products->the_post();
-?>
-        <li>
-          <a href="#product-<?php the_ID(); ?>" class="<?php echo (++$i === 1) ? 'currentProd' : NULL; ?>">
-            <figure>
-              <img src="<?php echo get_content_image(get_the_ID(), 'nav-thumbnail'); ?>" alt="<?php the_title(); ?>">
-              <span class="borderCurrent"></span>
-            </figure>
-          </a>
-        </li>
-<?php endwhile; ?>
-      </ul>
+      $leaflet       = get_field('luveck_product_leaflet');
+      $image_context = get_field('image_context', 'product_category_' . $category->term_id);
 
-      <span class="arrow arrow-prod"><i class="fa fa-angle-down"></i></span>
-    </div>
-  </article>
+      if (isset($image_context['sizes'])) {
+        $image_context = $image_context['sizes']['large'];
+      } else {
+        $image_context = NULL;
+      }
+    ?>
+    <article id="product-<?php echo get_the_slug(); ?>" class="item item-product has-featured-image">
+      <div class="item-image product-images">
+        <div class="product-image-featured">
+          <img src="<?php echo $image_context; ?>">
+        </div>
+
+        <div class="product-image">
+          <img src="<?php echo get_content_image(get_the_ID(), 'large'); ?>">
+        </div>
+      </div>
+
+      <div class="item-content">
+
+        <div class="scroller">
+          <div class="nano">
+            <div class="nano-content">
+              <div class="scroller-content">
+                                <ul class="menu">
+                                  <li><a href="#product-categories"><span class="fa fa-arrow-circle-o-left"></span> <?php _e('Back to products list', 'luveck'); ?></a></li>
+                                </ul>
+
+                                <h1><?php the_title(); ?></h1>
+
+                                <?php the_content(); ?>
+
+                                <?php if ($leaflet) : ?>
+                                <p>
+                                  <a class="btn" href="<?php echo $leaflet['url']; ?>" class="btn_descargar animated fadeInUp" title="<?php esc_attr_e('Download doctor insert', 'luveck'); ?>">
+                                    <span class="icon fa fa-file-text-o"></span>
+                                    <span><?php _e('Download doctor insert', 'luveck'); ?></span>
+                                  </a>
+                                </p>
+                                <?php endif; ?>
+
+                                <hr class="space">
+
+                                <h2><?php _e('Presentations', 'luveck'); ?></h2>
+
+                                <ul class="inline-list menu menu-products">
+                                  <?php foreach ($products->posts as $post) : ?>
+                                  <li>
+                                    <a class="btn" href="#product-<?php echo $post->post_name; ?>"><?php echo get_the_title($post); ?></a>
+                                  </li>
+                                  <?php endforeach; ?>
+                                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </article>
+    <?php endwhile; ?>
+  </div>
+  <?php endforeach; ?>
 </section>

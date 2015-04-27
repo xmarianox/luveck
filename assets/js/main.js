@@ -1,332 +1,251 @@
 (function($){
-// Dinamic Height
-function calcutaleHeight(element) {
-	'use strict';
-	var windowHeight = $(window).height();
-	var finalHeight = windowHeight;
-	$(element).height(finalHeight);
-}
+  'use strict';
 
-// Tabs initial
-function tabInit() {
-	'use strict';
+  $(window).load(function(){
+    $('.site-loader').fadeOut('slow');
+  });
 
-	$('.content').css('display', 'none');
-	var active = $('.tabs > .current-menu-item > a');
-
-	if (!active.size()) {
-		$('.tabs > .menu-item:first-child')
-			.addClass('current-menu-item');
-
-		active = $('.tabs > .current-menu-item > a');
-	}
-
-	var elem = active.attr('href');
-	$(elem).css('display', 'block');
-}
-
-// Google maps api.
-function initialize() {
-	'use strict';
-
-	var infowindow = new google.maps.InfoWindow();
-	var pointer = { url: LUVECK_MAP_MARKER, size: new google.maps.Size(39,56)};
-	var marker, i, contentString, branch;
-
-	var locations = [
-		['Luveck Medical Corporation', 25.8713186, -80.1997791, 1,'95 NW 105th Ave. Miami, Florida 33172. USA'],
-		['Dromeinter Honduras', 13.80868, -87.2613573, 2, 'Barrio sabanagrande, Tegucigalpa, Honduras.'],
-		['Dromeinter Guatemala', 14.6028638, -90.5549395, 3, 'Calle "A" 22-01, Zona, 11 Residenciales San Jorge, Guatemala']
-	]
-
-	var mapOptions = {
-		zoom: 4,
-		//center: new google.maps.LatLng(25.8713186, -80.1997791),
-		disableDefaultUI: true
-	}
-
-	var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-	var latlngbounds = new google.maps.LatLngBounds(),
-		location;
-
-	for (i in LUVECK_BRANCHES) {
-		branch = LUVECK_BRANCHES[i];
-		location = new google.maps.LatLng(branch.location.lat, branch.location.lng);
-
-		marker = new google.maps.Marker({
-			position: location,
-			icon: pointer,
-			map: map
-		});
-
-		// adds the branch as part of marker object
-		marker.branch = branch;
-
-		latlngbounds.extend(location);
-
-		google.maps.event.addListener(marker, 'click', (function(marker, i) {
-			return function() {
-				var content = '<div class="content-string">'
-					+ '<h2>'+ marker.branch.name +'</h2>'
-					+ '<p>' + marker.branch.address + '</p>'
-					+ '</div>';
-
-				infowindow.setContent(content);
-				infowindow.open(map, marker);
-			}
-		})(marker, i));
-	}
-
-	map.setCenter(latlngbounds.getCenter());
-	map.fitBounds(latlngbounds);
-
-	$('.sucursales').click(function(event) {
-    	event.preventDefault();
-    	$('.sucursales').removeClass('active');
-    	// elemento.
-    	$(this).addClass('active');
-
-		var sucursal = $(this),
-			coords   = sucursal.data('coords').split(','),
-			location = new google.maps.LatLng(coords[0], coords[1]);
-
-		map.setZoom(16);
-		map.setCenter(location);
-    });
-}
-
-function loader() {
-	$('#preloader .logo').addClass('animated fadeOut');
-	$("#status").addClass('animated fadeOut');
-	$("#preloader").delay(900).fadeOut("slow");
-	$("body").delay(900).css({overflow:"visible"})
-}
-
-// Load
-$(window).load(
-	loader(),
-	tabInit(),
-	calcutaleHeight('.nano, .list-cert, .list-prod, .list-info')
-);
-
-// Ready
-$(document).ready(function() {
-	'use strict';
-
-	// Resize
-	$(window).resize(calcutaleHeight('.nano, .list-cert, .list-prod, list-info'));
-
-	/*
-	*	Custom tabs
-	*/
-	$('.tabs .menu-item a').click(function(event) {
-		event.preventDefault();
-
-		var $trigger = $(this),
-			$parent  = $trigger.closest('.menu-item');
-
-		if ($trigger.parents('.sub-menu').size()) {
-			return;
-		}
-
-		$('.content').css('display', 'none');
-		//$('.content').removeClass('animate fadeInRightBig');
-		$('.menu-item-has-children').removeClass('open');
-		$('.tabs a').removeClass('active');
-
-		$trigger.toggleClass('active');
-
-		var elementActive = $(this).attr('class');
-		var tab = $(this).attr('href');
-		//$(tab).addClass('animate fadeInRightBig')
-
-		if ($parent.hasClass('menu-item-has-children')) {
-			$parent.addClass('open');
-		}
-
-		if (tab == '#content-15' || tab == '#content-28') {
-			initialize();
-		}
-		$(tab).css('display', 'block');
-	});
-
-	$('.openDrop').click(function(event) {
-		event.preventDefault();
-		var element = $(this).attr('data-rel');
-		$(element).toggleClass('open');
-	});
-
-	$('#drop-prod a').click(function(event) {
-		event.preventDefault();
-		$('.content-prod').removeClass('active');
-		$('.list-prod a').removeClass('currentProd');
-
-		var prod = $(this).attr('href');
-		$(prod).addClass('active');
-		var lista = $('.list-prod');
-
-		var currentItem = lista.find('a[href='+ prod +']');
-		currentItem.addClass('currentProd');
-
-		lista.scrollTo(currentItem, 1000);
-	});
-
-	$('.presentaciones a').click(function(event) {
-		event.preventDefault();
-		$('.content-prod').removeClass('active');
-		$('.list-prod a').removeClass('currentProd');
-
-		var prod = $(this).attr('href');
-		$(prod).addClass('active');
-		var lista = $('.list-prod');
-
-		var currentItem = lista.find('a[href='+ prod +']');
-		currentItem.addClass('currentProd');
-
-		lista.scrollTo(currentItem, 1000);
-	});
-
-	/*
-	*	Scripts HOME
-	*/
-	$('#sliderHome').tinycarousel({
-        axis: "y",
-        animationTime: 1000,
-        infinite: true,
-        interval: true
-    });
-
-	/*
-	*	El Cliente pidio quitar esta funcionalidad.
-	*    
-		var slideMarkers = $('.goToSlide');
-	    var sliderHome = $('#sliderHome').data('plugin_tinycarousel');
-	    var activeSlide = sliderHome.slideCurrent;
-	    // Goto Slide
-	    $('.goToSlide').click(function(event) {
-	    	event.preventDefault();
-	    	$('.goToSlide').removeClass('currentSlide');
-
-	    	var slide = $(this).attr('href');
-	    	switch(slide) {
-	    		case "slide-1":
-	    			sliderHome.move(0);
-	    			break;
-	    		case "slide-2":
-	    			sliderHome.move(1);
-	    			break;
-	    		case "slide-3":
-	    			sliderHome.move(2);
-	    			break;
-	    	}
-
-	    	$(this).addClass('currentSlide');
-
-	    	return null;
-	    });
-	*/
+  /**
+   * Main menu
+   */
+  $('[data-action=open-menu]').on('click', function(ev){
+    ev.preventDefault();
 
     /*
-     * Scripts Sobre luveck
-     *
-     *  TODO: replace this code with the "Abstract sub menu navigation"
-     */
-    $('#drop-sobre a').click(function(event) {
-		event.preventDefault();
-		$('#drop-sobre a').removeClass('active');
-		$('.bullet').removeClass('active');
-		var element = $(this).attr('href');
-		$(this).addClass('active');
-		var lista = $('.list-info');
-		var bulletsList = $('.bullets');
-		var currentBullet = bulletsList.find('a[href='+ element +']');
-		currentBullet.addClass('active');
-		lista.scrollTo(element, 1000);
-	});
+    $('.main-navigation').addClass('active');
+    $('.menu-overlay').addClass('active');
 
-	/*
-	 * Abstract sub menu navigation
-	 */
-	$('.menu-item-has-children a').on('click', function(ev){
-		ev.preventDefault();
-
-		var trigger  = $(this),
-			target   = $(trigger.attr('href')),
-			contents = $('.content:not(:hidden)').find('.list-info');
-
-		contents.scrollTo(target, 1000);
-	});
-
-	$('.bullets a').click(function(event) {
-		event.preventDefault();
-
-		$('.bullet').removeClass('active');
-		var element = $(this).attr('href');
-		$(this).addClass('active');
-		var lista = $('.list-info');
-		lista.scrollTo(element, 1000);
-	});
-
-    // Scrollbar
-    $(".nano").nanoScroller();
-    /*
-	*	Scripts Productos
+    $('.main-navigation')[0].offsetWidth;
+    $('.menu-overlay')[0].offsetWidth;
     */
-    $('.list-prod a').click(function(event) {
-    	event.preventDefault();
-    	$('.content-prod').removeClass('active');
-    	$('.list-prod a').removeClass('currentProd');
-    	var producto = $(this).attr('href');
-    	$(this).addClass('currentProd')
-    	$(producto).addClass('active');
+
+    $('html').toggleClass('open-menu');
+  });
+
+  $(document).on('click', '.menu-overlay', function(ev){
+    $('html').toggleClass('open-menu');
+  });
+
+  /**
+   * Menu handler
+   */
+  $('.menu:not(.menu-contacts):not(.menu-languages) a').on('click', function(ev){
+    ev.preventDefault();
+
+    var $trigger = $(this),
+        $target  = $($trigger.attr('href')),
+        $targets = $target.siblings(),
+
+        $parent = $trigger.parent('li'),
+        $items  = $parent.siblings(),
+
+        $scroller = $target.find('.scroller');
+
+    // if ($parent.hasClass('menu-item-is-open')) {
+    //   $parent.removeClass('menu-item-is-open');
+
+    //   return;
+    // }
+
+    $targets.removeClass('active animated');
+
+    $target.addClass('active');
+    $target[0].offsetWidth;
+    $target.addClass('animated');
+
+    $items.removeClass('current-menu-item');
+    $items.removeClass('menu-item-is-open');
+
+    $parent.addClass('current-menu-item');
+
+    if ($parent.hasClass('menu-item-has-children')) {
+      $parent.addClass('menu-item-is-open');
+
+      var $subitems = $parent.find('.sub-menu a');
+
+      $subitems.removeClass('fadeInLeft');
+      $subitems.each(function(){
+        this.offsetWidth
+        $(this).addClass('fadeInLeft');
+      });
+    }
+
+    $('html').removeClass('open-menu');
+
+    $scroller.find('.nano').nanoScroller({
+      sliderMaxHeight: 11,
+      sliderMinHeight: 11
     });
 
-    $('.arrow-prod').click(function(event) {
-    	event.preventDefault();
-    	$('.list-prod').scrollTo('#selector_soprapen', 1000);
+    $(document).trigger('lv.changed_section', [$trigger, $target]);
+  });
+
+  $('.menu:not(.menu-contacts):not(.menu-languages):not(.menu-products) li:first-child > a').trigger('click');
+
+  /**
+   * Shows the first sub item by default
+   */
+  $('.item').each(function(){
+    $(this).find('.item').first().addClass('active animated');
+  });
+
+  /**
+   * Main slideshow
+   */
+  $('.item-home .slider').bxSlider({
+    mode: 'vertical',
+    infiniteLoop: true,
+    controls: false,
+    auto: true,
+    autoStart: true
+  });
+
+  /**
+   * Sets images as backgrounds
+   */
+  $('.item-image:not(.product-images), .product-images div').each(function(){
+    var $el  = $(this),
+        $img = $el.find('img');
+
+    if (!$img.size()) {
+      return;
+    }
+
+    $el.css('background-image', 'url(' + $img.attr('src') + ')');
+    $img.hide();
+  });
+
+  /**
+   * Products interaction
+   */
+  $('body').on('click', '.menu-products a', function(ev){
+    var $link  = $(this),
+        $menus = $('.menu-products'),
+        index  = $link.parent().index();
+
+    $menus.each(function(){
+      var $items = $(this).find('li');
+
+      $items.removeClass('current-menu-item');
+      $items.eq(index).addClass('current-menu-item');
+    });
+  });
+
+  /**
+   * Contact interactions
+   */
+
+  var
+    pointer = {url: LUVECK_MAP_MARKER, size: new google.maps.Size(39,56)},
+
+    // Center point
+    mapCenter = new google.maps.LatLng(25.8713186, -80.1997791),
+
+    // Map pointers
+    mapPoints = new google.maps.LatLngBounds(),
+
+    // Infowindow instance
+    mapInfo = new google.maps.InfoWindow(),
+
+    // Map instance
+    map = new google.maps.Map(document.getElementById('contact-map'), {
+      zoom: 4,
+      center: mapCenter,
+      panControl: false,
+      mapTypeControl: false,
+      scaleControl: false,
+      streetViewControl: false
     });
 
-    /*
-	*	Scripts Certificados
-    */
-    $('.list-cert a').click(function(event) {
-    	event.preventDefault();
-    	$('.content-cert').removeClass('active');
-    	$('.list-cert a').removeClass('currentCert');
-    	var certificacion = $(this).attr('href');
-    	$(this).addClass('currentCert')
-    	$(certificacion).addClass('active');
+  // Adding branches pointers
+  $('[data-branch]').each(function(){
+    var branch = $(this),
+        point  = new google.maps.LatLng(branch.data('lat'), branch.data('lng')),
+        marker = new google.maps.Marker({
+          position: point,
+          icon: pointer,
+          map: map
+        });
+
+    branch.data('marker', marker);
+
+    mapPoints.extend(point);
+  });
+
+  // Centering pointers
+  map.setCenter(mapPoints.getCenter());
+
+  $('body').on('click', '[data-action=show-branch]', function(ev){
+    ev.preventDefault();
+
+    var $trigger = $(this),
+        $branch  = $trigger.closest('.branch'),
+        data     = $branch.data();
+
+    $branch.siblings().removeClass('active');
+    $branch.addClass('active');
+
+    map.setCenter(data.marker.getPosition());
+    map.setZoom(16);
+  });
+
+  $(document).on('lv.changed_section', function(ev, trigger, target){
+    var $trigger = $(trigger),
+        $target  = $(target);
+
+    if (!$target.hasClass('item-contact')) {
+      return;
+    }
+
+    google.maps.event.trigger(map, 'resize');
+    map.setCenter(mapPoints.getCenter());
+    map.setZoom(4);
+  });
+
+  /*
+   * Contact form handler
+   */
+  var $messages = $('.form-feedback');
+
+  $('body').on('submit', '#form-contacto', function(ev){
+    ev.preventDefault();
+
+    var $form   = $(this),
+      $inputs = $form.find(':input'),
+      data    = $form.serialize();
+
+    $inputs.prop('disabled', true);
+    $messages.fadeOut().html();
+
+    $.post($form.attr('action'), data, function(response){
+      var $text = $('<p />', {
+        text: response.message,
+        'class': 'feedback ' + response.status
+      });
+
+      $messages.html($text).fadeIn();
+
+      $inputs.prop('disabled', false);
+
+      if (response.status == 'success') {
+        $form.get(0).reset();
+      }
     });
+  });
 
-    $('.arrow-cert').click(function(event) {
-    	event.preventDefault();
-    	$('.list-cert').scrollTo('#selector_iso', 1000);
-    });
+  /**
+   * Adds delays to submenus
+   */
+  $('.sub-menu').each(function(){
+    var $menu  = $(this),
+        $items = $menu.find('> li a');
 
-	/*
-	 * Contact form handler
-	 */
-	var $messages = $('.form-message');
+    $items
+      .addClass('animated fadeInLeft')
+      .each(function(i){
+        var delay = .2 * i;
 
-	$('body').on('submit', '#form-contacto', function(ev){
-		ev.preventDefault();
-
-		var $form   = $(this),
-			$inputs = $form.find(':input'),
-			data    = $form.serialize();
-
-		$inputs.prop('disabled', true);
-		$messages.fadeOut().html();
-
-		$.post($form.attr('action'), data, function(response){
-			$messages.html(response.message).fadeIn();
-
-			$inputs.prop('disabled', false);
-
-			if (response.status == 'success') {
-				$form.get(0).reset();
-			}
-		});
-	});
-});
+        $(this).css('animation-delay', delay + 's');
+      });
+  });
 })(jQuery);

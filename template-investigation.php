@@ -3,12 +3,22 @@
  * Template name: Investigations
  */
 ?>
-<section class="section-investigation">
-  <article>
-    <div class="col col-49">
-      <h1 class="animated fadeInUp"><?php the_title(); ?></h1>
-      <?php the_content(); ?>
+<section id="content-<?php the_ID(); ?>" class="item fadeIn has-featured-image">
+  <div class="item-image"><img src="<?php echo get_content_image(get_the_ID(), 'large') ?>"></div>
+
+  <article class="item-content">
+    <div class="scroller">
+      <div class="nano">
+        <div class="nano-content">
+          <div class="scroller-content">
+            <header class="item-header">
+              <h1><?php the_title(); ?></h1>
+            </header>
+
+            <?php the_content(); ?>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="col col-51"></div>
   </article>
 </section>

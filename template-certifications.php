@@ -8,49 +8,58 @@ $certs = new WP_Query(array(
   'nopaging'  => TRUE
 ));
 ?>
-<section class="section-certifications">
-  <article>
-    <div class="col col-49">
-      <h1 class="animated fadeInUp">Certificaciones</h1>
+<section id="content-<?php the_ID(); ?>" class="item fadeIn has-navigation" data-animation="fadeIn">
+  <div class="item-content">
+    <div class="scroller">
+      <div class="nano">
+        <div class="nano-content">
+          <div class="scroller-content">
+            <header class="item-header">
+              <h1>Certificaciones</h1>
+            </header>
 
 <?php
-$i = 0;
-
 while ($certs->have_posts()) :
   $certs->the_post();
 ?>
-        <div id="cert-<?php the_ID(); ?>" class="content-cert <?php echo (++$i === 1) ? 'active' : NULL; ?>">
-          <div class="animated fadeInLeft">
-            <h2><?php the_title(); ?></h2>
-            <?php the_content(); ?>
-          </div>
-        </div>
+            <article id="sub-content-<?php the_ID(); ?>" class="item">
+              <div class="item-image"><img src="<?php echo get_content_image(get_the_ID(), 'large'); ?>"></div>
+
+              <div class="item-content">
+                <header>
+                  <h2><?php the_title(); ?></h2>
+                </header>
+
+                <div><?php the_content(); ?></div>
+              </div>
+            </article>
 <?php
 endwhile;
 $certs->rewind_posts();
 ?>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <div class="col col-51">
-      <ul class="list-cert">
+
+
+  <div class="item-navigation">
+    <ul class="menu">
 <?php
-$i = 0;
-
 while ($certs->have_posts()) :
   $certs->the_post();
 ?>
-        <li>
-          <a href="#cert-<?php the_ID(); ?>" class="<?php echo (++$i === 1) ? 'currentProd' : NULL; ?>">
-            <figure>
-              <img src="<?php echo get_content_image(get_the_ID(), 'nav-thumbnail'); ?>" alt="<?php the_title(); ?>">
-
-              <span class="borderCurrent"></span>
-            </figure>
-          </a>
-        </li>
-<?php endwhile; ?>
-      </ul>
-      <span class="arrow arrow-cert"><i class="fa fa-angle-down"></i></span>
-    </div>
-  </article>
+      <li>
+        <a href="#sub-content-<?php the_ID(); ?>">
+          <img src="<?php echo get_content_image(get_the_ID(), 'large') ?>" alt="<?php the_title(); ?>">
+        </a>
+      </li>
+<?php
+endwhile;
+$certs->rewind_posts();
+?>
+    </ul>
+  </div>
 </section>

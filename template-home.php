@@ -2,29 +2,16 @@
 /**
  * Template name: Home
  */
+
+$images = get_field('slideshow_images');
 ?>
-<section>
-    <article id="sliderHome">
-
-        <div class="viewport">
-            <ul class="overview">
-                <li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/img-banner-1.jpg" alt="image 3" /></li>
-                <li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/img-banner-3.jpg" alt="image 2" /></li>
-                <li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/img-banner-2.jpg" alt="image 1" /></li>
-            </ul><!-- overview -->
-        </div><!-- viewport -->
-
-        <!-- Funcionalidad dada de baja por el cliente
-        <div class="slider-menu">
-          <ul>
-            <li><a href="slide-1" class="goToSlide currentSlide">Trabajamos para mejorar la<br> salud de las personas.</a></li>
-            <li><a href="slide-2" class="goToSlide">Pensando en nuestra<br>comunidad.</a></li>
-            <li><a href="slide-3" class="goToSlide">Nuevas investigaciones</a></li>
-            <li><h2>Encuentro para el<br> desarrollo y la<br> investigación Luveck 2014</h2></li>
-          </ul>
-        </div> 
-        -->
-
-    </article><!-- sliderHome -->
-
+<section id="content-<?php the_ID(); ?>" class="item item-home fadeIn">
+  <ul class="bxslider slider">
+<?php
+foreach ($images as $image) :
+  $image_src = array_shift(wp_get_attachment_image_src($image['image']['id'], 'large'));
+?>
+    <li><div class="image" style="background-image:url(<?php echo $image_src; ?>);"><img src="<?php echo $image_src; ?>"></div></li>
+<?php endforeach; ?>
+  </ul>
 </section>

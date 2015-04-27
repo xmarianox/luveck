@@ -30,6 +30,10 @@ add_action('after_setup_theme', function(){
     )
   ));
 
+  register_taxonomy('product_category', 'product', array(
+    'hierarchical' => TRUE
+  ));
+
   // Certifications
   $labels = array(
     'name'           => _x('Certificates', 'post type general name', 'luveck'),
@@ -112,48 +116,81 @@ add_action('wp_enqueue_scripts', function(){
   $uri = get_template_directory_uri() . '/assets/css/animate.min.css';
   wp_enqueue_style('luveck-animate', $uri, array(), '3.2.3');
 
-  // Main CSS
-  $file    = '/assets/css/main.min.css';
-  $deps    = array('luveck-fontawesome', 'luveck-animate');
-  $version = filemtime(get_template_directory() . $file);
-
-  wp_enqueue_style('luveck-main', get_template_directory_uri() . $file, $deps, $version);
-
   // Modernizer
   $uri = '/assets/js/modernizr.js';
   wp_enqueue_script('luveck-modernizr', get_template_directory_uri() . $uri, array(), '2.8.3', FALSE);
 
-  // jQuery tinycarousel
-  $uri = '/assets/js/jquery.tinycarousel.min.js';
-  wp_enqueue_script('luveck-tinycarousel', get_template_directory_uri() . $uri, array('jquery'), '2.1.7', TRUE);
+  // Shitty hack
+  if (get_page_template() === realpath(__DIR__ . '/template-mobile.php')) :
+    $css = array(
+      array(
+        'name' => 'luveck-bxslider',
+        'file' => '/assets/css/jquery.bxslider.min.css',
+        'deps' => array(),
+        'ver'  => '4.1.2'
+      ),
+      array(
+        'name' => 'luveck-main-mobile',
+        'file' => '/assets/css/main.mobile.css',
+        'deps' => array('luveck-fontawesome', 'luveck-animate', 'luveck-bxslider'),
+        'ver'  => filemtime(get_template_directory() . '/assets/css/main.mobile.css')
+      )
+    );
 
-  // jQuery scrollTo
-  $uri = '/assets/js/jquery.scrollTo.min.js';
-  wp_enqueue_script('luveck-scrollto', get_template_directory_uri() . $uri, array('jquery'), '1.4.14', TRUE);
+    $js = array(
+      array(
+        'name' => 'luveck-bxslider',
+        'file' => '/assets/js/jquery.bxslider.min.js',
+        'deps' => array('jquery'),
+        'ver'  => '4.1.2'
+      ),
+      array(
+        'name' => 'luveck-main-mobile',
+        'file' => '/assets/js/main.mobile.js',
+        'deps' => array('jquery', 'luveck-bxslider'),
+        'ver'  => filemtime(get_template_directory() . '/assets/js/main.mobile.js')
+      )
+    );
+  else :
+    $css = array(
+      array(
+        'name' => 'luveck-main',
+        'file' => '/assets/css/compiled.css',
+        'deps' => array('luveck-fontawesome', 'luveck-animate'),
+        'ver'  => filemtime(get_template_directory() . '/assets/css/compiled.css')
+      )
+    );
 
-  // jQuery scrollTo
-  $uri = '/assets/js/jquery.nanoscroller.min.js';
-  wp_enqueue_script('luveck-nanoscroller', get_template_directory_uri() . $uri, array('jquery'), '0.8.4', TRUE);
+    $js = array(
+      array(
+        'name' => 'luveck-main',
+        'file' => '/assets/js/compiled.js',
+        'deps' => array('google-maps', 'jquery'),
+        'ver'  => filemtime(get_template_directory() . '/assets/js/compiled.js')
+      )
+    );
+  endif;
 
-  // Main JS
-  $file    = '/assets/js/main.js';
-  $deps    = array('google-maps', 'jquery', 'luveck-tinycarousel', 'luveck-scrollto', 'luveck-nanoscroller');
-  $version = filemtime(get_template_directory() . $file);
+  foreach ($css as $file) {
+    wp_enqueue_style($file['name'], get_template_directory_uri() . $file['file'], $file['deps'], $file['ver']);
+  }
 
-  wp_enqueue_script('luveck-mainjs', get_template_directory_uri() . $file, $deps, $version, TRUE);
+  foreach ($js as $file) {
+    wp_enqueue_script($file['name'], get_template_directory_uri() . $file['file'], $file['deps'], $file['ver'], TRUE);
+  }
 });
 
 /**
  * Change the menu items href to hashes
  */
-add_filter('nav_menu_link_attributes', function ($atts, $item, $args, $depth) {
-  $href = '#content-' . $item->object_id;
+add_filter('nav_menu_link_attributes', function($atts, $item, $args, $depth) {
+  $href = 'content-' . $item->object_id;
 
   if ($depth) {
-    $href .= '-' . $depth;
+    $href = 'sub-' . $href;
   }
 
-  $atts['href'] = $href;
+  $atts['href'] = '#' . $href;
 
   return $atts;
 }, 10, 4);
@@ -307,6 +344,86 @@ add_action('after_setup_theme', function(){
     ),
     'menu_order' => 0,
   ));
+
+  register_field_group(array (
+    'id' => 'acf_english-slideshow',
+    'title' => __('Slideshow', 'luveck'),
+    'fields' => array (
+      array (
+        'key' => 'field_552f5c89360f7',
+        'label' => __('Slideshow images', 'luveck'),
+        'name' => 'slideshow_images',
+        'type' => 'repeater',
+        'sub_fields' => array (
+          array (
+            'key' => 'field_552f5c9e360f8',
+            'label' => __('Images', 'luveck'),
+            'name' => 'image',
+            'type' => 'image',
+            'column_width' => '',
+            'save_format' => 'object',
+            'preview_size' => 'thumbnail',
+            'library' => 'all',
+          ),
+        ),
+        'row_min' => '',
+        'row_limit' => '',
+        'layout' => 'table',
+        'button_label' => __('Add image', 'luveck'),
+      ),
+    ),
+    'location' => array (
+      array (
+        array (
+            'param' => 'page_template',
+            'operator' => '==',
+            'value' => 'template-home.php',
+            'order_no' => 0,
+            'group_no' => 0,
+        )
+      )
+    ),
+    'options' => array (
+      'position' => 'normal',
+      'layout' => 'default',
+      'hide_on_screen' => array (
+      )
+    ),
+    'menu_order' => 0
+  ));
+
+  register_field_group(array(
+    'id' => 'acf_product-images',
+    'title' => __('Product images', 'luveck'),
+    'fields' => array(
+      array(
+        'key' => 'field_553e6a4a9bc21',
+        'label' => __('Context image', 'luveck'),
+        'name' => 'image_context',
+        'type' => 'image',
+        'save_format' => 'object',
+        'preview_size' => 'thumbnail',
+        'library' => 'uploadedTo'
+      )
+    ),
+    'location' => array(
+      array(
+        array(
+          'param' => 'ef_taxonomy',
+          'operator' => '==',
+          'value' => 'product_category',
+          'order_no' => 0,
+          'group_no' => 0
+        )
+      )
+    ),
+    'options' => array(
+      'position' => 'normal',
+      'layout' => 'default',
+      'hide_on_screen' => array()
+    ),
+    'menu_order' => 0
+  ));
 });
 
 function luveck_send_contact()
@@ -363,11 +480,33 @@ add_action('wp_ajax_nopriv_luveck_send_contact', 'luveck_send_contact');
 /**
  * Returns the image url for the given post ID
  *
- * @param int $post_id
+ * @param $post_id
  * @param string $size
- * @return string
+ * @return string|null
  */
 function get_content_image($post_id, $size = 'large')
 {
-  return array_shift(wp_get_attachment_image_src(get_post_thumbnail_id($post_id), $size));
+  $attr = wp_get_attachment_image_src(get_post_thumbnail_id($post_id), $size);
+
+  if (!$attr) {
+    return NULL;
+  }
+
+  return array_shift($attr);
 }
+
+add_filter('show_admin_bar', '__return_false');
+
+/**
+ * Returns the current post slug
+ *
+ * @return  string
+ */
+if (!function_exists('get_the_slug')) :
+  function get_the_slug()
+  {
+    global $post;
+
+    return $post->post_name;
+  }
+endif;
