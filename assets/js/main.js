@@ -41,11 +41,11 @@
 
         $scroller = $target.find('.scroller');
 
-    // if ($parent.hasClass('menu-item-is-open')) {
-    //   $parent.removeClass('menu-item-is-open');
+    if ($parent.hasClass('menu-item-is-open')) {
+      $parent.removeClass('menu-item-is-open');
 
-    //   return;
-    // }
+      return;
+    }
 
     $targets.removeClass('active animated');
 

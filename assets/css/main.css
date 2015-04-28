@@ -205,6 +205,12 @@ hr.space {
   box-shadow:inset 0 3px 5px rgba(0, 0, 0, .2);
 }
 
+.img-responsive {
+  display:block;
+  height:auto;
+  max-width:100%;
+}
+
 .feedback {
   background:#ddd;
   padding:.75em 1em;
@@ -412,6 +418,10 @@ body {
   visibility:visible;
 }
 
+.menu-sections a:hover {
+  color:#e36b00;
+}
+
 .menu-secondary {
   bottom:0;
   left:0;
@@ -461,7 +471,7 @@ body {
 .menu-products li {
   border:0;
   display:inline-block;
-  padding:0 .25em;
+  padding:0 .25em .75em;
 }
 
 .menu-products .current-menu-item a {

@@ -113,7 +113,7 @@ foreach ($menu_items as $item) {
 
       <div class="menu-secondary">
         <ul class="menu menu-contacts">
-          <li><a href="#" title="Mail"><i class="fa fa-envelope"></i> <span>Email de contacto</span></a></li>
+          <li><a href="mailto:info@luveck.com" title="Mail"><i class="fa fa-envelope"></i> <span>Email de contacto</span></a></li>
         </ul>
 
         <ul class="menu menu-languages">

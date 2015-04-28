@@ -21,7 +21,7 @@ add_action('after_setup_theme', function(){
     'labels'      => $labels,
     'public'      => TRUE,
     'has_archive' => TRUE,
-    'supports'    => array('title', 'editor', 'thumbnail'),
+    'supports'    => array('title', 'editor', 'thumbnail', 'page-attributes'),
     'rewrite'     => array(
       'slug'       => 'productos',
       'with_front' => FALSE,
@@ -48,7 +48,7 @@ add_action('after_setup_theme', function(){
     'labels'      => $labels,
     'public'      => TRUE,
     'has_archive' => TRUE,
-    'supports'    => array('title', 'editor', 'thumbnail'),
+    'supports'    => array('title', 'editor', 'thumbnail', 'page-attributes'),
     'rewrite'     => array(
       'slug'       => 'certificationes',
       'with_front' => FALSE,
@@ -155,18 +155,18 @@ add_action('wp_enqueue_scripts', function(){
     $css = array(
       array(
         'name' => 'luveck-main',
-        'file' => '/assets/css/compiled.css',
+        'file' => '/assets/css/compiled.min.css',
         'deps' => array('luveck-fontawesome', 'luveck-animate'),
-        'ver'  => filemtime(get_template_directory() . '/assets/css/compiled.css')
+        'ver'  => filemtime(get_template_directory() . '/assets/css/compiled.min.css')
       )
     );
 
     $js = array(
       array(
         'name' => 'luveck-main',
-        'file' => '/assets/js/compiled.js',
+        'file' => '/assets/js/compiled.min.js',
         'deps' => array('google-maps', 'jquery'),
-        'ver'  => filemtime(get_template_directory() . '/assets/js/compiled.js')
+        'ver'  => filemtime(get_template_directory() . '/assets/js/compiled.min.js')
       )
     );
   endif;
@@ -205,16 +205,12 @@ add_action('after_setup_theme', function(){
     'fields'     => array(
       array(
         'key'           => 'field_5512479feeb5e',
-        'label'         => __('Presentations', 'luveck'),
-        'name'          => 'luveck_product_presentations',
-        'type'          => 'qtranslate_textarea',
-        'default_value' => '',
-        'placeholder'   => '',
-        'maxlength'     => '',
-        'rows'          => '',
-        'formatting'    => 'br',
-        'prepend'       => __('Insert one product by line.', 'luveck'),
-        'append'        => ''
+        'label'         => __('Certifications', 'luveck'),
+        'name'          => 'luveck_product_certifications',
+        'type'          => 'image',
+        'save_format'   => 'object',
+        'preview_size'  => 'thumbnail',
+        'library'       => 'uploadedTo'
       ),
       array(
         'key'         => 'field_551247e901d46',

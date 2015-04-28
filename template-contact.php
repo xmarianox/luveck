@@ -19,7 +19,7 @@ $branches = get_field('luveck_branches', get_the_ID());
               <h1><?php the_title(); ?></h1>
             </header>
 
-            <h2><?php _e('Branches', 'luveck'); ?></h2>
+            <h2><?php _e('Offices', 'luveck'); ?></h2>
 
 <?php foreach ($branches as $i => $branch) : ?>
             <div class="branch" data-branch
