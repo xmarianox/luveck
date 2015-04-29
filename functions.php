@@ -393,13 +393,26 @@ add_action('after_setup_theme', function(){
     'title' => __('Product images', 'luveck'),
     'fields' => array(
       array(
-        'key' => 'field_553e6a4a9bc21',
-        'label' => __('Context image', 'luveck'),
-        'name' => 'image_context',
-        'type' => 'image',
-        'save_format' => 'object',
+        'key'          => 'field_553e6a4a9bc21',
+        'label'        => __('Context image', 'luveck'),
+        'name'         => 'image_context',
+        'type'         => 'image',
+        'save_format'  => 'object',
         'preview_size' => 'thumbnail',
-        'library' => 'uploadedTo'
+        'library'      => 'uploadedTo'
+      ),
+      array(
+        'key'           => 'field_3vfgse3cyqq6v',
+        'label'         => __('Order', 'luveck'),
+        'name'          => 'menu_order',
+        'type'          => 'text',
+        'column_width'  => '',
+        'default_value' => '0',
+        'placeholder'   => '',
+        'prepend'       => '',
+        'append'        => '',
+        'formatting'    => 'none',
+        'maxlength'     => '',
       )
     ),
     'location' => array(
@@ -506,3 +519,19 @@ if (!function_exists('get_the_slug')) :
     return $post->post_name;
   }
 endif;
+
+/**
+ * Sort an array of terms
+ *
+ * @param  object $a
+ * @param  object $b
+ * @return bool
+ */
+function luveck_sort_terms($a, $b)
+{
+  if ($a->menu_order == $b->menu_order) {
+      return 0;
+  }
+
+  return ($a->menu_order < $b->menu_order) ? 1 : -1;
+}

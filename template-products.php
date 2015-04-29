@@ -5,7 +5,14 @@
 
 $page_image = get_content_image(get_the_ID(), 'large');
 $page_link  = 'content-' . get_the_ID();
-$categories = get_terms('product_category');
+$categories = get_terms('product_category', ['hide_empty' => FALSE]);
+
+foreach ($categories as $k => $category) {
+  $order = get_field('menu_order', 'product_category_' . $category->term_id);
+  $categories[$k]->menu_order = $order ? $order : 0;
+}
+
+usort($categories, 'luveck_sort_terms');
 ?>
 <section id="<?php echo $page_link; ?>" class="item fadeIn has-navigation item-products">
   <div id="product-categories" class="item has-featured-image item-product-categories">
