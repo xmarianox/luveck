@@ -3,17 +3,86 @@
  * Template name: Products
  */
 
-$page_image = get_content_image(get_the_ID(), 'large');
-$page_link  = 'content-' . get_the_ID();
-$categories = get_terms('product_category', ['hide_empty' => FALSE]);
+$page_image         = get_content_image(get_the_ID(), 'large');
+$page_link          = 'content-' . get_the_ID();
+$upcoming_products  = get_field('products_upcoming');
+$disclaimer_title   = get_field('products_disclaimer_title');
+$disclaimer_content = get_field('products_disclaimer_content');
 
-foreach ($categories as $k => $category) {
-  $order = get_field('menu_order', 'product_category_' . $category->term_id);
-  $categories[$k]->menu_order = $order ? $order : 0;
+//
+// User geolocalization
+//
+
+$country = luveck_geolocalize_ip('201.250.161.204');
+$country = $country ? $country : LUVECK_DEFAULT_COUNTRY;
+
+//
+// Getting available products
+//
+
+$content_ids = luveck_query_contents_for_country($country);
+
+if (empty($content_ids)) {
+  $country     = LUVECK_DEFAULT_COUNTRY;
+  $content_ids = luveck_query_contents_for_country($country);
 }
 
-usort($categories, 'luveck_sort_terms');
+$products = new WP_Query(array(
+  'post_type'   => 'product',
+  'post_status' => 'publish',
+  'post__in'    => $content_ids
+));
+
+//
+// Getting the contents to show
+//
+
+// Making an big array with all the categories and contents for each one
+$categories = array();
+
+foreach ($products->posts as $product) {
+  $product_terms = wp_get_object_terms($product->ID, 'product_category');
+
+  foreach ($product_terms as $term) {
+    if (!isset($categories[$term->slug])) {
+      $order = get_field('menu_order', 'product_category_' . $term->term_id);
+
+      $term->menu_order = $order ? $order : 0;
+      $term->contents   = array();
+
+      $categories[$term->slug] = $term;
+    }
+
+    $categories[$term->slug]->contents[] = $product;
+  }
+}
+
+//
+// Ordering
+//
+
+// ordering contents
+foreach ($categories as $term) {
+  $contents = $term->contents;
+
+  usort($contents, 'luveck_sort_by_menu_order');
+
+  $term->contents = $contents;
+}
+
+// ordering terms
+usort($categories, 'luveck_sort_by_menu_order');
 ?>
+
+<?php if ($disclaimer_title AND $disclaimer_content) : ?>
+  <div class="modal">
+    <div class="modal-inner">
+      <h1 class="h4"><?php echo $disclaimer_title ?> <a class="modal-close" href="#"><span class="fa fa-close"></span></a></h1>
+      <?php echo wpautop($disclaimer_content); ?>
+    </div>
+  </div>
+<?php endif; ?>
+
 <section id="<?php echo $page_link; ?>" class="item fadeIn has-navigation item-products">
   <div id="product-categories" class="item has-featured-image item-product-categories">
     <div class="item-image">
@@ -34,6 +103,13 @@ usort($categories, 'luveck_sort_terms');
                 <li><a href="#products-<?php echo $category->slug; ?>"><?php echo $category->name; ?></a></li>
               <?php endforeach; ?>
               </ul>
+
+<?php if (!empty($upcoming_products)) : ?>
+              <hr>
+
+              <h2 class="h3"><?php _e('Upcoming products', 'luveck'); ?></h2>
+              <?php echo wpautop($upcoming_products); ?>
+<?php endif; ?>
             </div>
           </div>
         </div>
@@ -41,25 +117,11 @@ usort($categories, 'luveck_sort_terms');
     </div>
   </div>
 
-  <?php
-  foreach ($categories as $category) :
-    $products = new WP_Query(array(
-      'post_type' => 'product',
-      'orderby'   => 'menu_order',
-      'order'     => 'DESC',
-      'tax_query' => array(
-        array(
-          'taxonomy' => 'product_category',
-          'field'    => 'term_id',
-          'terms'    => [$category->term_id]
-        )
-      )
-    ));
-  ?>
+  <?php foreach ($categories as $category) : ?>
   <div id="products-<?php echo $category->slug; ?>" class="item item-product-category">
     <?php
-    while ($products->have_posts()) :
-      $products->the_post();
+    foreach ($category->contents as $post) :
+      setup_postdata($post);
 
       $leaflet        = get_field('luveck_product_leaflet');
       $certifications = get_field('luveck_product_certifications');
@@ -123,7 +185,7 @@ usort($categories, 'luveck_sort_terms');
                 <h2><?php _e('Presentations', 'luveck'); ?></h2>
 
                 <ul class="inline-list menu menu-products">
-                  <?php foreach ($products->posts as $post) : ?>
+                  <?php foreach ($category->contents as $post) : ?>
                   <li>
                     <a class="btn" href="#product-<?php echo $post->post_name; ?>"><?php echo get_the_title($post); ?></a>
                   </li>
@@ -135,7 +197,7 @@ usort($categories, 'luveck_sort_terms');
         </div>
       </div>
     </article>
-    <?php endwhile; ?>
+    <?php endforeach; ?>
   </div>
   <?php endforeach; ?>
 </section>

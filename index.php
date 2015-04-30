@@ -119,7 +119,7 @@ foreach ($menu_items as $item) {
         <ul class="menu menu-languages">
           <?php foreach (qtranxf_getSortedLanguages() as $lang) : ?>
           <li>
-            <a href="<?php echo home_url('/') . $lang; ?>">
+            <a href="<?php echo qtranxf_convertURL('', $lang, false, true); ?>">
               <?php echo qtranxf_getLanguageName($lang); ?>
               <img src="<?php echo get_template_directory_uri(); ?>/assets/images/<?php echo $lang; ?>.png">
             </a>

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Luveck 1.0.0\n"
-"POT-Creation-Date: 2015-04-28 15:06-0300\n"
-"PO-Revision-Date: 2015-04-28 15:06-0300\n"
+"POT-Creation-Date: 2015-04-29 23:58-0300\n"
+"PO-Revision-Date: 2015-04-29 23:58-0300\n"
 "Last-Translator: Sebastián Cruz <cruzjesussebastian@gmail.com>\n"
 "Language-Team: Funka.la <hola@funka.la>\n"
 "Language: es\n"
@@ -18,117 +18,150 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: assets\n"
 "X-Poedit-SearchPathExcluded-1: includes\n"
 
-#: functions.php:12 functions.php:14 functions.php:20
+#: functions.php:15 functions.php:17 functions.php:23
 msgid "Products"
 msgstr "Productos"
 
-#: functions.php:13
+#: functions.php:16
 msgid "Product"
 msgstr "Producto"
 
-#: functions.php:15 functions.php:16
+#: functions.php:18 functions.php:19
 msgid "Add product"
 msgstr "Agregar producto"
 
-#: functions.php:39 functions.php:41 functions.php:47
+#: functions.php:42 functions.php:44 functions.php:50
 msgid "Certificates"
 msgstr "Certificaciones"
 
-#: functions.php:40
+#: functions.php:43
 msgid "Certification"
 msgstr "Certificación"
 
-#: functions.php:42 functions.php:43
+#: functions.php:45 functions.php:46
 msgid "Add certification"
 msgstr "Agregar certificación"
 
-#: functions.php:62 functions.php:63 functions.php:67 template-contact.php:52
+#: functions.php:65 functions.php:66 functions.php:70 template-contact.php:52
 msgid "Contact"
 msgstr "Consultas"
 
-#: functions.php:92
+#: functions.php:95
 msgid "Main menu"
 msgstr "Menú principal"
 
-#: functions.php:204
+#: functions.php:207
 msgid "Product information"
 msgstr "Información de producto"
 
-#: functions.php:208
+#: functions.php:211
 #, fuzzy
 msgid "Certifications"
 msgstr "Certificación"
 
-#: functions.php:217
+#: functions.php:220
 msgid "Medical leaflet"
 msgstr "Prospecto médico"
 
-#: functions.php:245
+#: functions.php:248
 msgid "Branches"
 msgstr "Sucursales"
 
-#: functions.php:249
+#: functions.php:252
 msgid "Branch"
 msgstr "Sucursal"
 
-#: functions.php:255 template-contact.php:59
+#: functions.php:258 template-contact.php:59
 msgid "Name"
 msgstr "Nombre"
 
-#: functions.php:269
+#: functions.php:272
 msgid "Address"
 msgstr "Dirección"
 
-#: functions.php:283
+#: functions.php:286
 msgid "Phone"
 msgstr "Teléfono"
 
-#: functions.php:296
+#: functions.php:299
 msgid "Fax"
 msgstr "Fax"
 
-#: functions.php:309
+#: functions.php:312
 msgid "Location"
 msgstr "Ubicación"
 
-#: functions.php:322
+#: functions.php:325
 msgid "Add item"
 msgstr "Agregar item"
 
-#: functions.php:346
+#: functions.php:349
 msgid "Slideshow"
 msgstr ""
 
-#: functions.php:350
+#: functions.php:353
 msgid "Slideshow images"
 msgstr ""
 
-#: functions.php:356
+#: functions.php:359
 msgid "Images"
 msgstr ""
 
-#: functions.php:368
+#: functions.php:371
 msgid "Add image"
 msgstr "Agregar item"
 
-#: functions.php:393
+#: functions.php:396
 msgid "Product images"
 msgstr ""
 
-#: functions.php:397
+#: functions.php:400
 msgid "Context image"
 msgstr ""
 
-#: functions.php:441
+#: functions.php:409
+msgid "Order"
+msgstr ""
+
+#: functions.php:442
+msgid "Product availability"
+msgstr ""
+
+#: functions.php:446
+msgid "Product available in this countries"
+msgstr ""
+
+#: functions.php:465
+#, fuzzy
+msgid "Add country"
+msgstr "Agregar producto"
+
+#: functions.php:489 template-products.php:110
+msgid "Upcoming products"
+msgstr "Próximos lanzamientos"
+
+#: functions.php:524
+msgid "Products disclaimer"
+msgstr ""
+
+#: functions.php:528
+msgid "Title"
+msgstr ""
+
+#: functions.php:538
+msgid "Content"
+msgstr ""
+
+#: functions.php:584
 msgid "Please be sure to complete all fields."
 msgstr "Por favor, asegúrese de completar todos los campos."
 
-#: functions.php:460
+#: functions.php:603
 msgid "An error has occurred. Please try again."
 msgstr ""
 "Ha ocurrido un error al enviar el mensaje. Por favor intente nuevamente."
 
-#: functions.php:466
+#: functions.php:609
 msgid "The message was sent successfully. We will contact you shortly."
 msgstr ""
 "El mensaje ha sido enviado correctamente. Nos pondremos en contacto a la "
@@ -154,19 +187,19 @@ msgstr "Correo electrónico"
 msgid "Message"
 msgstr "Mensaje"
 
-#: template-products.php:90
+#: template-products.php:159
 msgid "Back to products list"
 msgstr "Volver a la lista de productos"
 
-#: template-products.php:101
+#: template-products.php:170
 msgid "Download doctor insert"
 msgstr "Descargar inserto médico"
 
-#: template-products.php:109
+#: template-products.php:178
 msgid "Product certifications"
 msgstr "Certificaciones de planta"
 
-#: template-products.php:116
+#: template-products.php:185
 msgid "Presentations"
 msgstr "Presentaciones"
 

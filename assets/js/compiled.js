@@ -2769,4 +2769,39 @@
         $(this).css('animation-delay', delay + 's');
       });
   });
+
+  var $modal      = $('.modal'),
+      $modalClose = $modal.find('.modal-close'),
+      modalShowed = false;
+
+  $(document).on('lv.changed_section', function(ev, trigger, target){
+    var $trigger = $(trigger),
+        $target  = $(target);
+
+    if (!$target.hasClass('item-products')) {
+      return;
+    }
+
+    if (modalShowed) {
+      return;
+    }
+
+    modalShowed = true;
+
+    $modal.addClass('in');
+    $modal[0].offsetWidth;
+    $modal.addClass('animated fadeIn');
+  });
+
+  $modalClose.on('click', function(ev){
+    ev.preventDefault();
+
+    $modal.removeClass('fadeIn');
+    $modal[0].offsetWidth;
+    $modal.addClass('animated fadeOut');
+
+    $modal.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+      $modal.hide();
+    });
+  });
 })(jQuery);

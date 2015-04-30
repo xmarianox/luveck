@@ -3,6 +3,9 @@
 // We don't need the ACF UI
 define('ACF_LITE', TRUE);
 
+// Default country code
+define('LUVECK_DEFAULT_COUNTRY', 'HN');
+
 /**
  * Register needed post types
  */
@@ -341,17 +344,17 @@ add_action('after_setup_theme', function(){
     'menu_order' => 0,
   ));
 
-  register_field_group(array (
+  register_field_group(array(
     'id' => 'acf_english-slideshow',
     'title' => __('Slideshow', 'luveck'),
-    'fields' => array (
-      array (
+    'fields' => array(
+      array(
         'key' => 'field_552f5c89360f7',
         'label' => __('Slideshow images', 'luveck'),
         'name' => 'slideshow_images',
         'type' => 'repeater',
-        'sub_fields' => array (
-          array (
+        'sub_fields' => array(
+          array(
             'key' => 'field_552f5c9e360f8',
             'label' => __('Images', 'luveck'),
             'name' => 'image',
@@ -368,9 +371,9 @@ add_action('after_setup_theme', function(){
         'button_label' => __('Add image', 'luveck'),
       ),
     ),
-    'location' => array (
-      array (
-        array (
+    'location' => array(
+      array(
+        array(
             'param' => 'page_template',
             'operator' => '==',
             'value' => 'template-home.php',
@@ -379,10 +382,10 @@ add_action('after_setup_theme', function(){
         )
       )
     ),
-    'options' => array (
+    'options' => array(
       'position' => 'normal',
       'layout' => 'default',
-      'hide_on_screen' => array (
+      'hide_on_screen' => array(
       )
     ),
     'menu_order' => 0
@@ -430,6 +433,133 @@ add_action('after_setup_theme', function(){
       'position' => 'normal',
       'layout' => 'default',
       'hide_on_screen' => array()
+    ),
+    'menu_order' => 0
+  ));
+
+  register_field_group(array(
+    'id' => 'acf_countries',
+    'title' => __('Product availability', 'luveck'),
+    'fields' => array(
+      array(
+        'key' => 'field_55416c1a24379',
+        'label' => __('Product available in this countries', 'luveck'),
+        'name' => 'product_availability',
+        'type' => 'repeater',
+        'sub_fields' => array(
+          array(
+            'key' => 'field_55416d3e2437a',
+            'label' => 'Country',
+            'name' => 'country',
+            'type' => 'select',
+            'column_width' => '',
+            'choices' => (array) json_decode(file_get_contents(__DIR__ . '/countries.json')),
+            'default_value' => NULL,
+            'allow_null' => TRUE,
+            'multiple' => FALSE
+          )
+        ),
+        'row_min' => 1,
+        'row_limit' => '',
+        'layout' => 'table',
+        'button_label' => __('Add country', 'luveck')
+      )
+    ),
+    'location' => array(
+      array(
+        array(
+          'param' => 'post_type',
+          'operator' => '==',
+          'value' => 'product',
+          'order_no' => 0,
+          'group_no' => 0,
+        )
+      )
+    ),
+    'options' => array(
+      'position' => 'normal',
+      'layout' => 'default',
+      'hide_on_screen' => array()
+    ),
+    'menu_order' => 0
+  ));
+
+  register_field_group(array (
+    'id' => 'acf_en-upcoming-products',
+    'title' => __('Upcoming products', 'luveck'),
+    'fields' => array (
+      array (
+        'key' => 'field_55418f1ebc0aa',
+        'label' => 'List of upcoming products',
+        'name' => 'products_upcoming',
+        'type' => 'qtranslate_textarea',
+        'default_value' => '',
+        'placeholder' => '',
+        'maxlength' => '',
+        'rows' => '',
+        'formatting' => 'br'
+      )
+    ),
+    'location' => array (
+      array (
+        array (
+        'param' => 'page_template',
+        'operator' => '==',
+        'value' => 'template-products.php',
+        'order_no' => 0,
+        'group_no' => 0
+        )
+      )
+    ),
+    'options' => array (
+      'position' => 'normal',
+      'layout' => 'default',
+      'hide_on_screen' => array ()
+    ),
+    'menu_order' => 0
+  ));
+
+  register_field_group(array (
+    'id' => 'acf_en-products-disclaimer',
+    'title' => __('Products disclaimer', 'luveck'),
+    'fields' => array (
+      array (
+        'key' => 'field_mres0mca3joho',
+        'label' => __('Title', 'luveck'),
+        'name' => 'products_disclaimer_title',
+        'type' => 'qtranslate_text',
+        'default_value' => '',
+        'placeholder' => '',
+        'maxlength' => '',
+        'rows' => ''
+      ),
+      array (
+        'key' => 'field_2n1ff4vlxp2dl',
+        'label' => __('Content', 'luveck'),
+        'name' => 'products_disclaimer_content',
+        'type' => 'qtranslate_textarea',
+        'default_value' => '',
+        'placeholder' => '',
+        'maxlength' => '',
+        'rows' => '',
+        'formatting' => 'br'
+      )
+    ),
+    'location' => array (
+      array (
+        array (
+        'param' => 'page_template',
+        'operator' => '==',
+        'value' => 'template-products.php',
+        'order_no' => 0,
+        'group_no' => 0
+        )
+      )
+    ),
+    'options' => array (
+      'position' => 'normal',
+      'layout' => 'default',
+      'hide_on_screen' => array ()
     ),
     'menu_order' => 0
   ));
@@ -527,11 +657,71 @@ endif;
  * @param  object $b
  * @return bool
  */
-function luveck_sort_terms($a, $b)
+function luveck_sort_by_menu_order($a, $b)
 {
   if ($a->menu_order == $b->menu_order) {
       return 0;
   }
 
   return ($a->menu_order < $b->menu_order) ? 1 : -1;
+}
+
+/**
+ * Find the contents availables for the given country
+ *
+ * @param  string $country ISO2 country code
+ * @return array           array of ids
+ */
+function luveck_query_contents_for_country($country)
+{
+  global $wpdb;
+
+  $query = $wpdb->prepare(
+    "SELECT m.post_id FROM $wpdb->postmeta m WHERE m.meta_key LIKE %s AND m.meta_value = %s",
+    'product_availability_%_country',
+    $country
+  );
+
+  $results = $wpdb->get_results($query);
+  $ids     = [];
+
+  foreach ($results as $row) {
+    $ids[] = $row->post_id;
+  }
+
+  return $ids;
+}
+
+/**
+ * Returns the current visitor ip
+ *
+ * @return string
+ */
+function luveck_get_user_ip()
+{
+  return preg_replace('/[^0-9a-fA-F:., ]/', '', $_SERVER['REMOTE_ADDR']);
+}
+
+/**
+ * Tries to geolocate an IP address using the ipinfo.io service
+ *
+ * @param  string $ip_addr
+ * @return string ISO2 country code
+ * @link https://ipinfo.io/developers
+ */
+function luveck_geolocalize_ip($ip_addr)
+{
+  $response = wp_remote_get(sprintf('http://ipinfo.io/%s/json', $ip_addr));
+
+  if (is_wp_error($response)) {
+    return new stdClass();
+  }
+
+  $data = json_decode($response['body']);
+
+  if (!isset($data->country) OR empty($data->country)) {
+    return NULL;
+  }
+
+  return strtoupper($data->country);
 }
