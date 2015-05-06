@@ -13,7 +13,7 @@ $disclaimer_content = get_field('products_disclaimer_content');
 // User geolocalization
 //
 
-$country = luveck_geolocalize_ip('201.250.161.204');
+$country = luveck_geolocalize_ip(luveck_get_user_ip());
 $country = $country ? $country : LUVECK_DEFAULT_COUNTRY;
 
 //
