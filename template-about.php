@@ -13,7 +13,7 @@ foreach ($content->subitems as $subitem) :
   $post = get_post($subitem->object_id);
   setup_postdata($post);
 ?>
-    <article id="sub-content-<?php the_ID(); ?>" class="item has-featured-image">
+    <article id="sub-content-<?php the_ID(); ?>" class="item sub-item has-featured-image">
       <div class="item-image"><img src="<?php echo get_content_image(get_the_ID(), 'large'); ?>"></div>
 
       <div class="item-content">
@@ -24,6 +24,8 @@ foreach ($content->subitems as $subitem) :
                 <header>
                   <h2 class="h1"><?php the_title(); ?></h2>
                 </header>
+
+                <div class="item-image item-image-mobile"><img src="<?php echo get_content_image(get_the_ID(), 'large'); ?>"></div>
 
                 <?php the_content(); ?>
               </div>

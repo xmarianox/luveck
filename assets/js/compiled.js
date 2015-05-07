@@ -1,4 +1,4 @@
-/*! nanoScrollerJS - v0.8.6 - 2015
+/*! nanoScrollerJS - v0.8.7 - 2015
 * http://jamesflorentino.github.com/nanoScrollerJS/
 * Copyright (c) 2015 James Florentino; Licensed MIT */
 (function(factory) {
@@ -2527,6 +2527,28 @@
   });
 
   /**
+   * Custom scrolls only for desktop devices
+   */
+  $(window)
+    .on('resize', function(ev){
+      if (window.matchMedia('(min-width: 768px)').matches) {
+        console.log('scroll active');
+
+        $('.nano').nanoScroller({
+          sliderMaxHeight: 11,
+          sliderMinHeight: 11
+        });
+      } else {
+        console.log('scroll destroy');
+
+        $('.nano').nanoScroller({
+          destroy: true
+        });
+      }
+    })
+    .trigger('resize');
+
+  /**
    * Main menu
    */
   $('[data-action=open-menu]').on('click', function(ev){
@@ -2593,11 +2615,7 @@
 
     $('html').removeClass('open-menu');
 
-    $scroller.find('.nano').nanoScroller({
-      sliderMaxHeight: 11,
-      sliderMinHeight: 11
-    });
-
+    $(window).trigger('resize');
     $(document).trigger('lv.changed_section', [$trigger, $target]);
   });
 
@@ -2656,6 +2674,12 @@
    * Contact interactions
    */
 
+  var $map = $('#contact-map-mobile');
+
+  if (window.matchMedia('(min-width: 768px)').matches) {
+    $map = $('#contact-map')
+  }
+
   var
     pointer = {url: LUVECK_MAP_MARKER, size: new google.maps.Size(39,56)},
 
@@ -2669,7 +2693,7 @@
     mapInfo = new google.maps.InfoWindow(),
 
     // Map instance
-    map = new google.maps.Map(document.getElementById('contact-map'), {
+    map = new google.maps.Map($map.get(0), {
       zoom: 4,
       center: mapCenter,
       panControl: false,

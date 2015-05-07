@@ -98,6 +98,10 @@ usort($categories, 'luveck_sort_by_menu_order');
                 <h1><?php the_title(); ?></h1>
               </header>
 
+              <div class="item-image item-image-mobile">
+                <img src="<?php echo $page_image; ?>">
+              </div>
+
               <ul class="menu menu-product-categories">
               <?php foreach ($categories as $category) : ?>
                 <li><a href="#products-<?php echo $category->slug; ?>"><?php echo $category->name; ?></a></li>
@@ -155,7 +159,7 @@ usort($categories, 'luveck_sort_by_menu_order');
           <div class="nano">
             <div class="nano-content">
               <div class="scroller-content">
-                <ul class="menu">
+                <ul class="menu menu-categories">
                   <li><a href="#product-categories"><span class="fa fa-arrow-circle-o-left"></span> <?php _e('Back to products list', 'luveck'); ?></a></li>
                 </ul>
 

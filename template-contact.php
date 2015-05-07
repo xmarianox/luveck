@@ -19,6 +19,10 @@ $branches = get_field('luveck_branches', get_the_ID());
               <h1><?php the_title(); ?></h1>
             </header>
 
+            <div class="item-map item-map-mobile">
+              <div id="contact-map-mobile" class="item-map-inner"></div>
+            </div>
+
             <h2><?php _e('Offices', 'luveck'); ?></h2>
 
 <?php foreach ($branches as $i => $branch) : ?>
