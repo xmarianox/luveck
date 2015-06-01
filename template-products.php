@@ -72,13 +72,21 @@ foreach ($categories as $term) {
 
 // ordering terms
 usort($categories, 'luveck_sort_by_menu_order');
+
+$mobile_image = get_field('featured_image_mobile');
+
+if (empty($mobile_image)) {
+  $mobile_image = get_content_image(get_the_ID(), 'large');
+}
 ?>
 
 <?php if ($disclaimer_title AND $disclaimer_content) : ?>
   <div class="modal">
     <div class="modal-inner">
-      <h1 class="h4"><?php echo $disclaimer_title ?> <a class="modal-close" href="#"><span class="fa fa-close"></span></a></h1>
+      <h1 class="h4"><?php echo $disclaimer_title ?></h1>
       <?php echo wpautop($disclaimer_content); ?>
+
+      <p class="modal-actions"><a class="btn" href="#" data-action="close-modal">Aceptar</a></p>
     </div>
   </div>
 <?php endif; ?>
@@ -99,7 +107,7 @@ usort($categories, 'luveck_sort_by_menu_order');
               </header>
 
               <div class="item-image item-image-mobile">
-                <img src="<?php echo $page_image; ?>">
+                <img src="<?php echo $mobile_image; ?>">
               </div>
 
               <ul class="menu menu-product-categories">

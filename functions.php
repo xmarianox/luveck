@@ -484,11 +484,11 @@ add_action('after_setup_theme', function(){
     'menu_order' => 0
   ));
 
-  register_field_group(array (
+  register_field_group(array(
     'id' => 'acf_en-upcoming-products',
     'title' => __('Upcoming products', 'luveck'),
-    'fields' => array (
-      array (
+    'fields' => array(
+      array(
         'key' => 'field_55418f1ebc0aa',
         'label' => 'List of upcoming products',
         'name' => 'products_upcoming',
@@ -500,9 +500,9 @@ add_action('after_setup_theme', function(){
         'formatting' => 'br'
       )
     ),
-    'location' => array (
-      array (
-        array (
+    'location' => array(
+      array(
+        array(
         'param' => 'page_template',
         'operator' => '==',
         'value' => 'template-products.php',
@@ -511,19 +511,19 @@ add_action('after_setup_theme', function(){
         )
       )
     ),
-    'options' => array (
+    'options' => array(
       'position' => 'normal',
       'layout' => 'default',
-      'hide_on_screen' => array ()
+      'hide_on_screen' => array()
     ),
     'menu_order' => 0
   ));
 
-  register_field_group(array (
+  register_field_group(array(
     'id' => 'acf_en-products-disclaimer',
     'title' => __('Products disclaimer', 'luveck'),
-    'fields' => array (
-      array (
+    'fields' => array(
+      array(
         'key' => 'field_mres0mca3joho',
         'label' => __('Title', 'luveck'),
         'name' => 'products_disclaimer_title',
@@ -533,7 +533,7 @@ add_action('after_setup_theme', function(){
         'maxlength' => '',
         'rows' => ''
       ),
-      array (
+      array(
         'key' => 'field_2n1ff4vlxp2dl',
         'label' => __('Content', 'luveck'),
         'name' => 'products_disclaimer_content',
@@ -545,9 +545,9 @@ add_action('after_setup_theme', function(){
         'formatting' => 'br'
       )
     ),
-    'location' => array (
-      array (
-        array (
+    'location' => array(
+      array(
+        array(
         'param' => 'page_template',
         'operator' => '==',
         'value' => 'template-products.php',
@@ -556,12 +556,81 @@ add_action('after_setup_theme', function(){
         )
       )
     ),
-    'options' => array (
+    'options' => array(
       'position' => 'normal',
       'layout' => 'default',
-      'hide_on_screen' => array ()
+      'hide_on_screen' => array()
     ),
     'menu_order' => 0
+  ));
+
+  register_field_group(array(
+    'id'     => 'acf_featured_image_mobile',
+    'title'  => __('Mobile featured image', 'luvek'),
+    'fields' => array(
+      array(
+        'key'          => 'field_555e70d6aaf4b',
+        'label'        => __('Set featured image', 'luveck'),
+        'name'         => 'featured_image_mobile',
+        'type'         => 'image',
+        'save_format'  => 'url',
+        'preview_size' => 'thumbnail',
+        'library'      => 'uploadedTo',
+      ),
+    ),
+    'location' => array(
+      array(
+        array(
+          'param'    => 'post_type',
+          'operator' => '==',
+          'value'    => 'post',
+          'order_no' => 0,
+          'group_no' => 0,
+        ),
+      ),
+      array(
+        array(
+          'param'    => 'post_type',
+          'operator' => '==',
+          'value'    => 'page',
+          'order_no' => 0,
+          'group_no' => 1,
+        ),
+      ),
+      array(
+        array(
+          'param'    => 'post_type',
+          'operator' => '==',
+          'value'    => 'product',
+          'order_no' => 0,
+          'group_no' => 2,
+        ),
+      ),
+      array(
+        array(
+          'param'    => 'post_type',
+          'operator' => '==',
+          'value'    => 'certification',
+          'order_no' => 0,
+          'group_no' => 3,
+        ),
+      ),
+      array(
+        array(
+          'param'    => 'post_type',
+          'operator' => '==',
+          'value'    => 'contact',
+          'order_no' => 0,
+          'group_no' => 4,
+        ),
+      ),
+    ),
+    'options' => array(
+      'position'       => 'side',
+      'layout'         => 'default',
+      'hide_on_screen' => array(),
+    ),
+    'menu_order' => 0,
   ));
 });
 

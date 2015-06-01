@@ -2615,6 +2615,11 @@
 
     $('html').removeClass('open-menu');
 
+    // Go back to top in mobile
+    if (!window.matchMedia('(min-width: 768px)').matches) {
+      $('html, body').scrollTop(0);
+    }
+
     $(window).trigger('resize');
     $(document).trigger('lv.changed_section', [$trigger, $target]);
   });
@@ -2677,7 +2682,7 @@
   var $map = $('#contact-map-mobile');
 
   if (window.matchMedia('(min-width: 768px)').matches) {
-    $map = $('#contact-map')
+    $map = $('#contact-map');
   }
 
   var
@@ -2795,7 +2800,7 @@
   });
 
   var $modal      = $('.modal'),
-      $modalClose = $modal.find('.modal-close'),
+      $modalClose = $modal.find('[data-action=close-modal]'),
       modalShowed = false;
 
   $(document).on('lv.changed_section', function(ev, trigger, target){
