@@ -1,7 +1,7 @@
 <?php
 
 // We don't need the ACF UI
-define('ACF_LITE', TRUE);
+define('ACF_LITE', FALSE);
 
 // Default country code
 define('LUVECK_DEFAULT_COUNTRY', 'HN');
@@ -257,7 +257,7 @@ add_action('after_setup_theme', function(){
             'key'           => 'field_5507ea424428a',
             'label'         => __('Name', 'luveck'),
             'name'          => 'name',
-            'type'          => 'text',
+            'type'          => 'qtranslate_text',
             'required'      => TRUE,
             'column_width'  => '',
             'default_value' => '',
@@ -271,7 +271,7 @@ add_action('after_setup_theme', function(){
             'key'           => 'field_5507e9e5cea1f',
             'label'         => __('Address', 'luveck'),
             'name'          => 'address',
-            'type'          => 'text',
+            'type'          => 'qtranslate_text',
             'required'      => TRUE,
             'column_width'  => '',
             'default_value' => '',
@@ -285,7 +285,7 @@ add_action('after_setup_theme', function(){
             'key'           => 'field_5507ea10cea20',
             'label'         => __('Phone', 'luveck'),
             'name'          => 'phone',
-            'type'          => 'text',
+            'type'          => 'qtranslate_text',
             'column_width'  => '',
             'default_value' => '',
             'placeholder'   => '',
@@ -298,7 +298,7 @@ add_action('after_setup_theme', function(){
             'key'           => 'field_5507ea21cea22',
             'label'         => __('Fax', 'luveck'),
             'name'          => 'fax',
-            'type'          => 'text',
+            'type'          => 'qtranslate_text',
             'column_width'  => '',
             'default_value' => '',
             'placeholder'   => '',
