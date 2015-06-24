@@ -78,14 +78,14 @@ foreach ($menu_items as $item) {
 
     <div class="site-loader">
       <div class="spinner">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="Luveck">
+        <img class="logo" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-<?php echo qtranxf_getLanguage(); ?>.png" alt="Luveck">
         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/loader.gif" alt="loading">
       </div>
     </div>
 
     <header class="site-header">
       <a class="header-logo" href="<?php echo esc_url(home_url('/')); ?>" title="<?php _e('Go to home page', 'luveck'); ?>">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="Luveck">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-<?php echo qtranxf_getLanguage(); ?>.png" alt="Luveck">
 
         <h1>Luveck es vida</h1>
       </a>
@@ -98,7 +98,7 @@ foreach ($menu_items as $item) {
 
     <nav class="site-navigation">
       <a class="site-navigation-logo" href="<?php echo esc_url(home_url('/')); ?>" title="<?php _e('Go to home page', 'luveck'); ?>">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="Luveck">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-<?php echo qtranxf_getLanguage(); ?>.png" alt="Luveck">
 
         <h1>Luveck es vida</h1>
       </a>
@@ -140,5 +140,14 @@ endforeach;
 ?>
 
     <?php wp_footer(); ?>
+
+    <script>
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+    function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+    e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+    e.src='https://www.google-analytics.com/analytics.js';
+    r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-64239432-1','auto');ga('send','pageview');
+    </script>
   </body>
 </html>

@@ -291,6 +291,11 @@ body {
   margin:30px auto;
 }
 
+.site-loader .logo {
+  height:auto;
+  width:151px;
+}
+
 .site-header {
   background:#fff;
   border-bottom:1px solid #ddd;
@@ -400,7 +405,9 @@ body {
 
 .site-navigation-logo img {
   display:block;
+  height:auto;
   margin:0 auto;
+  width:151px;
 }
 
 .site-navigation-logo h1 {
