@@ -3,39 +3,42 @@
  * Template name: About
  */
 ?>
-<section>
-  <article id="sliderSobreLuveck">
-    <ul class="list-info">
+<section id="content-<?php the_ID(); ?>" class="item fadeIn item-about has-sub-pages">
+    <header class="item-header">
+      <h1><?php the_title(); ?></h1>
+    </header>
+
 <?php
-foreach ($item->subitems as $subitem) :
+foreach ($content->subitems as $subitem) :
   $post = get_post($subitem->object_id);
   setup_postdata($post);
+
+  $mobile_image = get_field('featured_image_mobile');
+
+  if (empty($mobile_image)) {
+    $mobile_image = get_content_image(get_the_ID(), 'large');
+  }
 ?>
-      <li id="content-<?php the_ID(); ?>-1">
-        <div class="col col-49">
+    <article id="sub-content-<?php the_ID(); ?>" class="item sub-item has-featured-image">
+      <div class="item-image"><img src="<?php echo get_content_image(get_the_ID(), 'large'); ?>"></div>
+
+      <div class="item-content">
+        <div class="scroller">
           <div class="nano">
             <div class="nano-content">
-              <h1><?php the_title(); ?></h1>
+              <div class="scroller-content">
+                <header>
+                  <h2 class="h1"><?php the_title(); ?></h2>
+                </header>
 
-              <?php the_content(); ?>
+                <div class="item-image item-image-mobile"><img src="<?php echo $mobile_image; ?>"></div>
+
+                <?php the_content(); ?>
+              </div>
             </div>
           </div>
-
         </div>
-        <div class="col col-51">
-          <img src="<?php echo get_content_image(get_the_ID()); ?>">
-        </div>
-      </li>
+      </div>
+    </article>
 <?php endforeach; ?>
-    </ul>
-    <!-- overview -->
-
-    <ul class="bullets">
-      <li><a href="#quienes-somos" class="bullet active">1</a></li>
-      <li><a href="#nuestra-gente" class="bullet">2</a></li>
-      <li><a href="#mision" class="bullet">3</a></li>
-      <li><a href="#valores" class="bullet">4</a></li>
-    </ul>
-
-  </article>
 </section>

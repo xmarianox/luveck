@@ -3,76 +3,213 @@
  * Template name: Products
  */
 
+$page_image         = get_content_image(get_the_ID(), 'large');
+$page_link          = 'content-' . get_the_ID();
+$upcoming_products  = get_field('products_upcoming');
+$disclaimer_title   = get_field('products_disclaimer_title');
+$disclaimer_content = get_field('products_disclaimer_content');
+
+//
+// User geolocalization
+//
+
+$country = luveck_geolocalize_ip(luveck_get_user_ip());
+$country = $country ? $country : LUVECK_DEFAULT_COUNTRY;
+
+//
+// Getting available products
+//
+
+$content_ids = luveck_query_contents_for_country($country);
+
+if (empty($content_ids)) {
+  $country     = LUVECK_DEFAULT_COUNTRY;
+  $content_ids = luveck_query_contents_for_country($country);
+}
+
 $products = new WP_Query(array(
-  'post_type' => 'product',
-  'nopaging'  => TRUE
+  'post_type'   => 'product',
+  'post_status' => 'publish',
+  'post__in'    => $content_ids
 ));
+
+//
+// Getting the contents to show
+//
+
+// Making an big array with all the categories and contents for each one
+$categories = array();
+
+foreach ($products->posts as $product) {
+  $product_terms = wp_get_object_terms($product->ID, 'product_category');
+
+  foreach ($product_terms as $term) {
+    if (!isset($categories[$term->slug])) {
+      $order = get_field('menu_order', 'product_category_' . $term->term_id);
+
+      $term->menu_order = $order ? $order : 0;
+      $term->contents   = array();
+
+      $categories[$term->slug] = $term;
+    }
+
+    $categories[$term->slug]->contents[] = $product;
+  }
+}
+
+//
+// Ordering
+//
+
+// ordering contents
+foreach ($categories as $term) {
+  $contents = $term->contents;
+
+  usort($contents, 'luveck_sort_by_menu_order');
+
+  $term->contents = $contents;
+}
+
+// ordering terms
+usort($categories, 'luveck_sort_by_menu_order');
+
+$mobile_image = get_field('featured_image_mobile');
+
+if (empty($mobile_image)) {
+  $mobile_image = get_content_image(get_the_ID(), 'large');
+}
 ?>
-<section class="section-products">
-  <article>
-    <div class="col col-49">
-      <h1 class="animated fadeInUp"><?php the_title(); ?></h1>
 
-<?php
-$i = 0;
+<?php if ($disclaimer_title AND $disclaimer_content) : ?>
+  <div class="modal">
+    <div class="modal-inner">
+      <h1 class="h4"><?php echo $disclaimer_title ?></h1>
+      <?php echo wpautop($disclaimer_content); ?>
 
-while ($products->have_posts()) :
-  $products->the_post();
+      <p class="modal-actions"><a class="btn" href="#" data-action="close-modal">Aceptar</a></p>
+    </div>
+  </div>
+<?php endif; ?>
 
-  $presentations = array_filter(explode("\n", (string) get_field('luveck_product_presentations')));
-  $leaflet       = get_field('luveck_product_leaflet');
-?>
-      <div id="product-<?php the_ID(); ?>" class="content-prod <?php echo (++$i === 1) ? 'active' : NULL; ?>">
-        <h2 class="animated fadeInUp"><?php the_title(); ?></h2>
+<section id="<?php echo $page_link; ?>" class="item fadeIn has-navigation item-products">
+  <div id="product-categories" class="item has-featured-image item-product-categories">
+    <div class="item-image">
+      <img src="<?php echo $page_image; ?>">
+    </div>
 
-        <div class="animated fadeInUp"><?php the_content(); ?></div>
+    <div class="item-content">
+      <div class="scroller">
+        <div class="nano">
+          <div class="nano-content">
+            <div class="scroller-content">
+              <header class="item-header">
+                <h1><?php the_title(); ?></h1>
+              </header>
 
-  <?php if (!empty($presentations)) : ?>
-        <div class="presentaciones animated fadeInUp">
-          <h2><?php _e('Presentations') ?></h2>
+              <div class="item-image item-image-mobile">
+                <img src="<?php echo $mobile_image; ?>">
+              </div>
 
-          <ul>
-    <?php foreach ($presentations as $presentation) : ?>
-            <li><?php echo $presentation; ?></li>
-    <?php endforeach; ?>
-          </ul>
+              <ul class="menu menu-product-categories">
+              <?php foreach ($categories as $category) : ?>
+                <li><a href="#products-<?php echo $category->slug; ?>"><?php echo $category->name; ?></a></li>
+              <?php endforeach; ?>
+              </ul>
+
+<?php if (!empty($upcoming_products)) : ?>
+              <hr>
+
+              <h2 class="h3"><?php _e('Upcoming products', 'luveck'); ?></h2>
+              <?php echo wpautop($upcoming_products); ?>
+<?php endif; ?>
+            </div>
+          </div>
         </div>
-  <?php endif; ?>
-
-  <?php if ($leaflet) : ?>
-        <a href="<?php echo $leaflet['url']; ?>" class="btn_descargar animated fadeInUp" title="<?php esc_attr_e('Download doctor insert', 'luveck'); ?>">
-          <span><?php _e('Download doctor insert', 'luveck') ?></span>
-          <span class="shape"><i class="icon"></i></span>
-        </a>
-  <?php endif; ?>
       </div>
-<?php
-endwhile;
-$products->rewind_posts();
-?>
     </div>
-    <!-- col -->
+  </div>
 
-    <div class="col col-51">
-      <ul class="list-prod">
-<?php
-$i = 0;
+  <?php foreach ($categories as $category) : ?>
+  <div id="products-<?php echo $category->slug; ?>" class="item item-product-category">
+    <?php
+    foreach ($category->contents as $post) :
+      setup_postdata($post);
 
-while ($products->have_posts()) :
-$products->the_post();
-?>
-        <li>
-          <a href="#product-<?php the_ID(); ?>" class="<?php echo (++$i === 1) ? 'currentProd' : NULL; ?>">
-            <figure>
-              <img src="<?php echo get_content_image(get_the_ID(), 'nav-thumbnail'); ?>" alt="<?php the_title(); ?>">
-              <span class="borderCurrent"></span>
-            </figure>
-          </a>
-        </li>
-<?php endwhile; ?>
-      </ul>
+      $leaflet        = get_field('luveck_product_leaflet');
+      $certifications = get_field('luveck_product_certifications');
+      $image_context  = get_field('image_context', 'product_category_' . $category->term_id);
 
-      <span class="arrow arrow-prod"><i class="fa fa-angle-down"></i></span>
-    </div>
-  </article>
+      if (isset($certifications['sizes'])) {
+        $certifications = $certifications['sizes']['large'];
+      } else {
+        $certifications = NULL;
+      }
+
+      if (isset($image_context['sizes'])) {
+        $image_context = $image_context['sizes']['large'];
+      } else {
+        $image_context = NULL;
+      }
+    ?>
+    <article id="product-<?php echo get_the_slug(); ?>" class="item item-product has-featured-image">
+      <div class="item-image product-images">
+        <div class="product-image-featured">
+          <img src="<?php echo $image_context; ?>">
+        </div>
+
+        <div class="product-image">
+          <img src="<?php echo get_content_image(get_the_ID(), 'large'); ?>">
+        </div>
+      </div>
+
+      <div class="item-content">
+        <div class="scroller">
+          <div class="nano">
+            <div class="nano-content">
+              <div class="scroller-content">
+                <ul class="menu menu-categories">
+                  <li><a href="#product-categories"><span class="fa fa-arrow-circle-o-left"></span> <?php _e('Back to products list', 'luveck'); ?></a></li>
+                </ul>
+
+                <h1><?php the_title(); ?></h1>
+
+                <?php the_content(); ?>
+
+                <?php if ($leaflet) : ?>
+                <p>
+                  <a class="btn" href="<?php echo $leaflet['url']; ?>" class="btn_descargar animated fadeInUp" title="<?php esc_attr_e('Download doctor insert', 'luveck'); ?>">
+                    <span class="icon fa fa-file-text-o"></span>
+                    <span><?php _e('Download doctor insert', 'luveck'); ?></span>
+                  </a>
+                </p>
+                <?php endif; ?>
+
+                <hr class="space">
+
+                <?php if ($certifications) : ?>
+                <h2><?php _e('Product certifications', 'luveck'); ?></h2>
+
+                <img class="img-responsive" src="<?php echo $certifications; ?>">
+                <?php endif; ?>
+
+                <hr class="space">
+
+                <h2><?php _e('Presentations', 'luveck'); ?></h2>
+
+                <ul class="inline-list menu menu-products">
+                  <?php foreach ($category->contents as $post) : ?>
+                  <li>
+                    <a class="btn" href="#product-<?php echo $post->post_name; ?>"><?php echo get_the_title($post); ?></a>
+                  </li>
+                  <?php endforeach; ?>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+    <?php endforeach; ?>
+  </div>
+  <?php endforeach; ?>
 </section>

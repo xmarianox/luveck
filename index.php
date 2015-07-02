@@ -1,7 +1,29 @@
-<!doctype html>
+<?php
+$locations  = get_nav_menu_locations();
+$menu_meta  = wp_get_nav_menu_object($locations['main']);
+$menu_items = wp_get_nav_menu_items($menu_meta->term_id, array(
+  'update_post_term_cache' => FALSE
+));
+
+$contents = array();
+
+foreach ($menu_items as $item) {
+  if ($item->menu_item_parent == 0) {
+    $contents[$item->ID] = $item;
+
+    continue;
+  }
+
+  if (!isset($contents[$item->menu_item_parent]->subitems)) {
+    $contents[$item->menu_item_parent]->subitems = [];
+  }
+
+  $contents[$item->menu_item_parent]->subitems[] = $item;
+}
+?><!doctype html>
 <html class="no-js" <?php language_attributes(); ?>>
   <head>
-    <meta charset="utf-8">
+    <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
@@ -42,25 +64,6 @@
     <meta name="twitter:site" content="">
     <meta name="twitter:creator" content="http://funka.la">
 
-    <script>
-    (function() {
-        (function(i){var e=/iPhone/i,n=/iPod/i,o=/iPad/i,t=/(?=.*\bAndroid\b)(?=.*\bMobile\b)/i,r=/Android/i,d=/BlackBerry/i,s=/Opera Mini/i,a=/IEMobile/i,b=/(?=.*\bFirefox\b)(?=.*\bMobile\b)/i,h=RegExp("(?:Nexus 7|BNTV250|Kindle Fire|Silk|GT-P1000)","i"),c=function(i,e){return i.test(e)},l=function(i){var l=i||navigator.userAgent;this.apple={phone:c(e,l),ipod:c(n,l),tablet:c(o,l),device:c(e,l)||c(n,l)||c(o,l)},this.android={phone:c(t,l),tablet:!c(t,l)&&c(r,l),device:c(t,l)||c(r,l)},this.other={blackberry:c(d,l),opera:c(s,l),windows:c(a,l),firefox:c(b,l),device:c(d,l)||c(s,l)||c(a,l)||c(b,l)},this.seven_inch=c(h,l),this.any=this.apple.device||this.android.device||this.other.device||this.seven_inch},v=i.isMobile=new l;v.Class=l})(window);
-
-        var MOBILE_SITE = 'mobile/', // site to redirect to
-            NO_REDIRECT = 'noredirect'; // cookie to prevent redirect
-
-        // I only want to redirect iPhones, Android phones and a handful of 7" devices
-        if (isMobile.apple.phone || isMobile.android.phone || isMobile.seven_inch) {
-            // Only redirect if the user didn't previously choose
-            // to explicitly view the full site. This is validated
-            // by checking if a "noredirect" cookie exists
-            if ( document.cookie.indexOf(NO_REDIRECT) === -1 ) {
-                document.location = MOBILE_SITE;
-            }
-        }
-    })();
-    </script>
-
     <?php wp_head(); ?>
 
     <script>
@@ -73,69 +76,78 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div id="preloader">
-      <div id="status">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" height="52" width="151" alt="Luveck" class="logo">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/bx_loader.gif" height="32" width="32" alt="" class="loader">
+    <div class="site-loader">
+      <div class="spinner">
+        <img class="logo" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-<?php echo qtranxf_getLanguage(); ?>.png" alt="Luveck">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/loader.gif" alt="loading">
       </div>
     </div>
 
-    <main>
-      <aside>
-        <h1 class="brand_logo">Luveck</h1>
+    <header class="site-header">
+      <a class="header-logo" href="<?php echo esc_url(home_url('/')); ?>" title="<?php _e('Go to home page', 'luveck'); ?>">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-<?php echo qtranxf_getLanguage(); ?>.png" alt="Luveck">
 
-        <?php
-        wp_nav_menu(array(
-          'theme_location' => 'main',
-          'container'      => 'nav',
-          'menu_class'     => 'tabs'
-        ));
-        ?>
+        <h1>Luveck es vida</h1>
+      </a>
 
-        <ul class="contactos">
-          <li><a href="" title="Mail"><i class="fa fa-envelope"></i></a></li>
-          <li><a href="" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-          <li><a href="" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-        </ul><!-- .contactos -->
-      </aside>
+      <a class="header-menu-button" href="#menu" data-action="open-menu">
+        <?php _e('Menu', 'luveck'); ?>
+        <i class="icon fa fa-bars"></i>
+      </a>
+    </header>
+
+    <nav class="site-navigation">
+      <a class="site-navigation-logo" href="<?php echo esc_url(home_url('/')); ?>" title="<?php _e('Go to home page', 'luveck'); ?>">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-<?php echo qtranxf_getLanguage(); ?>.png" alt="Luveck">
+
+        <h1>Luveck es vida</h1>
+      </a>
+
+      <?php
+      wp_nav_menu(array(
+        'theme_location' => 'main',
+        'container'      => '',
+        'menu_class'     => 'menu menu-sections'
+      ));
+      ?>
+
+      <div class="menu-secondary">
+        <ul class="menu menu-contacts">
+          <li><a href="mailto:info@luveck.com" title="Mail"><i class="fa fa-envelope"></i> <span>Email de contacto</span></a></li>
+        </ul>
+
+        <ul class="menu menu-languages">
+          <?php foreach (qtranxf_getSortedLanguages() as $lang) : ?>
+          <li>
+            <a href="<?php echo qtranxf_convertURL('', $lang, false, true); ?>">
+              <?php echo qtranxf_getLanguageName($lang); ?>
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/<?php echo $lang; ?>.png">
+            </a>
+          </li>
+          <?php endforeach; ?>
+        </ul>
+      </div>
+    </nav>
+    <div class="site-navigation-overlay"></div>
 
 <?php
-$locations  = get_nav_menu_locations();
-$menu_meta  = wp_get_nav_menu_object($locations['main']);
-$menu_items = wp_get_nav_menu_items($menu_meta->term_id, array(
-  'update_post_term_cache' => FALSE
-));
-
-$menu = array();
-
-foreach ($menu_items as $item) {
-  if ($item->menu_item_parent == 0) {
-    $menu[$item->ID] = $item;
-
-    continue;
-  }
-
-  if (!isset($menu[$item->menu_item_parent]->subitems)) {
-    $menu[$item->menu_item_parent]->subitems = [];
-  }
-
-  $menu[$item->menu_item_parent]->subitems[] = $item;
-}
-?>
-
-<?php
-foreach ($menu as $item) :
-  $post = get_post($item->object_id);
+foreach ($contents as $content) :
+  $post = get_post($content->object_id);
   setup_postdata($post);
 
-  $template = get_page_template();
+  include get_page_template();
+endforeach;
 ?>
-<div class="content" id="content-<?php echo $item->object_id; ?>">
-  <?php if (is_file($template)) include $template; ?>
-</div>
-<?php endforeach; ?>
-    </main>
 
     <?php wp_footer(); ?>
+
+    <script>
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+    function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+    e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+    e.src='https://www.google-analytics.com/analytics.js';
+    r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-64239432-1','auto');ga('send','pageview');
+    </script>
   </body>
 </html>

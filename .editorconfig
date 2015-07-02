@@ -12,18 +12,3 @@ insert_final_newline = true
 [*]
 indent_style = space
 indent_size = 2
-
-# JSON files
-[*.json]
-indent_style = space
-indent_size = 2
-
-# JavaScript files
-[*.js]
-indent_style = tab
-indent_size = 4
-
-# CSS files
-[*.css]
-indent_style = tab
-indent_size = 2

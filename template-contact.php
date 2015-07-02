@@ -5,71 +5,84 @@
 
 $branches = get_field('luveck_branches', get_the_ID());
 ?>
-<section>
-  <article>
-    <div class="col col-49">
+<section id="content-<?php the_ID(); ?>" class="item fadeIn has-featured-image item-contact">
+  <div class="item-map">
+    <div id="contact-map" class="item-map-inner"></div>
+  </div>
+
+  <div class="item-content">
+    <div class="scroller">
       <div class="nano">
         <div class="nano-content">
-          <h1 class="animated fadeInUp">Contáctenos</h1>
+          <div class="scroller-content">
+            <header class="item-header">
+              <h1><?php the_title(); ?></h1>
+            </header>
+
+            <div class="item-map item-map-mobile">
+              <div id="contact-map-mobile" class="item-map-inner"></div>
+            </div>
+
+            <h2><?php _e('Offices', 'luveck'); ?></h2>
 
 <?php foreach ($branches as $i => $branch) : ?>
-          <div class="sucursales animated fadeInLeft <?php echo ($i === 0) ? 'active' : NULL; ?>"
-  <?php if (isset($branch['location'])) : ?>
-               data-coords="<?php echo $branch['location']['lat']; ?>,<?php echo $branch['location']['lng']; ?>"
-  <?php endif; ?>>
+            <div class="branch" data-branch
+              <?php if (isset($branch['location'])) : ?>
+                data-lat="<?php echo $branch['location']['lat']; ?>" data-lng="<?php echo $branch['location']['lng']; ?>"
+              <?php endif; ?>
 
-            <h2><?php echo $branch['name']; ?> <i
-                class="fa fa-map-marker animated fadeInDown"></i></h2>
+              <?php if (isset($branch['name'])) : ?>data-name="<?php echo $branch['name']; ?>"<?php endif; ?>
+              <?php if (isset($branch['address'])) : ?>data-address="<?php echo $branch['address']; ?>"<?php endif; ?>
+              <?php if (isset($branch['phone'])) : ?>data-phone="<?php echo $branch['phone']; ?>"<?php endif; ?>
+              <?php if (isset($branch['fax'])) : ?>data-fax="<?php echo $branch['fax']; ?>"<?php endif; ?>
+              >
 
-            <p><?php echo $branch['address']; ?>
-  <?php if (isset($branch['phone']) AND !empty($branch['phone'])) : ?>
-              <br>Tel: <?php echo $branch['phone']; ?>
-  <?php endif; ?>
+              <h3><a href="#" data-action="show-branch"><?php echo $branch['name']; ?></a> <i class="fa fa-map-marker"></i></h3>
 
-  <?php if (isset($branch['fax']) AND !empty($branch['fax'])) : ?>
-                <br>Fax: <?php echo $branch['fax']; ?>
-  <?php endif; ?>
-          </div>
+              <p><?php echo $branch['address']; ?>
+                <?php if (isset($branch['phone']) AND !empty($branch['phone'])) : ?>
+                  <br>Tel: <?php echo $branch['phone']; ?>
+                <?php endif; ?>
+
+                <?php if (isset($branch['fax']) AND !empty($branch['fax'])) : ?>
+                  <br>Fax: <?php echo $branch['fax']; ?>
+                <?php endif; ?></p>
+            </div>
 <?php endforeach; ?>
 
-          <form action="<?php echo admin_url('admin-ajax.php'); ?>?action=luveck_send_contact" id="form-contacto" class="animated fadeInLeft">
-            <div class="form-control">
-              <h2>CONSULTAS</h2>
-            </div>
+            <hr>
 
-            <div class="form-message"></div>
+            <form id="form-contacto" action="<?php echo admin_url('admin-ajax.php'); ?>?action=luveck_send_contact" method="post">
+              <h2><?php _e('Contact', 'luveck'); ?></h2>
 
-            <div class="form-control form-control-5 left">
-              <input type="text" name="nombre-contacto" id="nombre-contacto"
-                     placeHolder="Nombre">
-            </div>
+              <div class="form-feedback"></div>
 
-            <div class="form-control form-control-5 right">
-              <input type="email" name="email-contacto" id="email-contacto"
-                     placeHolder="Correo electronico">
-            </div>
+              <div class="row">
+                <div class="form-item form-name">
+                  <input class="form-control" type="text" name="nombre-contacto" id="nombre-contacto"
+                         placeHolder="<?php _e('Name', 'luveck'); ?>">
+                </div>
 
-            <div class="form-control">
-              <textarea name="mensaje-contacto" id="mensaje-contacto"
-                        placeHolder="Mensaje"></textarea>
-            </div>
+                <div class="form-item form-email">
+                  <input class="form-control" type="email" name="email-contacto" id="email-contacto"
+                         placeHolder="<?php _e('E-mail', 'luveck'); ?>">
+                </div>
+              </div>
 
-            <div class="form-control">
-              <button class="btn">Enviar</button>
-            </div>
-          </form>
+              <div class="form-item form-message">
+                <textarea class="form-control" name="mensaje-contacto" id="mensaje-contacto"
+                          placeHolder="<?php _e('Message', 'luveck'); ?>" rows="5"></textarea>
+              </div>
+
+              <div class="form-item form-actions">
+                <button class="btn">Enviar</button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-    <!-- col-4 -->
-
-    <div class="col col-51">
-      <div class="content-mapa">
-        <div id="map-canvas"></div>
-      </div>
-    </div>
-    <!-- col-6 -->
-  </article>
+  </div>
 </section>
 
 <script>
